@@ -1,5 +1,5 @@
 [gerrit]
-host=173:230.133.53
+host=173.230.133.53
 port=29418
 project=open-data-nc-unc
 defaultbranch=master
