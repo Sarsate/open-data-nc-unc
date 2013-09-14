@@ -1,0 +1,21 @@
+language: python
+
+python:
+ - "2.7"
+
+services: postgresql
+
+before_install:
+ - export DJANGO_SETTINGS_MODULE=opendata.settings.test
+ - export PYTHONPATH=$HOME/builds/openrural/open-data-nc
+ - sudo apt-get install libgeos-dev
+
+install:
+ - pip install -r requirements/dev.txt --use-mirrors
+
+before_script:
+ - psql -c "CREATE DATABASE opendata;" -U postgres
+ - python manage.py syncdb --migrate --noinput
+
+script:
+ - python manage.py test requests catalog suggestions

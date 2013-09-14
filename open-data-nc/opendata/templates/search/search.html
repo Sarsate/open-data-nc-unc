@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% load widget_tweaks facet_tags %}
+
+{% block title %}{{ model_type|default:"search result"|add:"s"|title }}{% endblock title %}
+{% block body_id %}search{% endblock body_id %}
+{% block body_class %}catalog{% endblock body_class %}
+
+{% block extra-css %}
+    <link rel="stylesheet" type="text/css"
+            href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/base/jquery-ui.css">
+    <link type="text/css" media="all" rel="stylesheet"
+            href="{{ STATIC_URL }}selectable/css/dj.selectable.css">
+{% endblock extra-css %}
+
+{% block extra-js %}
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.js"></script>
+    <script src="{{ STATIC_URL }}selectable/js/jquery.dj.selectable.js"></script>
+    <script src="{{ STATIC_URL }}js/selectable.js"></script>
+    <script>
+        // if ($('#refine-results').is(':visible')) {
+        //     $('#goto_find_data p').toggleClass('hidden');
+        // } 
+
+        $('ul').each(function(){
+            var ul = $(this);
+            var count_li = ul.find('li').size();
+            if(count_li > 5) {
+                ul.find('li:gt(4)').hide().end()
+                .append($('<li class="show-more"><a class="accent">Show More...</a></li>'));
+            }
+        });
+
+        $('.show-more').click(function(e){
+            e.preventDefault();
+            console.log('hi');
+            $(this).siblings(':hidden').fadeIn('slow').end().replaceWith($('<li class="show-less"><a class="accent">Show Less</a></li>').fadeIn('slow'));
+        });
+
+        $('.show-less').click(function(){
+            console.log(this);
+            $(this).remove();
+            $(this).parent('ul').find('li:gt(4)').hide().end()
+                    .append($('<li class="show-more"><a class="accent">Show More...</a></li>'));
+        });
+    </script>
+{% endblock extra-js %}
+
+{% block form %}
+            
+    <div class="row-fluid hidden-phone">
+        <div class="span10">
+            <form class="form-search" method="get" action=".">
+                <div class="control-group input-append">
+                    {{ form.q|attr:"placeholder:Search the data catalog..." }}
+                    {% for facet in form.selected_facets %}
+                        <input type="hidden" name="selected_facets" value="{{ facet }}" />
+                    {% endfor %}
+                    <button class="btn"><i class="icon-search icon-white"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock form %}
+
+{% block form_mobile %} <!-- Moves search bar under nav in mobile environment -->
+            
+    <div class="row-fluid visible-phone">
+        <div class="span8 offset3">
+            <form class="form-search" method="get" action=".">
+                <div class="control-group input-append">
+                    {{ form.q|attr:"placeholder:Search the data catalog..." }}
+                    {% for facet in facet_list %}
+                        <input type="hidden" name="selected_facets" value="{{ facet }}" />
+                    {% endfor %}
+                    <button class="btn"><i class="icon-search icon-white"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock form_mobile %}
+
+{% block catalog_search %}
+    <div id="refine-results">
+        <h3>Filters</h3>
+            <div id="reset-filters">
+                {% if selected_facets %}
+                {% for field, filter in selected_facets %}
+                    <span class="label label-info"><a class="facet_removal" href="{% remove_facet request filter %}"><i class="icon-remove-sign"></i></a> {{ field|title }}: {{ filter|title }} </span>
+                {% endfor %}
+                <br>
+                <a href="{{ request.path }}{% if query %}?q={{ query }}{% endif %}">Reset Filters</a>
+                {% endif %}
+            </div>
+            <div class="search-tools">
+                {% for field, facets in facets.fields.items %}
+                    {% if facets %}
+                    <ul class="filters">
+                        <h5 class="filter_title"><a href="#">By {{ field }}</a></h5>
+                        {% for facet in facets %}
+                            {% if facet.1 %}
+                            {% with path=request.get_full_path %}
+                                <li>
+                                   {% if not facet.0 in filters %}
+                                    <a href="{{ request.get_full_path }}{% if '?q=' not in path %}?q={% endif %}&amp;selected_facets={{ field }}_exact:{{ facet.0|urlencode }}">
+                                        {{ facet.0|title }} ({{ facet.1 }})
+                                    </a>
+                                    {% else %}
+                                       <span class="muted" title="Filter already applied">{{ facet.0|title }} ({{ facet.1 }})</span>
+                                    {% endif %}
+                                </li>
+                            {% endwith %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    </ul>
+                {% endfor %}
+            </div>
+    {% endblock %}
+
+    {% block content %}
+        <h3>Data Catalog</h3>
+        <div class="search-results">
+            {% for result in page.object_list %}
+                {{result.text|safe}}
+            {% if not forloop.last %}<br />{% endif %}
+            {% empty %}
+            <p>No results found.</p>
+            {% endfor %}
+
+            {% if page.has_previous or page.has_next %}
+            <div>
+                {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                |
+                {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div></div> <!-- /span9 & /row-fluid from base -->
+{% endblock %}
+
+
