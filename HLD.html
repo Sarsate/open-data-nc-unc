@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Open-Data-NC </title>
+  </head>
+
+  <body>
+
+    <header>
+    <div class="container">
+      <h1>Open-data-nc-unc</h1>
+      <h2>To Be Decided</h2>
+
+      <section id="downloads">
+      <a href="https://github.com/Sarsate/open-data-nc-unc/zipball/master" class="btn">Download as .zip</a>
+      <a href="https://github.com/Sarsate/open-data-nc-unc/tarball/master" class="btn">Download as .tar.gz</a>
+      <a href="https://github.com/Sarsate/open-data-nc-unc" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+      </section>
+    </div>
+    </header>
+
+    <div class="container">
+          <h5> High Level Design </h5>
+          <div>
+	   <h5>Architecture </h5>
+	   Here is an eyesore of a diagram (that's what happens when you let a colorblind aesthetically oblivious person draw things in paint :D) that attempts to outline the highest levels of design: <br> <br>
+
+	      <a href="images/HLD.png"> Diagram </a>
+	      <br><br>
+	      The architecture is a standard Model-View-Controller paradigm, where the view exists on the client's browser, the model is stored on the database, and the controller manages the interactions between the two via server code. The database will be Postgresql, and the Server-side framework will be Django. <br><br>
+
+	   Django uses python to dynamically generate content for the client via HTML templates, compressed CSS (Less), and static Javascript files. Django interfaces with the database via it's built in Object Relational Mapping. Database models and relations can be expressed as python objects in Django's models.py files, abstracting database queries.
+          <br><br>
+
+	  A (very) dirty draft of the Database design is linked below <br> <br>
+	  <a href="images/DatabaseDesign.png"> Database Design </a>
+	 </div>
+       </body>
+      </html>
+
+
