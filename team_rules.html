@@ -35,7 +35,30 @@
 	    <h5>Code Practices for code review / checkin/out </h5> <br>
                 The team will use the following Gerrit workflow:<br><br>
 
-		First, clone or pull the latest version of the gerrit repository.
+		First, clone or pull the latest version of the gerrit repository.<br>
+		<code> git clone http://173.230.133.53:8444/open-data-nc-unc </code><br><br>
+
+		Checkout your own branch. All changes will be submitted off the master branch. DO NOT submit a patch on the master branch; your code will be rejected. <br>
+		<code> git checkout -b my-branch </code> <br><br>
+
+		Make your changes to the code and commit as usual <br>
+		<code> git add myfile </code>  ( <code> git add --all </code> for all untracked files) <br>
+		<code> git commit -a </code><br><br>
+
+		**Make sure your commit message is descriptive of the change. The commit message should encompass the entirety of the patch. If you find yourself making an overly convoluted commit message, you probably need to split your commit into multiple commits. As a guideline, a single sentence is usually not enough. (i.e. "added new page to site" says nothing) **
+		<br> <br>
+
+		At this point, you can submit your branch for review on gerrit. If this is your first submission, you'll probably need to set up your credentials: <br>
+		<code> git review -s </code> <br> <br>
+
+		Then simply submit your patch! <br>
+		<code> git review </code><br> <br>
+
+		If you need to make changes to your patch based on comments/idea from others instead of creating a new commit (or you simply forgot that one semicolon), use git commit --amend: <br>
+		<code> git commit -a --amend </code> <br>
+		<code> git review </code> <br></br>
+
+		As long as the Change-ID is the same in the commit message, your new patch will be submitted as a separate patch-set under the same review page as the previous patch, allowing others to see and be notified of your changes.<br><br>
 	    <h5>Team Behavior </h5> <br>
 		If you will be late to a meeting email everyone <br>
 		If two people are ready for the meeting and five mintues passes start the meeting <br><br>
