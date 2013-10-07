@@ -37,12 +37,33 @@ def add_request(request):
             request_object.rating.add(score=1, user=request.user,
                                 ip_address=request.META['REMOTE_ADDR'])
             return redirect(reverse('request-list'))
-    else: 
+    else:
         form = RequestForm()
     context = {
         'form': form
     }
     return render(request, 'requests/create_edit.html', context)
+
+
+@login_required
+def add_bounty(request, request_id):
+    """Add new bounties"""
+    if request.method == 'POST':
+        form = BountyForm(request.POST)
+        if form.is_valid():
+            request_object = get_object_or_404(Request, pk=request_id)
+            bounty_object = form.save(commit=False)
+            bounty_object.author = request.user
+            bounty_object.request = request_object
+            bounty_object.supplier = request.user  # Temporary value, TO BE FIXED
+            bounty_object.save()
+            return redirect(reverse('request-list'))
+    else:
+        form = BountyForm()
+    context = {
+            'form': form
+    }
+    return render(request, 'requests/create_bounty.html', context)
 
 
 @login_required

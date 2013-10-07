@@ -3,7 +3,7 @@ from selectable.forms import AutoCompleteSelectField
 from selectable.forms import AutoCompleteSelectWidget
 
 from opendata.catalog.lookups import CityLookup, CountyLookup
-from .models import Request
+from .models import Request, Bounty
 
 
 class SearchForm(forms.Form):
@@ -32,6 +32,16 @@ class RequestForm(forms.ModelForm):
         model = Request
         exclude = ('suggested_by', 'resources', 'rating', 'status', )
 
+    class Media:
+        js = (
+            "suggestions/js/form.js",
+        )
+
+
+class BountyForm(forms.ModelForm):
+    class Meta:
+        model = Bounty
+        exclude = ('request', 'author', 'supplier')
     class Media:
         js = (
             "suggestions/js/form.js",
