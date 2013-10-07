@@ -57,6 +57,17 @@
             <div class="span6 request-details">
                 <h3 class="nom_text">{{ object }}</h3>
                 <div class="nom_byline">
+                    <form id="bounty-add-form" action="{% url 'bounty-create' object.id %}" method='get'>
+                        <button class="btn">Add Bounty</button>
+                    </form>
+                    <div id="bounties">
+                    {% for bounty in bounties  %}
+                        {% if bounty.request == object %}
+                            <div class="bounty">Bounty: {{bounty.price}}</div>
+                            <div class="due_date">Due Date: {{bounty.deadline}}</div>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
                     By <strong>{{ object.suggested_by }}</strong> on <strong>{{ object.date }}</strong>
                 </div>
             </div>

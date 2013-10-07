@@ -5,12 +5,13 @@ from django.views.decorators.http import require_POST
 from djangoratings.exceptions import CannotDeleteVote
 
 from .models import *
-from .forms import SearchForm, RequestForm
+from .forms import SearchForm, RequestForm, BountyForm
 
 
 def list_requests(request):
     """List current requests"""
     requests = Request.objects.filter(status=Request.APPROVED).order_by("-rating_score")
+    bounties = Bounty.objects.filter()
     if request.method == 'GET':
         form = SearchForm(request.GET)
         if form.is_valid():
@@ -21,6 +22,7 @@ def list_requests(request):
     context = {
         'form': form,
         'requests': requests,
+        'bounties': bounties,
     }
     return render(request, 'requests/list.html', context)
 
