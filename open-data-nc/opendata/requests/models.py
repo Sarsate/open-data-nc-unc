@@ -58,6 +58,6 @@ class Request(models.Model):
 class Bounty(models.Model):
     request = models.ForeignKey(Request)
     author = models.ForeignKey(User, related_name='bounty_author')
-    supplier = models.ForeignKey(User, related_name='bounty_supplier')
+    supplier = models.ForeignKey(User, null=True, blank=True, related_name='bounty_supplier')
     price = models.DecimalField(max_digits=6, decimal_places=2)
     deadline = models.DateField()
