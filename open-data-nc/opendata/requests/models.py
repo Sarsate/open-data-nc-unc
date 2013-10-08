@@ -23,7 +23,7 @@ class Request(models.Model):
 
     creation_date = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
-    status = models.IntegerField(default=0, choices=STATUS)
+    status = models.IntegerField(default=1, choices=STATUS)
     suggested_by = models.ForeignKey(User, related_name="suggested_by")
     title = models.CharField(max_length=255, help_text=HELP['title'])
     description = models.TextField(help_text=HELP['description'])
