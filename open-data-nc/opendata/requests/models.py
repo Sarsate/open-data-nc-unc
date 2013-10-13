@@ -51,6 +51,11 @@ class Request(models.Model):
                                        null=True, blank=True)
     rating = RatingField(range=1, allow_delete=True, can_change_vote=True)
 
+    class Meta:
+        permissions = (
+            ("can_claim_request", "Can claim request")
+        )
+
     def __unicode__(self):
         return self.title
 
