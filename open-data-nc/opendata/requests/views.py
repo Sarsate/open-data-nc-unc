@@ -31,18 +31,29 @@ def list_requests(request):
 def add_request(request):
     """Add new requests"""
     if request.method == 'POST':
-        form = RequestForm(request.POST)
-        if form.is_valid():
-            request_object = form.save(commit=False)
+        requestForm = RequestForm(request.POST)
+        bountyForm = BountyForm(request.POST)
+        if requestForm.is_valid() and bountyForm.is_valid():
+
+            request_object = requestForm.save(commit=False)
             request_object.suggested_by = request.user
             request_object.save()
+
+            bounty_object = bountyForm.save(commit=False)
+            bounty_object.author = request.user
+            bounty_object.request = request_object
+            bounty_object.supplier = request.user
+            bounty_object.save()
+
             request_object.rating.add(score=1, user=request.user,
                                 ip_address=request.META['REMOTE_ADDR'])
             return redirect(reverse('request-list'))
     else:
-        form = RequestForm()
+        requestForm = RequestForm()
+        bountyForm = BountyForm()
     context = {
-        'form': form
+        'requestForm': requestForm,
+        'bountyForm': bountyForm
     }
     return render(request, 'requests/create_edit.html', context)
 

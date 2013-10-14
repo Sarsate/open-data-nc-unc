@@ -42,6 +42,7 @@ class BountyForm(forms.ModelForm):
     class Meta:
         model = Bounty
         exclude = ('request', 'author', 'supplier')
+
     class Media:
         js = (
             "suggestions/js/form.js",
