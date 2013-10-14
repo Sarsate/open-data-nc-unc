@@ -103,3 +103,12 @@ def remove_vote(request, request_id):
         # vote didn't exist, just move on
         pass
     return redirect(reverse('request-list'))
+
+@login_required
+@require_POST
+def claim_bounty(request, request_id):
+    """Claim bounty for current user"""
+    request_object = get_object_or_404(Request, pk=request_id)
+    request_object.supplier = request.user
+    request_object.save()
+    return redirect(reverse('request-list'))
