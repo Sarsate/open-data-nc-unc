@@ -50,6 +50,7 @@ class Request(models.Model):
                                        related_name="requests",
                                        null=True, blank=True)
     rating = RatingField(range=1, allow_delete=True, can_change_vote=True)
+    supplier = models.ForeignKey(User, null=True, blank=True)
 
     class Meta:
         permissions = (
@@ -62,7 +63,6 @@ class Request(models.Model):
 
 class Bounty(models.Model):
     request = models.ForeignKey(Request)
-    author = models.ForeignKey(User, related_name='bounty_author')
-    supplier = models.ForeignKey(User, null=True, blank=True, related_name='bounty_supplier')
+    author = models.ForeignKey(User)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     deadline = models.DateField()
