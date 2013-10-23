@@ -113,3 +113,10 @@ def claim_request(request, request_id):
         request_object.supplier = request.user
         request_object.save()
     return redirect(reverse('request-list'))
+
+@login_required
+@require_POST
+def supply_request(request, request_id):
+   """Supply information for current request"""
+   request_object = get_object_or_404(Request, pk=request_id)
+   return redirect(reverse('request-list'))
