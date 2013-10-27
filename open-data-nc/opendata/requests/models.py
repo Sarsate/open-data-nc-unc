@@ -10,10 +10,12 @@ from opendata.fields_info import FIELDS, HELP
 class Request(models.Model):
     PENDING = 0
     APPROVED = 1
+    SUPPLIED = 2
 
     STATUS = (
         (PENDING, 'Pending'),
-        (APPROVED, 'Approved')
+        (APPROVED, 'Approved'),
+        (SUPPLIED, 'Supplied')
     )
     AGENCY_TYPES = (
         ('state', 'Statewide'),
