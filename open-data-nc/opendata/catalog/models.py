@@ -126,6 +126,8 @@ class Resource(models.Model):
     #     super(Resource, self).save(*args, **kwargs)
 
     # Basic Info
+    data_url = models.URLField(u'Link to data', null=True, blank=False)
+    verification_url = models.URLField(u'Link to Muckrock or ScraperWiki verification code', null=True, blank=False)
     name = models.CharField(u'Title', max_length=255, help_text=HELP['title'])
     slug = models.SlugField(editable=False)
     short_description = models.CharField(u'Brief description', max_length=255,

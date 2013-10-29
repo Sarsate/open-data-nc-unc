@@ -124,7 +124,7 @@ def supply_request(request, request_id):
         bounties = request_object.bounty_set.all()
         totalBounty = 0
         for bounty in bounties:
-            if bounty.deadline < date.today():
+            if bounty.deadline >= date.today():
                 totalBounty += bounty.price
 
         form = SupplyForm(request.POST)
@@ -141,6 +141,7 @@ def supply_request(request, request_id):
     else:
         form = SupplyForm()
     context = {
-            'form': form
+            'form': form,
+            'totalBounty' : totalBounty
     }
     return render(request, 'requests/supply_request.html', context)
