@@ -55,7 +55,7 @@
                 <span>{{ object.rating_votes }}</span><br><span>vote{{object.rating_votes|pluralize}}</span>
             </div>
             <div class="span6 request-details">
-                <h3 class="nom_text">{{ object }}</h3>
+                <h3 class="nom_text"><a href={{ object.id }}>{{ object }}</a></h3>
                 <div class="nom_byline">
                     {% if user.is_authenticated %}
                         <form id="bounty-add-form" action="{% url 'bounty-create' object.id %}" method='get'>

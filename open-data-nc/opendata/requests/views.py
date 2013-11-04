@@ -4,6 +4,8 @@ from django.core.urlresolvers import reverse
 from django.views.decorators.http import require_POST
 from djangoratings.exceptions import CannotDeleteVote
 from datetime import date
+from django.conf import settings
+from django.views.generic import DetailView
 
 from .models import *
 from .forms import SearchForm, RequestForm, BountyForm, SupplyForm
@@ -145,3 +147,11 @@ def supply_request(request, request_id):
             'totalBounty' : totalBounty
     }
     return render(request, 'requests/supply_request.html', context)
+
+
+class RequestDetail(DetailView):
+    model = Request
+    def get_context_data(self, **kwargs):
+        context = super(RequestDetail, self).get_context_data(**kwargs)
+        context['resource'] = context['object']
+        return context
