@@ -3,9 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.views.decorators.http import require_POST
 from djangoratings.exceptions import CannotDeleteVote
+from datetime import date
 
 from .models import *
-from .forms import SearchForm, RequestForm, BountyForm
+from .forms import SearchForm, RequestForm, BountyForm, SupplyForm
 
 
 def list_requests(request):
@@ -104,8 +105,8 @@ def remove_vote(request, request_id):
         pass
     return redirect(reverse('request-list'))
 
+
 @login_required
-@require_POST
 def claim_request(request, request_id):
     """Claim request for current user"""
     request_object = get_object_or_404(Request, pk=request_id)
@@ -117,6 +118,29 @@ def claim_request(request, request_id):
 @login_required
 @require_POST
 def supply_request(request, request_id):
-   """Supply information for current request"""
-   request_object = get_object_or_404(Request, pk=request_id)
-   return redirect(reverse('request-list'))
+    """Supply information for current request"""
+    if request.method == 'POST':
+        request_object = get_object_or_404(Request, pk=request_id)
+        bounties = request_object.bounty_set.all()
+        totalBounty = 0
+        for bounty in bounties:
+            if bounty.deadline < date.today():
+                totalBounty += bounty.price
+
+        form = SupplyForm(request.POST)
+        if form.is_valid():
+            resource_object = form.save(commit=False)
+            resource_object.created_by = request.user
+            resource_object.last_updated_by = request.user
+            resource_object.created = date.today()
+            resource_object.last_updated = date.today()
+            resource_object.save()
+            request_object.status = 2
+            request_object.save()
+            return redirect(reverse('request-list'))
+    else:
+        form = SupplyForm()
+    context = {
+            'form': form
+    }
+    return render(request, 'requests/supply_request.html', context)
