@@ -10,5 +10,5 @@ urlpatterns = patterns('',
        name="request-vote"),
    url(r'^(?P<request_id>\d+)/unvote/$', views.remove_vote,
        name="request-remove-vote"),
-   url(r'^(?P<request_id>\d+)/claim/$', views.claim_bounty, name="claim-bounty"),
+   url(r'^(?P<request_id>\d+)/claim/$', views.claim_request, name="claim-request"),
 )

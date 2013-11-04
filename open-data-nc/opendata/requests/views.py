@@ -106,9 +106,10 @@ def remove_vote(request, request_id):
 
 @login_required
 @require_POST
-def claim_bounty(request, request_id):
-    """Claim bounty for current user"""
+def claim_request(request, request_id):
+    """Claim request for current user"""
     request_object = get_object_or_404(Request, pk=request_id)
-    request_object.supplier = request.user
-    request_object.save()
+    if not request_object.supplier:
+        request_object.supplier = request.user
+        request_object.save()
     return redirect(reverse('request-list'))

@@ -2590,7 +2590,7 @@ COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
 116	Can add kv store	39	add_kvstore
 117	Can change kv store	39	change_kvstore
 118	Can delete kv store	39	delete_kvstore
-119 Can claim bounty 22 can_claim_request 
+119     Can claim request       22      can_claim_request 
 \.
 
 
