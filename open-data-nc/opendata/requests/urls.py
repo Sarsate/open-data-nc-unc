@@ -11,4 +11,5 @@ urlpatterns = patterns('',
    url(r'^(?P<request_id>\d+)/unvote/$', views.remove_vote,
        name="request-remove-vote"),
    url(r'^(?P<request_id>\d+)/claim/$', views.claim_request, name="claim-request"),
+   url(r'^(?P<request_id>\d+)/supply/$', views.supply_request, name="supply-request"),
 )

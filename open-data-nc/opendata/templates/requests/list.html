@@ -67,7 +67,14 @@
                                 <input class="btn btn-secondary btn-block" type="submit" value="Claim Request" />
                             </form>
                         {% endif %}
+                        {% if user == object.supplier %}
+                            <form method ='post' action="{% url 'supply-request' object.id %}" method='post'>
+                                {% csrf_token %}
+                                <input class="btn btn-secondary btn-block" type="submit" value="Supply Request" />
+                            </form>
+                        {% endif %}
                     {% endif %}
+
                     <div id="bounties">
                     {% for bounty in bounties  %}
                         {% if bounty.request == object %}
