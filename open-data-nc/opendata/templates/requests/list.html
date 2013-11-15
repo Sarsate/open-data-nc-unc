@@ -48,7 +48,7 @@
 {% autosort requests %}
 {% autopaginate requests 6 %}
         <div class="requests">
-    {% for object in requests %}
+    {% for object,total in request_tuple %}
         {% rating_by_request request on object.rating as vote %}
         <div class="row-fluid gray-banner request">
             <div class="span3 resource_image votes">
@@ -75,13 +75,7 @@
                         {% endif %}
                     {% endif %}
 
-                    <div id="bounties">
-                    {% for bounty in bounties  %}
-                        {% if bounty.request == object %}
-                            <div class="bounty">Bounty: {{bounty.price}}</div>
-                            <div class="due_date">Due Date: {{bounty.deadline}}</div>
-                        {% endif %}
-                    {% endfor %}
+                    <div class="bounty">Current Total Bounty: {{ total }}
                     </div>
                     By <strong>{{ object.suggested_by }}</strong> on <strong>{{ object.date }}</strong>
                     Claimed by: <strong> {{ object.supplier }}</strong>

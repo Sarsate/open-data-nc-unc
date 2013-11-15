@@ -202,7 +202,24 @@
         <div class="info_data">{{resource.description|safe}}</div>
       </div>
     </div>
-
+    <div class="row-fluid">
+        <div class="span4 pull-right">
+            <!-- Empty div used to match margin from row above -->
+        </div>
+        <div class="span8">
+            <div class="info_label">Bounties: </div>
+                {% for bounty in bounties %}
+                        {% if bounty.request == resource %}
+                            <div class="bounty">Bounty: {{bounty.price}}</div>
+                            <div class="due_date">Due Date: {{bounty.deadline}}</div>
+                            {% if user == bounty.author %}
+                                <form method='post' action="{% url 'edit-bounty' bounty.id %}">
+                                    {% csrf_token %}
+                                    <input class="btn btn-secondary btn-block" type="submit" value="Edit Bounty"/>
+                                </form>
+                            {% endif %}
+                        {% endif %}
+                {% endfor %}
     </div>
 
 

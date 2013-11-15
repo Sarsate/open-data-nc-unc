@@ -15,6 +15,15 @@ def list_requests(request):
     """List current requests"""
     requests = Request.objects.filter(status=Request.APPROVED).order_by("-rating_score")
     bounties = Bounty.objects.filter()
+
+    request_tuple = []
+    for r in requests:
+        bountyTotal = 0
+        for bounty in bounties:
+            if bounty.request == r and bounty.deadline >= date.today():
+                bountyTotal += bounty.price
+        request_tuple.append({r,bountyTotal})
+
     if request.method == 'GET':
         form = SearchForm(request.GET)
         if form.is_valid():
@@ -26,6 +35,7 @@ def list_requests(request):
         'form': form,
         'requests': requests,
         'bounties': bounties,
+        'request_tuple': request_tuple,
     }
     return render(request, 'requests/list.html', context)
 
@@ -148,10 +158,35 @@ def supply_request(request, request_id):
     }
     return render(request, 'requests/supply_request.html', context)
 
+@login_required
+@require_POST
+def edit_bounty(request, bounty_id):
+    """Edit the bounties, dog"""
+    if request.method == 'POST':
+        bounty_object = get_object_or_404(Bounty, pk=bounty_id)
+        form = BountyForm(request.POST)
+        if form.is_valid():
+            bounty_object.price = form.cleaned_data['price']
+            bounty_object.deadline = form.cleaned_data['deadline']
+            bounty_object.save()
+            return redirect(reverse('request-list'))
+        else :
+            bounty_object = Bounty.objects.filter(id=bounty_id)
+            data_dict = {'price': bounty_object[0].price, 'deadline': bounty_object[0].deadline}
+            form = BountyForm(data_dict)
+    else:
+            form = BountyForm()
+    context = { 
+        'bounty': bounty_object,
+        'form' : form,
+    }
+    return render(request, 'requests/edit_bounty.html', context)
 
 class RequestDetail(DetailView):
     model = Request
     def get_context_data(self, **kwargs):
         context = super(RequestDetail, self).get_context_data(**kwargs)
+        bounties = Bounty.objects.filter()
         context['resource'] = context['object']
+        context['bounties'] = bounties
         return context

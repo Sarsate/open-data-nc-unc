@@ -13,4 +13,5 @@ urlpatterns = patterns('',
    url(r'^(?P<request_id>\d+)/claim/$', views.claim_request, name="claim-request"),
    url(r'^(?P<request_id>\d+)/supply/$', views.supply_request, name="supply-request"),
    url(r'^(?P<pk>\d+)/$', views.RequestDetail.as_view()),
+   url(r'^(?P<bounty_id>\d+)/edit/$', views.edit_bounty, name="edit-bounty"),
 )
