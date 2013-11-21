@@ -15,15 +15,7 @@ def list_requests(request):
     """List current requests"""
     requests = Request.objects.filter(status=Request.APPROVED).order_by("-rating_score")
     bounties = Bounty.objects.filter()
-
-    request_tuple = []
-    for r in requests:
-        bountyTotal = 0
-        for bounty in bounties:
-            if bounty.request == r and bounty.deadline >= date.today():
-                bountyTotal += bounty.price
-        request_tuple.append({r,bountyTotal})
-
+ 
     if request.method == 'GET':
         form = SearchForm(request.GET)
         if form.is_valid():
@@ -31,11 +23,18 @@ def list_requests(request):
             requests = requests.filter(title__icontains=query)
     else:
         form = SearchForm()
+    requestID_bounty = {}
+    for r in requests:
+        bountyTotal = 0
+        for bounty in bounties:
+            if bounty.request == r and bounty.deadline >= date.today():
+                bountyTotal += bounty.price
+        requestID_bounty[r.title] = bountyTotal
     context = {
         'form': form,
         'requests': requests,
         'bounties': bounties,
-        'request_tuple': request_tuple,
+        'requestID_bounty': requestID_bounty,
     }
     return render(request, 'requests/list.html', context)
 
@@ -190,3 +189,6 @@ class RequestDetail(DetailView):
         context['resource'] = context['object']
         context['bounties'] = bounties
         return context
+
+
+
