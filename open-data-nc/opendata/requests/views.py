@@ -126,6 +126,18 @@ def claim_request(request, request_id):
         request_object.save()
     return redirect(reverse('request-list'))
 
+
+@login_required
+@require_POST
+def drop_claim(request, request_id):
+    """Drop a valid claim on request"""
+    request_object = get_object_or_404(Request, pk=request_id)
+    if request.user == request_object.supplier:
+        request_object.supplier = None
+        request_object.save()
+    return redirect(reverse('request-list'))
+
+
 @login_required
 @require_POST
 def supply_request(request, request_id):
