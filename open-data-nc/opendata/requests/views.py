@@ -71,6 +71,15 @@ def add_request(request):
 
 
 @login_required
+@require_POST
+def drop_request(request, request_id):
+    request_object = get_object_or_404(Request, pk=request_id)
+    request_object.status = Request.REMOVED
+    request_object.save() 
+    return redirect(reverse('request-list'))
+
+
+@login_required
 def add_bounty(request, request_id):
     """Add new bounties"""
     if request.method == 'POST':
