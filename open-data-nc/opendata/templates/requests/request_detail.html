@@ -301,7 +301,7 @@
         <div>
           {% if user.is_authenticated %}
           {% get_comment_form for resource as form %}
-            <form id="resource_comment_form" action="{% comment_form_target %}" method="post">{% csrf_token %}
+            <form id="request_comment_form" action="{% comment_form_target %}" method="post">{% csrf_token %}
               <div id="comment_field_errors"></div>
               <input type="hidden" name="next" value="{{request.get_full_path}}" />
               {% for field in form %}
@@ -310,8 +310,8 @@
               {% else %}
                 {% ifequal field.name "rating" %}
                 <div id="rate_container">
-                  <div id="rate_label">Rate this data  </div><div id="rate">{{ field }}</div>
-                 </div>
+                  <div id="rate_label" class="hidden">Rate this data  </div><div class="hidden" id="rate">{{ field }}</div>
+                </div>
                 {% else %}
                   {% if field.errors %}{{ field.errors }}{% endif %}
                   <div class="comment_field {% if field.errors %} error{% endif %}"
@@ -341,13 +341,6 @@
         {% for comment in comment_list %}
           <div class="comment_item">
             <div class="comment_head">
-              <div class="comment_rating">
-                <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled" {% if comment.rating == 1 %}checked{% endif %}/>
-                <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled" {% if comment.rating == 2 %}checked{% endif %}/>
-                <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled" {% if comment.rating == 3 %}checked{% endif %}/>
-                <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled" {% if comment.rating == 4 %}checked{% endif %}/>
-                <input name="star_{{comment.id}}" type="radio" class="star star_{{comment.id}}" disabled="disabled" {% if comment.rating == 5 %}checked{% endif %}/>
-              </div>
               <div class="comment_user">{{ comment.user.username }}</div>
               <div class="comment_date">{{ comment.submit_date|date:"m/d/Y"}}</div>
             </div>

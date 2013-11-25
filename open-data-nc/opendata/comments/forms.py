@@ -18,7 +18,8 @@ class CommentFormWithRating(CommentForm):
             renderer=StarsRadioFieldRenderer,
             attrs={'class': 'star'},
             choices=RATING_CHOICES
-        )
+        ),
+        initial='1'
     )
     
     def get_comment_model(self):

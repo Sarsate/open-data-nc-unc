@@ -51,7 +51,7 @@ class Request(models.Model):
     resources = models.ManyToManyField(Resource,
                                        related_name="requests",
                                        null=True, blank=True)
-    rating = RatingField(range=1, allow_delete=True, can_change_vote=True)
+    rating = RatingField(range=5, allow_delete=True, can_change_vote=True)
     supplier = models.ForeignKey(User, null=True, blank=True)
 
     class Meta:
