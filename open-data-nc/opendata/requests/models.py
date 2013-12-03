@@ -11,11 +11,13 @@ class Request(models.Model):
     PENDING = 0
     APPROVED = 1
     SUPPLIED = 2
+    REMOVED = 3
 
     STATUS = (
         (PENDING, 'Pending'),
         (APPROVED, 'Approved'),
-        (SUPPLIED, 'Supplied')
+        (SUPPLIED, 'Supplied'),
+        (REMOVED, 'Removed by Requester'),
     )
     AGENCY_TYPES = (
         ('state', 'Statewide'),

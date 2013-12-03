@@ -59,6 +59,15 @@
                 <h3 class="nom_text"><a href={{ object.id }}>{{ object }}</a></h3>
                 <div class="nom_byline">
                     {% if user.is_authenticated %}
+                        {% if user == object.suggested_by %}
+                            {% if object.bounty_set.all.count <= 1 and not object.supplier %}
+                                <form method='post' action="{% url 'drop-request' object.id %}">
+                                    {% csrf_token %}
+                                    <input class="btn btn-secondary btn-block" type="submit" value="Drop Request" />
+                                </form>  
+                            {% endif %}
+
+                        {% endif %}
                         <form id="bounty-add-form" action="{% url 'bounty-create' object.id %}" method='get'>
                             <button class="btn">Add Bounty</button>
                         </form>
@@ -104,7 +113,7 @@
                         </form>
                     {% endif %}
                 {% else %}
-                    <a class="nom_vote_login" href="{% url 'auth_login' %}?next={{ object.get_full_path }}">Login to vote</a>
+                   <a class="nom_vote_login" href="{% url 'auth_login' %}?next={{ object.get_full_path }}">Login to vote</a>
                 {% endif %}
             {% else %}
                 <div id="closed">Nomination Closed</div>
