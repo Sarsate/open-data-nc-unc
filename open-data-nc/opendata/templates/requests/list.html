@@ -73,6 +73,10 @@
                                 {% csrf_token %}
                                 <input class="btn btn-secondary btn-block" type="submit" value="Supply Request" />
                             </form>
+                            <form method ='post' action="{% url 'drop-claim' object.id %}" method='post'>
+                                {% csrf_token %}
+                                <input class="btn btn-secondary btn-block" type="submit" value="Drop Claim" />
+                            </form>
                         {% endif %}
                     {% endif %}
 
