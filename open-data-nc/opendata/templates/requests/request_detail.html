@@ -227,12 +227,12 @@
                                         {% csrf_token %}
                                         <input class="btn btn-secondary btn-block" type="submit" value="Remove Bounty"/>
                                     </form>
-                                {% endif %}
                                         
-                                <form method='post' action="{% url 'edit-bounty' bounty.id %}">
-                                    {% csrf_token %}
-                                    <input class="btn btn-secondary btn-block" type="submit" value="Edit Bounty"/>
-                                </form>
+                                    <form method='post' action="{% url 'edit-bounty' bounty.id %}">
+                                        {% csrf_token %}
+                                        <input class="btn btn-secondary btn-block" type="submit" value="Edit Bounty"/>
+                                    </form>
+                                {% endif %}
                             {% endif %}
                         {% endif %}
                 {% endfor %}
