@@ -6,5 +6,5 @@ $(document).ready(function(){
             $('#comment_field_errors')[0].innerHTML = "You must enter both a comment and select a rating."
         }
     });
-    $('.hidden").css("display","none");
+    $('.hidden').css("display","none");
 });

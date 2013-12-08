@@ -213,6 +213,13 @@
                             <div class="bounty">Bounty: {{bounty.price}}</div>
                             <div class="due_date">Due Date: {{bounty.deadline}}</div>
                             {% if user == bounty.author %}
+                                {% if not object.supplier %}
+                                    <form method='post' action="{% url 'drop-bounty' bounty.id %}">
+                                        {% csrf_token %}
+                                        <input class="btn btn-secondary btn-block" type="submit" value="Remove Bounty"/>
+                                    </form>
+                                {% endif %}
+                                        
                                 <form method='post' action="{% url 'edit-bounty' bounty.id %}">
                                     {% csrf_token %}
                                     <input class="btn btn-secondary btn-block" type="submit" value="Edit Bounty"/>

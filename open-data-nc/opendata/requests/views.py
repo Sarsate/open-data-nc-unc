@@ -180,6 +180,16 @@ def supply_request(request, request_id):
 
 @login_required
 @require_POST
+def drop_bounty(request, bounty_id):
+    """Remove the bounty, dog"""
+    if request.method == 'POST':
+        bounty_object = get_object_or_404(Bounty, pk=bounty_id)
+        bounty_object.delete()
+
+    return redirect(reverse('request-detail', args=(bounty_object.request.id,)))
+
+@login_required
+@require_POST
 def edit_bounty(request, bounty_id):
     """Edit the bounties, dog"""
     if request.method == 'POST':
