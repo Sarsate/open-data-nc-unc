@@ -57,8 +57,11 @@ class BountyForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super(BountyForm, self).clean()
         due_date = cleaned_data.get("deadline")
-        if due_date and due_date < datetime.date.today():
-            raise forms.ValidationError('Deadline must be in the future in the format yyyy-mm-dd')
+        try:
+            if due_date < datetime.date.today():
+                raise forms.ValidationError('Deadline must be in the future in the format yyyy-mm-dd')
+        except TypeError:
+                raise forms.ValidationError('Deadline must be in the future in the format yyyy-mm-dd')
         bounty = cleaned_data.get("price")
         if bounty < 0:
             raise forms.ValidationError('Bounty must be a positive value between 0 and 1000 (ex. 10.50)')

@@ -201,9 +201,11 @@ def edit_bounty(request, bounty_id):
             bounty_object.save()
             return redirect(reverse('request-list'))
         else :
-            bounty_object = Bounty.objects.filter(id=bounty_id)
-            data_dict = {'price': bounty_object[0].price, 'deadline': bounty_object[0].deadline}
-            form = BountyForm(data_dict)
+            if not ('deadline' in request.POST or 'price' in request.POST): 
+                bounty_object = Bounty.objects.filter(id=bounty_id)
+                data_dict = {'price': bounty_object[0].price, 'deadline': bounty_object[0].deadline}
+                form = BountyForm(data_dict)
+            
     else:
             form = BountyForm()
     context = { 
