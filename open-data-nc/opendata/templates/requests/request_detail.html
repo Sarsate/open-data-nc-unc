@@ -137,12 +137,12 @@
               </div>
               <br>
             {% endif %}
-            <div class="info_label">Categories</div>
+            <!--<div class="info_label">Categories</div>
             <div class="info_data">
               {% for tag in resource.tags.all %}
                 <a href="{{SITE_ROOT}}/opendata/tag/{{tag.id}}" onclick="odp.trackEvent('Search Link', 'Resource Tag', 'Tag', '{{tag}}')">{{tag}}</a>{% if not forloop.last %}, {% endif %}
               {% endfor %}
-            </div>
+            </div>-->
             <br>
             {% if resource.usage %}
               <div class="info_label">Usage</div>
@@ -182,11 +182,20 @@
               <div class="info_data"><a href="{{resource.contact_url}}" target="_blank" onclick="odp.trackEvent('External Link', 'Resource Contact Url', 'Url', '{{resource.contact_url}}')">{{resource.contact_url}}</a></div>
               <br>
             {% endif %}
+            <div class="info_label">City</div>
+            <div class="info_data">{{resource.city}}</div>
+            <br>
+            <div class="info_label">County</div>
+            <div class="info_data">{{resource.county}}</div>
+            <br>
+            <div class="info_label">Agency</div>
+            <div class="info_data">{{resource.agency_name}}</div>
+            <br>
             <div class="info_label">Date Added</div>
-            <div class="info_data">{{resource.created}}</div>
+            <div class="info_data">{{resource.creation_date}}</div>
             <br>
             <div class="info_label">Last Update</div>
-            <div class="info_data">{{resource.last_updated}}</div>
+            <div class="info_data">{{resource.last_modified}}</div>
           </div>
         <!-- <div class="clear_left"></div> -->
         </div> <!-- /tab_data -->
