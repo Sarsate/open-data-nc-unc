@@ -17,6 +17,7 @@ class SearchForm(forms.Form):
 
 
 class RequestForm(forms.ModelForm):
+    """ Form for submitting requests """
     county = AutoCompleteSelectField(
         lookup_class=CountyLookup,
         required=False,
@@ -45,6 +46,7 @@ class RequestForm(forms.ModelForm):
 
 
 class BountyForm(forms.ModelForm):
+    """ Form for creating bounty. Includes validation"""
     class Meta:
         model = Bounty
         exclude = ('request', 'author', 'supplier')
@@ -69,6 +71,7 @@ class BountyForm(forms.ModelForm):
 
 
 class SupplyForm(forms.ModelForm):
+    """ Form for supplying a requests, adds entry to the catalog """
     class Meta:
         model = Resource
         exclude = ('rating', 'proj_coord_sys', 'time_period', 'wkt_geometry', 'csw_typename', 'csw_schema', 'csw_mdsource', 'csw_xml', 'csw_anytext', 'created_by', 'last_updated_by', 'created', 'last_updated', 'metadata_contact', 'metadata_notes', 'coord_sys')

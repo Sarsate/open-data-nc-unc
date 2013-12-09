@@ -8,6 +8,7 @@ from opendata.fields_info import FIELDS, HELP
 
 
 class Request(models.Model):
+    """ Model for requests """
     PENDING = 0
     APPROVED = 1
     SUPPLIED = 2
@@ -66,6 +67,7 @@ class Request(models.Model):
 
 
 class Bounty(models.Model):
+    """ Model for bounty """
     request = models.ForeignKey(Request)
     author = models.ForeignKey(User)
     price = models.DecimalField(max_digits=6, decimal_places=2)

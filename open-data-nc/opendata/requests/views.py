@@ -10,9 +10,15 @@ from django.views.generic import DetailView
 from .models import *
 from .forms import SearchForm, RequestForm, BountyForm, SupplyForm
 
-
 def list_requests(request):
-    """List current requests"""
+    """ 
+    List all of the requests
+    @author Caktus
+
+    Changed to allow viewing bounty buttons.
+    @author UNC
+    """
+
     requests = Request.objects.filter(status=Request.APPROVED).order_by("-rating_score")
     bounties = Bounty.objects.filter()
  
@@ -73,6 +79,7 @@ def add_request(request):
 @login_required
 @require_POST
 def drop_request(request, request_id):
+    """Remove the request with id request_id"""
     request_object = get_object_or_404(Request, pk=request_id)
     request_object.status = Request.REMOVED
     request_object.save() 
@@ -215,6 +222,7 @@ def edit_bounty(request, bounty_id):
     return render(request, 'requests/edit_bounty.html', context)
 
 class RequestDetail(DetailView):
+    """ Display a specific request showing all of its bounties and allowing the ability to change them"""
     model = Request
     def get_context_data(self, **kwargs):
         context = super(RequestDetail, self).get_context_data(**kwargs)
