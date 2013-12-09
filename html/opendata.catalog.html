@@ -1,0 +1,1300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.catalog package &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="index.html" />
+    <link rel="up" title="opendata package" href="opendata.html" />
+    <link rel="next" title="opendata.catalog.management package" href="opendata.catalog.management.html" />
+    <link rel="prev" title="opendata package" href="opendata.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.catalog.management.html" title="opendata.catalog.management package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="opendata.html" title="opendata package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" accesskey="U">opendata package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="opendata-catalog-package">
+<h1>opendata.catalog package<a class="headerlink" href="#opendata-catalog-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="opendata.catalog.management.html">opendata.catalog.management package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.management.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="opendata.catalog.management.commands.html">opendata.catalog.management.commands package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="opendata.catalog.management.commands.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="opendata.catalog.management.commands.html#module-opendata.catalog.management.commands.import_cities">opendata.catalog.management.commands.import_cities module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="opendata.catalog.management.commands.html#module-opendata.catalog.management.commands.import_departments">opendata.catalog.management.commands.import_departments module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="opendata.catalog.management.commands.html#module-opendata.catalog.management.commands.load_dummy_resources">opendata.catalog.management.commands.load_dummy_resources module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="opendata.catalog.management.commands.html#module-opendata.catalog.management.commands">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.management.html#module-opendata.catalog.management">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opendata.catalog.migrations.html">opendata.catalog.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.migrations.html#module-opendata.catalog.migrations.0001_initial">opendata.catalog.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.migrations.html#module-opendata.catalog.migrations.0002_auto__add_field_resource_agency_type">opendata.catalog.migrations.0002_auto__add_field_resource_agency_type module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.migrations.html#module-opendata.catalog.migrations.0003_auto__add_field_resource_keywords">opendata.catalog.migrations.0003_auto__add_field_resource_keywords module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.migrations.html#module-opendata.catalog.migrations.0004_auto__add_division__add_department__del_field_resource_division__del_f">opendata.catalog.migrations.0004_auto__add_division__add_department__del_field_resource_division__del_f module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.migrations.html#module-opendata.catalog.migrations.0005_auto__add_field_resource_department__add_field_resource_division">opendata.catalog.migrations.0005_auto__add_field_resource_department__add_field_resource_division module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.migrations.html#module-opendata.catalog.migrations.0006_auto__add_field_urlimage_resource">opendata.catalog.migrations.0006_auto__add_field_urlimage_resource module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.migrations.html#module-opendata.catalog.migrations.0007_auto__del_field_urlimage_url">opendata.catalog.migrations.0007_auto__del_field_urlimage_url module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.migrations.html#module-opendata.catalog.migrations.0008_auto__add_field_resource_newest_record__add_field_resource_oldest_reco">opendata.catalog.migrations.0008_auto__add_field_resource_newest_record__add_field_resource_oldest_reco module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.migrations.html#module-opendata.catalog.migrations.0009_auto__add_field_resource_data_url__add_field_resource_verification_url">opendata.catalog.migrations.0009_auto__add_field_resource_data_url__add_field_resource_verification_url module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.migrations.html#module-opendata.catalog.migrations">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opendata.catalog.templatetags.html">opendata.catalog.templatetags package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.templatetags.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.templatetags.html#module-opendata.catalog.templatetags.recent_resources">opendata.catalog.templatetags.recent_resources module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.templatetags.html#module-opendata.catalog.templatetags">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opendata.catalog.tests.html">opendata.catalog.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.tests.html#module-opendata.catalog.tests.factories">opendata.catalog.tests.factories module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.tests.html#module-opendata.catalog.tests.test_views">opendata.catalog.tests.test_views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.catalog.tests.html#module-opendata.catalog.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-opendata.catalog.admin">
+<span id="opendata-catalog-admin-module"></span><h2>opendata.catalog.admin module<a class="headerlink" href="#module-opendata.catalog.admin" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.catalog.admin.CategoryAdmin">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.admin.</tt><tt class="descname">CategoryAdmin</tt><big>(</big><em>model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#CategoryAdmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.CategoryAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CategoryAdmin.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.admin.CategoryAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CategoryAdmin.ordering">
+<tt class="descname">ordering</tt><em class="property"> = ('name',)</em><a class="headerlink" href="#opendata.catalog.admin.CategoryAdmin.ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.admin.CityAdmin">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.admin.</tt><tt class="descname">CityAdmin</tt><big>(</big><em>model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#CityAdmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.CityAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CityAdmin.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.admin.CityAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CityAdmin.ordering">
+<tt class="descname">ordering</tt><em class="property"> = ('name',)</em><a class="headerlink" href="#opendata.catalog.admin.CityAdmin.ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.admin.CoordSystemAdmin">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.admin.</tt><tt class="descname">CoordSystemAdmin</tt><big>(</big><em>model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#CoordSystemAdmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.CoordSystemAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CoordSystemAdmin.list_display">
+<tt class="descname">list_display</tt><em class="property"> = ('EPSG_code', 'name')</em><a class="headerlink" href="#opendata.catalog.admin.CoordSystemAdmin.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CoordSystemAdmin.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.admin.CoordSystemAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CoordSystemAdmin.search_fields">
+<tt class="descname">search_fields</tt><em class="property"> = ['name', 'EPSG_code', 'description']</em><a class="headerlink" href="#opendata.catalog.admin.CoordSystemAdmin.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CoordSystemAdmin.verbose_name">
+<tt class="descname">verbose_name</tt><em class="property"> = 'Resource Url'</em><a class="headerlink" href="#opendata.catalog.admin.CoordSystemAdmin.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CoordSystemAdmin.verbose_name_plural">
+<tt class="descname">verbose_name_plural</tt><em class="property"> = 'Resource Urls'</em><a class="headerlink" href="#opendata.catalog.admin.CoordSystemAdmin.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.admin.CountyAdmin">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.admin.</tt><tt class="descname">CountyAdmin</tt><big>(</big><em>model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#CountyAdmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.CountyAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CountyAdmin.filter_horizontal">
+<tt class="descname">filter_horizontal</tt><em class="property"> = ('cities',)</em><a class="headerlink" href="#opendata.catalog.admin.CountyAdmin.filter_horizontal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CountyAdmin.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.admin.CountyAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.CountyAdmin.ordering">
+<tt class="descname">ordering</tt><em class="property"> = ('name',)</em><a class="headerlink" href="#opendata.catalog.admin.CountyAdmin.ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.admin.DepartmentAdmin">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.admin.</tt><tt class="descname">DepartmentAdmin</tt><big>(</big><em>model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#DepartmentAdmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.DepartmentAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.admin.DepartmentAdmin.list_display">
+<tt class="descname">list_display</tt><em class="property"> = ['name', 'type']</em><a class="headerlink" href="#opendata.catalog.admin.DepartmentAdmin.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.DepartmentAdmin.list_filter">
+<tt class="descname">list_filter</tt><em class="property"> = ['type']</em><a class="headerlink" href="#opendata.catalog.admin.DepartmentAdmin.list_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.DepartmentAdmin.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.admin.DepartmentAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.DepartmentAdmin.search_fields">
+<tt class="descname">search_fields</tt><em class="property"> = ['name']</em><a class="headerlink" href="#opendata.catalog.admin.DepartmentAdmin.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.admin.DivisionAdmin">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.admin.</tt><tt class="descname">DivisionAdmin</tt><big>(</big><em>model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#DivisionAdmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.DivisionAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.admin.DivisionAdmin.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.admin.DivisionAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.DivisionAdmin.search_fields">
+<tt class="descname">search_fields</tt><em class="property"> = ['name']</em><a class="headerlink" href="#opendata.catalog.admin.DivisionAdmin.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.admin.ResourceAdmin">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.admin.</tt><tt class="descname">ResourceAdmin</tt><big>(</big><em>model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#ResourceAdmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></tt></p>
+<dl class="class">
+<dt id="opendata.catalog.admin.ResourceAdmin.Media">
+<em class="property">class </em><tt class="descname">Media</tt><a class="reference internal" href="_modules/opendata/catalog/admin.html#ResourceAdmin.Media"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.Media" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.Media.css">
+<tt class="descname">css</tt><em class="property"> = {&lt;built-in function all&gt;: ('css/admin.css',)}</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.Media.css" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.Media.js">
+<tt class="descname">js</tt><em class="property"> = ('js/admin.js',)</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.Media.js" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.date_hierarchy">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">date_hierarchy</tt><em class="property"> = 'release_date'</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.date_hierarchy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.fieldsets">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">fieldsets</tt><em class="property"> = [('Basic Information', {'fields': [('name', 'is_published'), 'short_description', 'keywords', 'description', 'newest_record', 'oldest_record', 'updates']}), ('Geographies and Types', {'fields': ['agency_type', 'counties', 'cities', 'categories', 'data_types']}), ('Agency Information', {'fields': ['department', 'division', 'contact_phone', 'contact_email', 'contact_url']}), ('Data set information', {'fields': ['proj_coord_sys', 'coord_sys', 'wkt_geometry', 'metadata_contact', 'metadata_notes', 'created_by', 'created', 'last_updated_by', 'last_updated'], 'classes': ['collapse']})]</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.fieldsets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.filter_horizontal">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">filter_horizontal</tt><em class="property"> = ('data_types', 'categories', 'cities', 'counties')</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.filter_horizontal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.form">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">form</tt><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.form" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">ResourceAdminForm</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.inlines">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">inlines</tt><em class="property"> = [&lt;class 'opendata.catalog.admin.UrlInline'&gt;, &lt;class 'opendata.catalog.admin.UrlImageInline'&gt;]</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.inlines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.list_display">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">list_display</tt><em class="property"> = ('name', 'department', 'release_date', 'is_published')</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.list_filter">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">list_filter</tt><em class="property"> = ['categories', 'agency_type', 'data_types', 'updates']</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.list_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.media">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.raw_id_fields">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">raw_id_fields</tt><em class="property"> = ('department', 'division')</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.raw_id_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.readonly_fields">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">readonly_fields</tt><em class="property"> = ['created_by', 'created', 'last_updated_by', 'last_updated']</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.readonly_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.admin.ResourceAdmin.save_model">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">save_model</tt><big>(</big><em>request</em>, <em>obj</em>, <em>form</em>, <em>change</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#ResourceAdmin.save_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.save_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.search_fields">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">search_fields</tt><em class="property"> = ['name', 'description', 'department__name']</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.verbose_name">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">verbose_name</tt><em class="property"> = 'Resource Url'</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.ResourceAdmin.verbose_name_plural">
+<tt class="descclassname">ResourceAdmin.</tt><tt class="descname">verbose_name_plural</tt><em class="property"> = 'Resource Urls'</em><a class="headerlink" href="#opendata.catalog.admin.ResourceAdmin.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.admin.UrlAdmin">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.admin.</tt><tt class="descname">UrlAdmin</tt><big>(</big><em>model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#UrlAdmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.UrlAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlAdmin.inlines">
+<tt class="descname">inlines</tt><em class="property"> = [&lt;class 'opendata.catalog.admin.UrlImageInline'&gt;]</em><a class="headerlink" href="#opendata.catalog.admin.UrlAdmin.inlines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlAdmin.list_display">
+<tt class="descname">list_display</tt><em class="property"> = ('url_label', 'url_type', 'url')</em><a class="headerlink" href="#opendata.catalog.admin.UrlAdmin.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlAdmin.list_filter">
+<tt class="descname">list_filter</tt><em class="property"> = ['url_type']</em><a class="headerlink" href="#opendata.catalog.admin.UrlAdmin.list_filter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlAdmin.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.admin.UrlAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.admin.UrlImageAdmin">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.admin.</tt><tt class="descname">UrlImageAdmin</tt><big>(</big><em>model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#UrlImageAdmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.UrlImageAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlImageAdmin.list_display">
+<tt class="descname">list_display</tt><em class="property"> = ('title', 'image')</em><a class="headerlink" href="#opendata.catalog.admin.UrlImageAdmin.list_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlImageAdmin.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.admin.UrlImageAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlImageAdmin.search_fields">
+<tt class="descname">search_fields</tt><em class="property"> = ['image', 'title', 'description']</em><a class="headerlink" href="#opendata.catalog.admin.UrlImageAdmin.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.admin.UrlImageInline">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.admin.</tt><tt class="descname">UrlImageInline</tt><big>(</big><em>parent_model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#UrlImageInline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.UrlImageInline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.TabularInline</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlImageInline.extra">
+<tt class="descname">extra</tt><em class="property"> = 1</em><a class="headerlink" href="#opendata.catalog.admin.UrlImageInline.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlImageInline.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.admin.UrlImageInline.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlImageInline.model">
+<tt class="descname">model</tt><a class="headerlink" href="#opendata.catalog.admin.UrlImageInline.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">UrlImage</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.admin.UrlInline">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.admin.</tt><tt class="descname">UrlInline</tt><big>(</big><em>parent_model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/admin.html#UrlInline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.admin.UrlInline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.TabularInline</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlInline.extra">
+<tt class="descname">extra</tt><em class="property"> = 1</em><a class="headerlink" href="#opendata.catalog.admin.UrlInline.extra" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlInline.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.admin.UrlInline.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlInline.model">
+<tt class="descname">model</tt><a class="headerlink" href="#opendata.catalog.admin.UrlInline.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Url</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlInline.verbose_name">
+<tt class="descname">verbose_name</tt><em class="property"> = 'Resource Url'</em><a class="headerlink" href="#opendata.catalog.admin.UrlInline.verbose_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.admin.UrlInline.verbose_name_plural">
+<tt class="descname">verbose_name_plural</tt><em class="property"> = 'Resource Urls'</em><a class="headerlink" href="#opendata.catalog.admin.UrlInline.verbose_name_plural" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.catalog.forms">
+<span id="opendata-catalog-forms-module"></span><h2>opendata.catalog.forms module<a class="headerlink" href="#module-opendata.catalog.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.catalog.forms.ResourceAdminForm">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.forms.</tt><tt class="descname">ResourceAdminForm</tt><big>(</big><em>data=None</em>, <em>files=None</em>, <em>auto_id=u'id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.util.ErrorList'&gt;</em>, <em>label_suffix=u':'</em>, <em>empty_permitted=False</em>, <em>instance=None</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/forms.html#ResourceAdminForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.forms.ResourceAdminForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.forms.models.ModelForm</span></tt></p>
+<dl class="class">
+<dt id="opendata.catalog.forms.ResourceAdminForm.Meta">
+<em class="property">class </em><tt class="descname">Meta</tt><a class="reference internal" href="_modules/opendata/catalog/forms.html#ResourceAdminForm.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.forms.ResourceAdminForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="opendata.catalog.forms.ResourceAdminForm.Meta.model">
+<tt class="descname">model</tt><a class="headerlink" href="#opendata.catalog.forms.ResourceAdminForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Resource</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.forms.ResourceAdminForm.base_fields">
+<tt class="descclassname">ResourceAdminForm.</tt><tt class="descname">base_fields</tt><em class="property"> = {'data_url': &lt;django.forms.fields.URLField object at 0x4e756d0&gt;, 'verification_url': &lt;django.forms.fields.URLField object at 0x4e757d0&gt;, 'name': &lt;django.forms.fields.CharField object at 0x4e758d0&gt;, 'short_description': &lt;django.forms.fields.CharField object at 0x4e75990&gt;, 'description': &lt;django.forms.fields.CharField object at 0x4e75a50&gt;, 'department': &lt;django.forms.models.ModelChoiceField object at 0x4e752d0&gt;, 'division': &lt;django.forms.models.ModelChoiceField object at 0x4e75090&gt;, 'agency_type': &lt;django.forms.fields.ChoiceField object at 0x4e75310&gt;, 'cities': &lt;django.forms.models.ModelMultipleChoiceField object at 0x4e75fd0&gt;, 'counties': &lt;django.forms.models.ModelMultipleChoiceField object at 0x4e7d290&gt;, 'newest_record': &lt;django.forms.fields.DateField object at 0x4e75390&gt;, 'oldest_record': &lt;django.forms.fields.DateField object at 0x4e754d0&gt;, 'updates': &lt;django.forms.models.ModelChoiceField object at 0x4e75550&gt;, 'categories': &lt;django.forms.models.ModelMultipleChoiceField object at 0x4e75150&gt;, 'keywords': &lt;django.forms.fields.CharField object at 0x4e7d790&gt;, 'data_types': &lt;django.forms.models.ModelMultipleChoiceField object at 0x4e75210&gt;, 'contact_phone': &lt;django.forms.fields.CharField object at 0x4e7d9d0&gt;, 'contact_email': &lt;django.forms.fields.CharField object at 0x4e7dad0&gt;, 'contact_url': &lt;django.forms.fields.CharField object at 0x4e7db90&gt;, 'area_of_interest': &lt;django.forms.fields.CharField object at 0x4e7dc50&gt;, 'is_published': &lt;django.forms.fields.BooleanField object at 0x4e7dd10&gt;, 'created_by': &lt;django.forms.models.ModelChoiceField object at 0x4e7df50&gt;, 'last_updated_by': &lt;django.forms.models.ModelChoiceField object at 0x4e7f150&gt;, 'created': &lt;django.forms.fields.DateTimeField object at 0x4e7f190&gt;, 'metadata_contact': &lt;django.forms.fields.CharField object at 0x4e7f210&gt;, 'metadata_notes': &lt;django.forms.fields.CharField object at 0x4e7f310&gt;, 'coord_sys': &lt;django.forms.models.ModelMultipleChoiceField object at 0x4e7f550&gt;, 'proj_coord_sys': &lt;django.forms.fields.CharField object at 0x4e7f510&gt;, 'wkt_geometry': &lt;django.forms.fields.CharField object at 0x4e7f610&gt;, 'csw_typename': &lt;django.forms.fields.CharField object at 0x4e7f690&gt;, 'csw_schema': &lt;django.forms.fields.CharField object at 0x4e7f750&gt;, 'csw_mdsource': &lt;django.forms.fields.CharField object at 0x4e7f810&gt;, 'csw_xml': &lt;django.forms.fields.CharField object at 0x4e7f8d0&gt;, 'csw_anytext': &lt;django.forms.fields.CharField object at 0x4e7f950&gt;, 'time_period': &lt;django.forms.fields.CharField object at 0x4e7f9d0&gt;}</em><a class="headerlink" href="#opendata.catalog.forms.ResourceAdminForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.forms.ResourceAdminForm.declared_fields">
+<tt class="descclassname">ResourceAdminForm.</tt><tt class="descname">declared_fields</tt><em class="property"> = {'division': &lt;django.forms.models.ModelChoiceField object at 0x4e75090&gt;, 'categories': &lt;django.forms.models.ModelMultipleChoiceField object at 0x4e75150&gt;, 'data_types': &lt;django.forms.models.ModelMultipleChoiceField object at 0x4e75210&gt;, 'department': &lt;django.forms.models.ModelChoiceField object at 0x4e752d0&gt;, 'agency_type': &lt;django.forms.fields.ChoiceField object at 0x4e75310&gt;, 'newest_record': &lt;django.forms.fields.DateField object at 0x4e75390&gt;, 'oldest_record': &lt;django.forms.fields.DateField object at 0x4e754d0&gt;, 'updates': &lt;django.forms.models.ModelChoiceField object at 0x4e75550&gt;}</em><a class="headerlink" href="#opendata.catalog.forms.ResourceAdminForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.forms.ResourceAdminForm.media">
+<tt class="descclassname">ResourceAdminForm.</tt><tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.forms.ResourceAdminForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.catalog.lookups">
+<span id="opendata-catalog-lookups-module"></span><h2>opendata.catalog.lookups module<a class="headerlink" href="#module-opendata.catalog.lookups" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.catalog.lookups.CityLookup">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.lookups.</tt><tt class="descname">CityLookup</tt><a class="reference internal" href="_modules/opendata/catalog/lookups.html#CityLookup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.lookups.CityLookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">selectable.base.ModelLookup</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.lookups.CityLookup.model">
+<tt class="descname">model</tt><a class="headerlink" href="#opendata.catalog.lookups.CityLookup.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">City</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.lookups.CityLookup.search_fields">
+<tt class="descname">search_fields</tt><em class="property"> = ('name__icontains',)</em><a class="headerlink" href="#opendata.catalog.lookups.CityLookup.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.lookups.CountyLookup">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.lookups.</tt><tt class="descname">CountyLookup</tt><a class="reference internal" href="_modules/opendata/catalog/lookups.html#CountyLookup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.lookups.CountyLookup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">selectable.base.ModelLookup</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.lookups.CountyLookup.model">
+<tt class="descname">model</tt><a class="headerlink" href="#opendata.catalog.lookups.CountyLookup.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">County</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.lookups.CountyLookup.search_fields">
+<tt class="descname">search_fields</tt><em class="property"> = ('name__icontains',)</em><a class="headerlink" href="#opendata.catalog.lookups.CountyLookup.search_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.catalog.managers">
+<span id="opendata-catalog-managers-module"></span><h2>opendata.catalog.managers module<a class="headerlink" href="#module-opendata.catalog.managers" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.catalog.managers.ImageManager">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.managers.</tt><tt class="descname">ImageManager</tt><a class="reference internal" href="_modules/opendata/catalog/managers.html#ImageManager"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.managers.ImageManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.manager.Manager</span></tt></p>
+<dl class="method">
+<dt id="opendata.catalog.managers.ImageManager.select_random">
+<tt class="descname">select_random</tt><big>(</big><em>sample_size=1</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/managers.html#ImageManager.select_random"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.managers.ImageManager.select_random" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects a random sample queryset of size &#8216;size&#8217;</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="opendata-catalog-models-module">
+<h2>opendata.catalog.models module<a class="headerlink" href="#opendata-catalog-models-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-opendata.catalog.models"></span><dl class="class">
+<dt id="opendata.catalog.models.Category">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">Category</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Category"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Category" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>Category(id, name)</p>
+<dl class="exception">
+<dt id="opendata.catalog.models.Category.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.Category.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.Category.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">Category.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.Category.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Category.objects">
+<tt class="descclassname">Category.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4c54710&gt;</em><a class="headerlink" href="#opendata.catalog.models.Category.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Category.requests">
+<tt class="descclassname">Category.</tt><tt class="descname">requests</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Category.requests" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Category.resources">
+<tt class="descclassname">Category.</tt><tt class="descname">resources</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Category.resources" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Category.suggestions">
+<tt class="descclassname">Category.</tt><tt class="descname">suggestions</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Category.suggestions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.models.City">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">City</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#City"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.City" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>City(id, name)</p>
+<dl class="exception">
+<dt id="opendata.catalog.models.City.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.City.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.City.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">City.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.City.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.City.counties">
+<tt class="descclassname">City.</tt><tt class="descname">counties</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.City.counties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.City.objects">
+<tt class="descclassname">City.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4bf1990&gt;</em><a class="headerlink" href="#opendata.catalog.models.City.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.City.requests">
+<tt class="descclassname">City.</tt><tt class="descname">requests</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.City.requests" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.City.resource_set">
+<tt class="descclassname">City.</tt><tt class="descname">resource_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.City.resource_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.City.suggestions">
+<tt class="descclassname">City.</tt><tt class="descname">suggestions</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.City.suggestions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.models.CoordSystem">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">CoordSystem</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#CoordSystem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.CoordSystem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>CoordSystem(id, name, description, EPSG_code)</p>
+<dl class="exception">
+<dt id="opendata.catalog.models.CoordSystem.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.CoordSystem.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.CoordSystem.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">CoordSystem.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.CoordSystem.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.CoordSystem.objects">
+<tt class="descclassname">CoordSystem.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4ad4ed0&gt;</em><a class="headerlink" href="#opendata.catalog.models.CoordSystem.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.CoordSystem.resource_set">
+<tt class="descclassname">CoordSystem.</tt><tt class="descname">resource_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.CoordSystem.resource_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.models.County">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">County</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#County"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.County" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>County(id, name)</p>
+<dl class="exception">
+<dt id="opendata.catalog.models.County.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.County.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.County.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">County.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.County.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.County.cities">
+<tt class="descclassname">County.</tt><tt class="descname">cities</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.County.cities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.County.objects">
+<tt class="descclassname">County.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4c54410&gt;</em><a class="headerlink" href="#opendata.catalog.models.County.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.County.requests">
+<tt class="descclassname">County.</tt><tt class="descname">requests</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.County.requests" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.County.resource_set">
+<tt class="descclassname">County.</tt><tt class="descname">resource_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.County.resource_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.County.suggestions">
+<tt class="descclassname">County.</tt><tt class="descname">suggestions</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.County.suggestions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.models.DataType">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">DataType</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#DataType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.DataType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>DataType(id, name)</p>
+<dl class="exception">
+<dt id="opendata.catalog.models.DataType.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.DataType.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.DataType.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">DataType.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.DataType.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.DataType.objects">
+<tt class="descclassname">DataType.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4ae0190&gt;</em><a class="headerlink" href="#opendata.catalog.models.DataType.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.DataType.resource_set">
+<tt class="descclassname">DataType.</tt><tt class="descname">resource_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.DataType.resource_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.models.Department">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">Department</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Department"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Department" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>Department(id, name, type)</p>
+<dl class="exception">
+<dt id="opendata.catalog.models.Department.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.Department.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.Department.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">Department.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.Department.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Department.TYPES">
+<tt class="descclassname">Department.</tt><tt class="descname">TYPES</tt><em class="property"> = (('state', 'State'), ('county', 'County'), ('city', 'City'))</em><a class="headerlink" href="#opendata.catalog.models.Department.TYPES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Department.divisions">
+<tt class="descclassname">Department.</tt><tt class="descname">divisions</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Department.divisions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Department.get_type_display">
+<tt class="descclassname">Department.</tt><tt class="descname">get_type_display</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.catalog.models.Department.get_type_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Department.objects">
+<tt class="descclassname">Department.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4ae0910&gt;</em><a class="headerlink" href="#opendata.catalog.models.Department.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Department.resource_set">
+<tt class="descclassname">Department.</tt><tt class="descname">resource_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Department.resource_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.models.Division">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">Division</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Division"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Division" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>Division(id, name)</p>
+<dl class="exception">
+<dt id="opendata.catalog.models.Division.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.Division.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.Division.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">Division.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.Division.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Division.department_set">
+<tt class="descclassname">Division.</tt><tt class="descname">department_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Division.department_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Division.objects">
+<tt class="descclassname">Division.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4ae0050&gt;</em><a class="headerlink" href="#opendata.catalog.models.Division.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Division.resource_set">
+<tt class="descclassname">Division.</tt><tt class="descname">resource_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Division.resource_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.models.Resource">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">Resource</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>Resource(id, data_url, verification_url, name, slug, short_description, description, department_id, division_id, agency_type, usage, newest_record, oldest_record, updates_id, keywords, contact_phone, contact_email, contact_url, area_of_interest, is_published, created_by_id, last_updated_by_id, created, last_updated, metadata_contact, metadata_notes, data_formats, proj_coord_sys, wkt_geometry, csw_typename, csw_schema, csw_mdsource, csw_xml, csw_anytext, release_date, time_period, update_frequency, rating_votes, rating_score)</p>
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.AGENCY_TYPES">
+<tt class="descname">AGENCY_TYPES</tt><em class="property"> = (('state', 'Statewide'), ('county', 'County Agency'), ('city', 'City/town Agency'))</em><a class="headerlink" href="#opendata.catalog.models.Resource.AGENCY_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.Resource.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.Resource.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.Resource.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">Resource.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.Resource.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.categories">
+<tt class="descclassname">Resource.</tt><tt class="descname">categories</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.categories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.cities">
+<tt class="descclassname">Resource.</tt><tt class="descname">cities</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.cities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.coord_sys">
+<tt class="descclassname">Resource.</tt><tt class="descname">coord_sys</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.coord_sys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.counties">
+<tt class="descclassname">Resource.</tt><tt class="descname">counties</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.counties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.created_by">
+<tt class="descclassname">Resource.</tt><tt class="descname">created_by</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.created_by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.csw_creator">
+<tt class="descclassname">Resource.</tt><tt class="descname">csw_creator</tt><em class="property"> None</em><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.csw_creator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.csw_creator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.csw_crs">
+<tt class="descclassname">Resource.</tt><tt class="descname">csw_crs</tt><em class="property"> None</em><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.csw_crs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.csw_crs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.csw_identifier">
+<tt class="descclassname">Resource.</tt><tt class="descname">csw_identifier</tt><em class="property"> None</em><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.csw_identifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.csw_identifier" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.csw_keywords">
+<tt class="descclassname">Resource.</tt><tt class="descname">csw_keywords</tt><em class="property"> None</em><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.csw_keywords"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.csw_keywords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.csw_links">
+<tt class="descclassname">Resource.</tt><tt class="descname">csw_links</tt><em class="property"> None</em><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.csw_links"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.csw_links" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.csw_type">
+<tt class="descclassname">Resource.</tt><tt class="descname">csw_type</tt><em class="property"> None</em><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.csw_type"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.csw_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.data_types">
+<tt class="descclassname">Resource.</tt><tt class="descname">data_types</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.data_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.department">
+<tt class="descclassname">Resource.</tt><tt class="descname">department</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.department" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.division">
+<tt class="descclassname">Resource.</tt><tt class="descname">division</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.division" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.gen_csw_anytext">
+<tt class="descclassname">Resource.</tt><tt class="descname">gen_csw_anytext</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.gen_csw_anytext"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.gen_csw_anytext" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.gen_csw_xml">
+<tt class="descclassname">Resource.</tt><tt class="descname">gen_csw_xml</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.gen_csw_xml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.gen_csw_xml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.get_absolute_url">
+<tt class="descclassname">Resource.</tt><tt class="descname">get_absolute_url</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.get_absolute_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.get_absolute_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.get_agency_type_display">
+<tt class="descclassname">Resource.</tt><tt class="descname">get_agency_type_display</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.catalog.models.Resource.get_agency_type_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.get_distinct_url_types">
+<tt class="descclassname">Resource.</tt><tt class="descname">get_distinct_url_types</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.get_distinct_url_types"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.get_distinct_url_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.get_first_image">
+<tt class="descclassname">Resource.</tt><tt class="descname">get_first_image</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.get_first_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.get_first_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.get_grouped_urls">
+<tt class="descclassname">Resource.</tt><tt class="descname">get_grouped_urls</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.get_grouped_urls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.get_grouped_urls" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.get_images">
+<tt class="descclassname">Resource.</tt><tt class="descname">get_images</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.get_images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.get_images" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.get_next_by_created">
+<tt class="descclassname">Resource.</tt><tt class="descname">get_next_by_created</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.catalog.models.Resource.get_next_by_created" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.get_next_by_last_updated">
+<tt class="descclassname">Resource.</tt><tt class="descname">get_next_by_last_updated</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.catalog.models.Resource.get_next_by_last_updated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.get_previous_by_created">
+<tt class="descclassname">Resource.</tt><tt class="descname">get_previous_by_created</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.catalog.models.Resource.get_previous_by_created" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.get_previous_by_last_updated">
+<tt class="descclassname">Resource.</tt><tt class="descname">get_previous_by_last_updated</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.catalog.models.Resource.get_previous_by_last_updated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.get_rating">
+<tt class="descclassname">Resource.</tt><tt class="descname">get_rating</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.get_rating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.get_rating" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return instance raiting as an intiger</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.last_updated_by">
+<tt class="descclassname">Resource.</tt><tt class="descname">last_updated_by</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.last_updated_by" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.objects">
+<tt class="descclassname">Resource.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4c64310&gt;</em><a class="headerlink" href="#opendata.catalog.models.Resource.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.rating">
+<tt class="descclassname">Resource.</tt><tt class="descname">rating</tt><em class="property"> = &lt;djangoratings.fields.RatingField: rating&gt;</em><a class="headerlink" href="#opendata.catalog.models.Resource.rating" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.requests">
+<tt class="descclassname">Resource.</tt><tt class="descname">requests</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.requests" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.Resource.save">
+<tt class="descclassname">Resource.</tt><tt class="descname">save</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Resource.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Resource.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets slug for resource.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.updates">
+<tt class="descclassname">Resource.</tt><tt class="descname">updates</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.updates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.url_set">
+<tt class="descclassname">Resource.</tt><tt class="descname">url_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.url_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Resource.urlimage_set">
+<tt class="descclassname">Resource.</tt><tt class="descname">urlimage_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Resource.urlimage_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.models.UpdateFrequency">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">UpdateFrequency</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#UpdateFrequency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.UpdateFrequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>UpdateFrequency(id, update_frequency)</p>
+<dl class="exception">
+<dt id="opendata.catalog.models.UpdateFrequency.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.UpdateFrequency.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.UpdateFrequency.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">UpdateFrequency.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.UpdateFrequency.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.UpdateFrequency.objects">
+<tt class="descclassname">UpdateFrequency.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4ae11d0&gt;</em><a class="headerlink" href="#opendata.catalog.models.UpdateFrequency.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.UpdateFrequency.request_set">
+<tt class="descclassname">UpdateFrequency.</tt><tt class="descname">request_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.UpdateFrequency.request_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.UpdateFrequency.resource_set">
+<tt class="descclassname">UpdateFrequency.</tt><tt class="descname">resource_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.UpdateFrequency.resource_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.UpdateFrequency.suggestion_set">
+<tt class="descclassname">UpdateFrequency.</tt><tt class="descname">suggestion_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.UpdateFrequency.suggestion_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.models.Url">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">Url</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#Url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.Url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>Url(id, url, url_label, url_type_id, resource_id)</p>
+<dl class="exception">
+<dt id="opendata.catalog.models.Url.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.Url.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.Url.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">Url.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.Url.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Url.objects">
+<tt class="descclassname">Url.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4c64a10&gt;</em><a class="headerlink" href="#opendata.catalog.models.Url.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Url.resource">
+<tt class="descclassname">Url.</tt><tt class="descname">resource</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Url.resource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.Url.url_type">
+<tt class="descclassname">Url.</tt><tt class="descname">url_type</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.Url.url_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.models.UrlImage">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">UrlImage</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#UrlImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.UrlImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>UrlImage(id, resource_id, image, title, source, source_url)</p>
+<dl class="exception">
+<dt id="opendata.catalog.models.UrlImage.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.UrlImage.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.UrlImage.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">UrlImage.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.UrlImage.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.models.UrlImage.get_image_path">
+<tt class="descclassname">UrlImage.</tt><tt class="descname">get_image_path</tt><big>(</big><em>instance</em>, <em>filename</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#UrlImage.get_image_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.UrlImage.get_image_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.UrlImage.objects">
+<tt class="descclassname">UrlImage.</tt><tt class="descname">objects</tt><em class="property"> = &lt;opendata.catalog.managers.ImageManager object at 0x4c64c90&gt;</em><a class="headerlink" href="#opendata.catalog.models.UrlImage.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.UrlImage.resource">
+<tt class="descclassname">UrlImage.</tt><tt class="descname">resource</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.UrlImage.resource" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.models.UrlType">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">UrlType</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#UrlType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.UrlType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>UrlType(id, url_type)</p>
+<dl class="exception">
+<dt id="opendata.catalog.models.UrlType.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.catalog.models.UrlType.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.catalog.models.UrlType.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">UrlType.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.catalog.models.UrlType.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.UrlType.objects">
+<tt class="descclassname">UrlType.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4ae07d0&gt;</em><a class="headerlink" href="#opendata.catalog.models.UrlType.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.UrlType.suggestion_set">
+<tt class="descclassname">UrlType.</tt><tt class="descname">suggestion_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.UrlType.suggestion_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.models.UrlType.url_set">
+<tt class="descclassname">UrlType.</tt><tt class="descname">url_set</tt><em class="property"> None</em><a class="headerlink" href="#opendata.catalog.models.UrlType.url_set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="opendata.catalog.models.gen_website_url">
+<tt class="descclassname">opendata.catalog.models.</tt><tt class="descname">gen_website_url</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/catalog/models.html#gen_website_url"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.models.gen_website_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-opendata.catalog.search_indexes">
+<span id="opendata-catalog-search-indexes-module"></span><h2>opendata.catalog.search_indexes module<a class="headerlink" href="#module-opendata.catalog.search_indexes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.catalog.search_indexes.ResourceIndex">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.search_indexes.</tt><tt class="descname">ResourceIndex</tt><a class="reference internal" href="_modules/opendata/catalog/search_indexes.html#ResourceIndex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.search_indexes.ResourceIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">haystack.indexes.SearchIndex</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">haystack.constants.Indexable</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.search_indexes.ResourceIndex.fields">
+<tt class="descname">fields</tt><em class="property"> = {'name': &lt;haystack.fields.CharField object at 0x610d6d0&gt;, 'text': &lt;haystack.fields.NgramField object at 0x610d690&gt;, 'data_types_exact': &lt;haystack.fields.FacetMultiValueField object at 0x610d850&gt;, 'cities_exact': &lt;haystack.fields.FacetMultiValueField object at 0x610d8d0&gt;, 'categories_exact': &lt;haystack.fields.FacetMultiValueField object at 0x610d910&gt;, 'data_types': &lt;haystack.fields.MultiValueField object at 0x610d710&gt;, 'categories': &lt;haystack.fields.MultiValueField object at 0x610d750&gt;, 'cities': &lt;haystack.fields.MultiValueField object at 0x610d790&gt;, 'counties_exact': &lt;haystack.fields.FacetMultiValueField object at 0x610d890&gt;, 'counties': &lt;haystack.fields.MultiValueField object at 0x610d7d0&gt;}</em><a class="headerlink" href="#opendata.catalog.search_indexes.ResourceIndex.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.search_indexes.ResourceIndex.get_model">
+<tt class="descname">get_model</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/catalog/search_indexes.html#ResourceIndex.get_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.search_indexes.ResourceIndex.get_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.search_indexes.ResourceIndex.index_queryset">
+<tt class="descname">index_queryset</tt><big>(</big><em>using=None</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/search_indexes.html#ResourceIndex.index_queryset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.search_indexes.ResourceIndex.index_queryset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.search_indexes.ResourceIndex.objects">
+<tt class="descname">objects</tt><em class="property"> = &lt;haystack.manager.SearchIndexManager object at 0x610d810&gt;</em><a class="headerlink" href="#opendata.catalog.search_indexes.ResourceIndex.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.search_indexes.ResourceIndex.prepare_categories">
+<tt class="descname">prepare_categories</tt><big>(</big><em>obj</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/search_indexes.html#ResourceIndex.prepare_categories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.search_indexes.ResourceIndex.prepare_categories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.search_indexes.ResourceIndex.prepare_cities">
+<tt class="descname">prepare_cities</tt><big>(</big><em>obj</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/search_indexes.html#ResourceIndex.prepare_cities"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.search_indexes.ResourceIndex.prepare_cities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.search_indexes.ResourceIndex.prepare_counties">
+<tt class="descname">prepare_counties</tt><big>(</big><em>obj</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/search_indexes.html#ResourceIndex.prepare_counties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.search_indexes.ResourceIndex.prepare_counties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.catalog.search_indexes.ResourceIndex.prepare_data_types">
+<tt class="descname">prepare_data_types</tt><big>(</big><em>obj</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/search_indexes.html#ResourceIndex.prepare_data_types"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.search_indexes.ResourceIndex.prepare_data_types" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.catalog.urls">
+<span id="opendata-catalog-urls-module"></span><h2>opendata.catalog.urls module<a class="headerlink" href="#module-opendata.catalog.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-opendata.catalog.views">
+<span id="opendata-catalog-views-module"></span><h2>opendata.catalog.views module<a class="headerlink" href="#module-opendata.catalog.views" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.catalog.views.ResourceCreate">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.views.</tt><tt class="descname">ResourceCreate</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/views.html#ResourceCreate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.views.ResourceCreate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="opendata.html#opendata.mixins.LoginRequiredMixin" title="opendata.mixins.LoginRequiredMixin"><tt class="xref py py-class docutils literal"><span class="pre">opendata.mixins.LoginRequiredMixin</span></tt></a>, <tt class="xref py py-class docutils literal"><span class="pre">django.views.generic.edit.CreateView</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.catalog.views.ResourceCreate.model">
+<tt class="descname">model</tt><a class="headerlink" href="#opendata.catalog.views.ResourceCreate.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Resource</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.catalog.views.ResourceDetail">
+<em class="property">class </em><tt class="descclassname">opendata.catalog.views.</tt><tt class="descname">ResourceDetail</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/views.html#ResourceDetail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.views.ResourceDetail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.views.generic.detail.DetailView</span></tt></p>
+<dl class="method">
+<dt id="opendata.catalog.views.ResourceDetail.get_context_data">
+<tt class="descname">get_context_data</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/catalog/views.html#ResourceDetail.get_context_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.catalog.views.ResourceDetail.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.catalog.views.ResourceDetail.model">
+<tt class="descname">model</tt><a class="headerlink" href="#opendata.catalog.views.ResourceDetail.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Resource</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.catalog">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-opendata.catalog" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">opendata.catalog package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-opendata.catalog.admin">opendata.catalog.admin module</a></li>
+<li><a class="reference internal" href="#module-opendata.catalog.forms">opendata.catalog.forms module</a></li>
+<li><a class="reference internal" href="#module-opendata.catalog.lookups">opendata.catalog.lookups module</a></li>
+<li><a class="reference internal" href="#module-opendata.catalog.managers">opendata.catalog.managers module</a></li>
+<li><a class="reference internal" href="#opendata-catalog-models-module">opendata.catalog.models module</a></li>
+<li><a class="reference internal" href="#module-opendata.catalog.search_indexes">opendata.catalog.search_indexes module</a></li>
+<li><a class="reference internal" href="#module-opendata.catalog.urls">opendata.catalog.urls module</a></li>
+<li><a class="reference internal" href="#module-opendata.catalog.views">opendata.catalog.views module</a></li>
+<li><a class="reference internal" href="#module-opendata.catalog">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="opendata.html"
+                        title="previous chapter">opendata package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="opendata.catalog.management.html"
+                        title="next chapter">opendata.catalog.management package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/opendata.catalog.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.catalog.management.html" title="opendata.catalog.management package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="opendata.html" title="opendata package"
+             >previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" >opendata package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

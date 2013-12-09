@@ -1,0 +1,38 @@
+opendata.catalog.management.commands package
+============================================
+
+Submodules
+----------
+
+opendata.catalog.management.commands.import_cities module
+---------------------------------------------------------
+
+.. automodule:: opendata.catalog.management.commands.import_cities
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.catalog.management.commands.import_departments module
+--------------------------------------------------------------
+
+.. automodule:: opendata.catalog.management.commands.import_departments
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.catalog.management.commands.load_dummy_resources module
+----------------------------------------------------------------
+
+.. automodule:: opendata.catalog.management.commands.load_dummy_resources
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.catalog.management.commands
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,75 @@
+opendata package
+================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    opendata.catalog
+    opendata.comments
+    opendata.requests
+    opendata.search
+    opendata.settings
+    opendata.suggestions
+    opendata.tests
+
+Submodules
+----------
+
+opendata.fields_info module
+---------------------------
+
+.. automodule:: opendata.fields_info
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.mixins module
+----------------------
+
+.. automodule:: opendata.mixins
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.tasks module
+---------------------
+
+.. automodule:: opendata.tasks
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.urls module
+--------------------
+
+.. automodule:: opendata.urls
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.views module
+---------------------
+
+.. automodule:: opendata.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.wsgi module
+--------------------
+
+.. automodule:: opendata.wsgi
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata
+    :members:
+    :undoc-members:
+    :show-inheritance:

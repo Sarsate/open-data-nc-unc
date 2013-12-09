@@ -1,0 +1,30 @@
+opendata.tests package
+======================
+
+Submodules
+----------
+
+opendata.tests.base module
+--------------------------
+
+.. automodule:: opendata.tests.base
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.tests.factories module
+-------------------------------
+
+.. automodule:: opendata.tests.factories
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.tests
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.catalog.admin &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for opendata.catalog.admin</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">ResourceAdminForm</span>
+
+
+<div class="viewcode-block" id="UrlImageInline"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.UrlImageInline">[docs]</a><span class="k">class</span> <span class="nc">UrlImageInline</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">TabularInline</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">UrlImage</span>
+    <span class="n">extra</span> <span class="o">=</span> <span class="mi">1</span>
+
+</div>
+<div class="viewcode-block" id="UrlInline"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.UrlInline">[docs]</a><span class="k">class</span> <span class="nc">UrlInline</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">TabularInline</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Url</span>
+    <span class="n">extra</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">verbose_name</span> <span class="o">=</span> <span class="s">&#39;Resource Url&#39;</span>
+    <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">&#39;Resource Urls&#39;</span>
+
+</div>
+<div class="viewcode-block" id="ResourceAdmin"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.ResourceAdmin">[docs]</a><span class="k">class</span> <span class="nc">ResourceAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">ResourceAdminForm</span>
+    <span class="n">raw_id_fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;department&#39;</span><span class="p">,</span> <span class="s">&#39;division&#39;</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">readonly_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;created_by&#39;</span><span class="p">,</span> <span class="s">&#39;created&#39;</span><span class="p">,</span> <span class="s">&#39;last_updated_by&#39;</span><span class="p">,</span> <span class="s">&#39;last_updated&#39;</span><span class="p">]</span>
+    <span class="n">inlines</span> <span class="o">=</span> <span class="p">[</span><span class="n">UrlInline</span><span class="p">,</span> <span class="n">UrlImageInline</span><span class="p">]</span>
+    <span class="n">verbose_name</span> <span class="o">=</span> <span class="s">&#39;Resource Url&#39;</span>
+    <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">&#39;Resource Urls&#39;</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;department&#39;</span><span class="p">,</span> <span class="s">&#39;release_date&#39;</span><span class="p">,</span> <span class="s">&#39;is_published&#39;</span><span class="p">)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;description&#39;</span><span class="p">,</span> <span class="s">&#39;department__name&#39;</span><span class="p">]</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;categories&#39;</span><span class="p">,</span> <span class="s">&#39;agency_type&#39;</span><span class="p">,</span> <span class="s">&#39;data_types&#39;</span><span class="p">,</span> <span class="s">&#39;updates&#39;</span><span class="p">]</span>
+    <span class="n">date_hierarchy</span> <span class="o">=</span> <span class="s">&#39;release_date&#39;</span>
+    <span class="n">filter_horizontal</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;data_types&#39;</span><span class="p">,</span> <span class="s">&#39;categories&#39;</span><span class="p">,</span> <span class="s">&#39;cities&#39;</span><span class="p">,</span> <span class="s">&#39;counties&#39;</span><span class="p">)</span>
+
+    <span class="n">fieldsets</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s">&#39;Basic Information&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;is_published&#39;</span><span class="p">,),</span> <span class="s">&#39;short_description&#39;</span><span class="p">,</span>
+                                  <span class="s">&#39;keywords&#39;</span><span class="p">,</span> <span class="s">&#39;description&#39;</span><span class="p">,</span> <span class="s">&#39;newest_record&#39;</span><span class="p">,</span>
+                                  <span class="s">&#39;oldest_record&#39;</span><span class="p">,</span> <span class="s">&#39;updates&#39;</span><span class="p">,</span> <span class="p">]}),</span>
+        <span class="p">(</span><span class="s">&#39;Geographies and Types&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;agency_type&#39;</span><span class="p">,</span> <span class="s">&#39;counties&#39;</span><span class="p">,</span>
+                        <span class="s">&#39;cities&#39;</span><span class="p">,</span> <span class="s">&#39;categories&#39;</span><span class="p">,</span> <span class="s">&#39;data_types&#39;</span><span class="p">,</span> <span class="p">]}),</span>
+        <span class="p">(</span><span class="s">&#39;Agency Information&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;department&#39;</span><span class="p">,</span> <span class="s">&#39;division&#39;</span><span class="p">,</span> <span class="s">&#39;contact_phone&#39;</span><span class="p">,</span>
+                               <span class="s">&#39;contact_email&#39;</span><span class="p">,</span> <span class="s">&#39;contact_url&#39;</span><span class="p">,</span> <span class="p">]}),</span>
+        <span class="p">(</span><span class="s">&#39;Data set information&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;fields&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s">&#39;proj_coord_sys&#39;</span><span class="p">,</span> <span class="s">&#39;coord_sys&#39;</span><span class="p">,</span> <span class="s">&#39;wkt_geometry&#39;</span><span class="p">,</span> <span class="s">&#39;metadata_contact&#39;</span><span class="p">,</span>
+            <span class="s">&#39;metadata_notes&#39;</span><span class="p">,</span> <span class="s">&#39;created_by&#39;</span><span class="p">,</span> <span class="s">&#39;created&#39;</span><span class="p">,</span> <span class="s">&#39;last_updated_by&#39;</span><span class="p">,</span>
+            <span class="s">&#39;last_updated&#39;</span><span class="p">,</span>
+        <span class="p">],</span> <span class="s">&#39;classes&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;collapse&#39;</span><span class="p">,</span> <span class="p">]}),</span>
+    <span class="p">]</span>
+
+<div class="viewcode-block" id="ResourceAdmin.save_model"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.ResourceAdmin.save_model">[docs]</a>    <span class="k">def</span> <span class="nf">save_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">form</span><span class="p">,</span> <span class="n">change</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">change</span><span class="p">:</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">created_by</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+            <span class="n">obj</span><span class="o">.</span><span class="n">created</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+        <span class="n">obj</span><span class="o">.</span><span class="n">last_updated_by</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="ResourceAdmin.Media"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.ResourceAdmin.Media">[docs]</a>    <span class="k">class</span> <span class="nc">Media</span><span class="p">:</span>
+        <span class="n">css</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nb">all</span><span class="p">:</span> <span class="p">(</span><span class="s">&quot;css/admin.css&quot;</span><span class="p">,</span> <span class="p">)</span>
+        <span class="p">}</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s">&quot;js/admin.js&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="UrlImageAdmin"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.UrlImageAdmin">[docs]</a><span class="k">class</span> <span class="nc">UrlImageAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;title&#39;</span><span class="p">,</span> <span class="s">&#39;image&#39;</span><span class="p">)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;image&#39;</span><span class="p">,</span> <span class="s">&#39;title&#39;</span><span class="p">,</span> <span class="s">&#39;description&#39;</span><span class="p">]</span>
+
+</div>
+<div class="viewcode-block" id="UrlAdmin"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.UrlAdmin">[docs]</a><span class="k">class</span> <span class="nc">UrlAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;url_label&#39;</span><span class="p">,</span> <span class="s">&#39;url_type&#39;</span><span class="p">,</span> <span class="s">&#39;url&#39;</span><span class="p">)</span>
+    <span class="n">inlines</span> <span class="o">=</span> <span class="p">[</span><span class="n">UrlImageInline</span><span class="p">,</span> <span class="p">]</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;url_type&#39;</span><span class="p">,</span> <span class="p">]</span>
+
+</div>
+<div class="viewcode-block" id="CoordSystemAdmin"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.CoordSystemAdmin">[docs]</a><span class="k">class</span> <span class="nc">CoordSystemAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;EPSG_code&#39;</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">)</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;EPSG_code&#39;</span><span class="p">,</span> <span class="s">&#39;description&#39;</span><span class="p">]</span>
+
+    <span class="n">verbose_name</span> <span class="o">=</span> <span class="s">&#39;Resource Url&#39;</span>
+    <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">&#39;Resource Urls&#39;</span>
+
+</div>
+<div class="viewcode-block" id="CategoryAdmin"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.CategoryAdmin">[docs]</a><span class="k">class</span> <span class="nc">CategoryAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">,)</span>
+
+</div>
+<div class="viewcode-block" id="CityAdmin"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.CityAdmin">[docs]</a><span class="k">class</span> <span class="nc">CityAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">,)</span>
+
+</div>
+<div class="viewcode-block" id="CountyAdmin"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.CountyAdmin">[docs]</a><span class="k">class</span> <span class="nc">CountyAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">,)</span>
+    <span class="n">filter_horizontal</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;cities&#39;</span><span class="p">,)</span>
+
+</div>
+<div class="viewcode-block" id="DepartmentAdmin"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.DepartmentAdmin">[docs]</a><span class="k">class</span> <span class="nc">DepartmentAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="p">]</span>
+    <span class="n">list_display</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="s">&#39;type&#39;</span><span class="p">]</span>
+    <span class="n">list_filter</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;type&#39;</span><span class="p">,</span> <span class="p">]</span>
+
+</div>
+<div class="viewcode-block" id="DivisionAdmin"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.admin.DivisionAdmin">[docs]</a><span class="k">class</span> <span class="nc">DivisionAdmin</span><span class="p">(</span><span class="n">admin</span><span class="o">.</span><span class="n">ModelAdmin</span><span class="p">):</span>
+    <span class="n">search_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="p">]</span>
+
+</div>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Department</span><span class="p">,</span> <span class="n">DepartmentAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Division</span><span class="p">,</span> <span class="n">DivisionAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Category</span><span class="p">,</span> <span class="n">CategoryAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">UpdateFrequency</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">UrlType</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">CoordSystem</span><span class="p">,</span> <span class="n">CoordSystemAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">DataType</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Url</span><span class="p">,</span> <span class="n">UrlAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">UrlImage</span><span class="p">,</span> <span class="n">UrlImageAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="n">ResourceAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">City</span><span class="p">,</span> <span class="n">CityAdmin</span><span class="p">)</span>
+<span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">County</span><span class="p">,</span> <span class="n">CountyAdmin</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.requests.forms &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for opendata.requests.forms</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">selectable.forms</span> <span class="kn">import</span> <span class="n">AutoCompleteSelectField</span>
+<span class="kn">from</span> <span class="nn">selectable.forms</span> <span class="kn">import</span> <span class="n">AutoCompleteSelectWidget</span>
+
+<span class="kn">from</span> <span class="nn">opendata.catalog.lookups</span> <span class="kn">import</span> <span class="n">CityLookup</span><span class="p">,</span> <span class="n">CountyLookup</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">Bounty</span><span class="p">,</span> <span class="n">Resource</span>
+
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">ValidationError</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="kn">import</span> <span class="nn">types</span>
+
+<div class="viewcode-block" id="SearchForm"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.SearchForm">[docs]</a><span class="k">class</span> <span class="nc">SearchForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="RequestForm"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.RequestForm">[docs]</a><span class="k">class</span> <span class="nc">RequestForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="n">county</span> <span class="o">=</span> <span class="n">AutoCompleteSelectField</span><span class="p">(</span>
+        <span class="n">lookup_class</span><span class="o">=</span><span class="n">CountyLookup</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">widget</span><span class="o">=</span><span class="n">AutoCompleteSelectWidget</span><span class="p">(</span>
+            <span class="n">lookup_class</span><span class="o">=</span><span class="n">CountyLookup</span><span class="p">,</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;class&quot;</span><span class="p">:</span> <span class="s">&quot;suggestions-hidden suggestions-county&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">city</span> <span class="o">=</span> <span class="n">AutoCompleteSelectField</span><span class="p">(</span>
+        <span class="n">lookup_class</span><span class="o">=</span><span class="n">CityLookup</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">widget</span><span class="o">=</span><span class="n">AutoCompleteSelectWidget</span><span class="p">(</span>
+            <span class="n">lookup_class</span><span class="o">=</span><span class="n">CityLookup</span><span class="p">,</span>
+            <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;class&quot;</span><span class="p">:</span> <span class="s">&quot;suggestions-hidden suggestions-city&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="RequestForm.Meta"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.RequestForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Request</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;suggested_by&#39;</span><span class="p">,</span> <span class="s">&#39;resources&#39;</span><span class="p">,</span> <span class="s">&#39;rating&#39;</span><span class="p">,</span> <span class="s">&#39;status&#39;</span><span class="p">,</span> <span class="s">&#39;supplier&#39;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="RequestForm.Media"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.RequestForm.Media">[docs]</a>    <span class="k">class</span> <span class="nc">Media</span><span class="p">:</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s">&quot;suggestions/js/form.js&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="BountyForm"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.BountyForm">[docs]</a><span class="k">class</span> <span class="nc">BountyForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Object model for forms for Bounties.</span>
+<span class="sd">    Includes validation for inputs&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="BountyForm.Meta"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.BountyForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Bounty</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;request&#39;</span><span class="p">,</span> <span class="s">&#39;author&#39;</span><span class="p">,</span> <span class="s">&#39;supplier&#39;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="BountyForm.Media"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.BountyForm.Media">[docs]</a>    <span class="k">class</span> <span class="nc">Media</span><span class="p">:</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s">&quot;suggestions/js/form.js&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+</div>
+<div class="viewcode-block" id="BountyForm.clean"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.BountyForm.clean">[docs]</a>    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cleaned_data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">BountyForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
+        <span class="n">due_date</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;deadline&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">due_date</span> <span class="ow">and</span> <span class="n">due_date</span> <span class="o">&lt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">&#39;Deadline must be in the future in the format yyyy-mm-dd&#39;</span><span class="p">)</span>
+        <span class="n">bounty</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;price&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bounty</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">&#39;Bounty must be a positive value between 0 and 1000 (ex. 10.50)&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cleaned_data</span>
+
+</div></div>
+<div class="viewcode-block" id="SupplyForm"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.SupplyForm">[docs]</a><span class="k">class</span> <span class="nc">SupplyForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+<div class="viewcode-block" id="SupplyForm.Meta"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.SupplyForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Resource</span>
+        <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;rating&#39;</span><span class="p">,</span> <span class="s">&#39;proj_coord_sys&#39;</span><span class="p">,</span> <span class="s">&#39;time_period&#39;</span><span class="p">,</span> <span class="s">&#39;wkt_geometry&#39;</span><span class="p">,</span> <span class="s">&#39;csw_typename&#39;</span><span class="p">,</span> <span class="s">&#39;csw_schema&#39;</span><span class="p">,</span> <span class="s">&#39;csw_mdsource&#39;</span><span class="p">,</span> <span class="s">&#39;csw_xml&#39;</span><span class="p">,</span> <span class="s">&#39;csw_anytext&#39;</span><span class="p">,</span> <span class="s">&#39;created_by&#39;</span><span class="p">,</span> <span class="s">&#39;last_updated_by&#39;</span><span class="p">,</span> <span class="s">&#39;created&#39;</span><span class="p">,</span> <span class="s">&#39;last_updated&#39;</span><span class="p">,</span> <span class="s">&#39;metadata_contact&#39;</span><span class="p">,</span> <span class="s">&#39;metadata_notes&#39;</span><span class="p">,</span> <span class="s">&#39;coord_sys&#39;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="SupplyForm.Media"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.SupplyForm.Media">[docs]</a>    <span class="k">class</span> <span class="nc">Media</span><span class="p">:</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s">&quot;suggestions/js/form.js&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

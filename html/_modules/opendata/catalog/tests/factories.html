@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.catalog.tests.factories &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for opendata.catalog.tests.factories</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
+<span class="kn">import</span> <span class="nn">factory</span>
+
+<span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">City</span><span class="p">,</span> <span class="n">County</span><span class="p">,</span> <span class="n">Department</span><span class="p">,</span> <span class="n">Resource</span>
+<span class="kn">from</span> <span class="nn">opendata.tests.factories</span> <span class="kn">import</span> <span class="n">UserFactory</span>
+
+
+<div class="viewcode-block" id="CityFactory"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.factories.CityFactory">[docs]</a><span class="k">class</span> <span class="nc">CityFactory</span><span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
+    <span class="n">FACTORY_FOR</span> <span class="o">=</span> <span class="n">City</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="s">&#39;city</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="CountyFactory"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.factories.CountyFactory">[docs]</a><span class="k">class</span> <span class="nc">CountyFactory</span><span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
+    <span class="n">FACTORY_FOR</span> <span class="o">=</span> <span class="n">County</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="s">&#39;city</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="DepartmentFactory"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.factories.DepartmentFactory">[docs]</a><span class="k">class</span> <span class="nc">DepartmentFactory</span><span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
+    <span class="n">FACTORY_FOR</span> <span class="o">=</span> <span class="n">Department</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Departement&quot;</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="s">&#39;state&#39;</span>
+
+</div>
+<div class="viewcode-block" id="ResourceFactory"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.factories.ResourceFactory">[docs]</a><span class="k">class</span> <span class="nc">ResourceFactory</span><span class="p">(</span><span class="n">factory</span><span class="o">.</span><span class="n">DjangoModelFactory</span><span class="p">):</span>
+    <span class="n">FACTORY_FOR</span> <span class="o">=</span> <span class="n">Resource</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="s">&#39;resource</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">created_by</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">SubFactory</span><span class="p">(</span><span class="n">UserFactory</span><span class="p">)</span>
+    <span class="n">last_updated_by</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">LazyAttribute</span><span class="p">(</span><span class="k">lambda</span> <span class="n">obj</span><span class="p">:</span> <span class="n">obj</span><span class="o">.</span><span class="n">created_by</span><span class="p">)</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s">&quot;Long description&quot;</span>
+    <span class="n">short_description</span> <span class="o">=</span> <span class="s">&quot;Short description&quot;</span>
+    <span class="n">usage</span> <span class="o">=</span> <span class="s">&quot;Usage&quot;</span>
+    <span class="n">department</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">SubFactory</span><span class="p">(</span><span class="n">DepartmentFactory</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

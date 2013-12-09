@@ -1,0 +1,17 @@
+opendata.catalog.management package
+===================================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    opendata.catalog.management.commands
+
+Module contents
+---------------
+
+.. automodule:: opendata.catalog.management
+    :members:
+    :undoc-members:
+    :show-inheritance:

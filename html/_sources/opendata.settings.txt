@@ -1,0 +1,70 @@
+opendata.settings package
+=========================
+
+Submodules
+----------
+
+opendata.settings.base module
+-----------------------------
+
+.. automodule:: opendata.settings.base
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.settings.dev module
+----------------------------
+
+.. automodule:: opendata.settings.dev
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.settings.local.example module
+--------------------------------------
+
+.. automodule:: opendata.settings.local.example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.settings.local module
+------------------------------
+
+.. automodule:: opendata.settings.local
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.settings.production module
+-----------------------------------
+
+.. automodule:: opendata.settings.production
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.settings.staging module
+--------------------------------
+
+.. automodule:: opendata.settings.staging
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.settings.test module
+-----------------------------
+
+.. automodule:: opendata.settings.test
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.settings
+    :members:
+    :undoc-members:
+    :show-inheritance:

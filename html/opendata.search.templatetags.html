@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.search.templatetags package &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="index.html" />
+    <link rel="up" title="opendata.search package" href="opendata.search.html" />
+    <link rel="next" title="opendata.settings package" href="opendata.settings.html" />
+    <link rel="prev" title="opendata.search package" href="opendata.search.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.settings.html" title="opendata.settings package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="opendata.search.html" title="opendata.search package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" >opendata package</a> &raquo;</li>
+          <li><a href="opendata.search.html" accesskey="U">opendata.search package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="opendata-search-templatetags-package">
+<h1>opendata.search.templatetags package<a class="headerlink" href="#opendata-search-templatetags-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-opendata.search.templatetags.facet_tags">
+<span id="opendata-search-templatetags-facet-tags-module"></span><h2>opendata.search.templatetags.facet_tags module<a class="headerlink" href="#module-opendata.search.templatetags.facet_tags" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="opendata.search.templatetags.facet_tags.faceted_next_prev_querystring">
+<tt class="descclassname">opendata.search.templatetags.facet_tags.</tt><tt class="descname">faceted_next_prev_querystring</tt><big>(</big><em>request</em>, <em>page_number</em><big>)</big><a class="reference internal" href="_modules/opendata/search/templatetags/facet_tags.html#faceted_next_prev_querystring"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.templatetags.facet_tags.faceted_next_prev_querystring" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#8220;Returns a string that provides the querystring required to paginate in
+search results while retaining the selected facets</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd>{% load facet_tags %}
+{% faceted_next_prev_querystring request page_number %}</dd>
+<dt>Renders:</dt>
+<dd>?q=text&amp;page=N&amp;selected_facets=facet:value</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="opendata.search.templatetags.facet_tags.remove_facet">
+<tt class="descclassname">opendata.search.templatetags.facet_tags.</tt><tt class="descname">remove_facet</tt><big>(</big><em>request</em>, <em>facet_value</em><big>)</big><a class="reference internal" href="_modules/opendata/search/templatetags/facet_tags.html#remove_facet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.templatetags.facet_tags.remove_facet" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#8220;Returns a string that extracts the supplied facet_value&#8217;s facet from
+the current querystring</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd>{% load facet_tags %}
+{% remove_facet request value %}</dd>
+<dt>Renders:</dt>
+<dd>?q=text&amp;page=N</dd>
+<dt>or</dt>
+<dd>?q=text&amp;page=N&amp;selected_facets=facet2:value</dd>
+</dl>
+<p>if additional selected_facets are in the current querystring</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.search.templatetags">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-opendata.search.templatetags" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">opendata.search.templatetags package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-opendata.search.templatetags.facet_tags">opendata.search.templatetags.facet_tags module</a></li>
+<li><a class="reference internal" href="#module-opendata.search.templatetags">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="opendata.search.html"
+                        title="previous chapter">opendata.search package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="opendata.settings.html"
+                        title="next chapter">opendata.settings package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/opendata.search.templatetags.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.settings.html" title="opendata.settings package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="opendata.search.html" title="opendata.search package"
+             >previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" >opendata package</a> &raquo;</li>
+          <li><a href="opendata.search.html" >opendata.search package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

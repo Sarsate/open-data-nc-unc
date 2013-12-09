@@ -1,0 +1,22 @@
+opendata.catalog.templatetags package
+=====================================
+
+Submodules
+----------
+
+opendata.catalog.templatetags.recent_resources module
+-----------------------------------------------------
+
+.. automodule:: opendata.catalog.templatetags.recent_resources
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.catalog.templatetags
+    :members:
+    :undoc-members:
+    :show-inheritance:

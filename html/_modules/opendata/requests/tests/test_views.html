@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.requests.tests.test_views &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for opendata.requests.tests.test_views</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">django.core.urlresolvers</span> <span class="kn">import</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span>
+
+<span class="kn">from</span> <span class="nn">.factories</span> <span class="kn">import</span> <span class="n">RequestFactory</span>
+<span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">Request</span>
+<span class="kn">from</span> <span class="nn">opendata.tests.base</span> <span class="kn">import</span> <span class="n">ViewTestMixin</span><span class="p">,</span> <span class="n">WebsiteTestBase</span>
+<span class="kn">from</span> <span class="nn">opendata.tests.factories</span> <span class="kn">import</span> <span class="n">UserFactory</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;ListRequestViewTest&#39;</span><span class="p">,</span> <span class="s">&#39;AddRequestViewTest&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="ListRequestViewTest"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.ListRequestViewTest">[docs]</a><span class="k">class</span> <span class="nc">ListRequestViewTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Tests for the list_suggestions view&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ListRequestViewTest.setUp"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.ListRequestViewTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s">&quot;request-list&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">suggestion1</span> <span class="o">=</span> <span class="n">RequestFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;suggestion&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">suggestion2</span> <span class="o">=</span> <span class="n">RequestFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;data request&quot;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ListRequestViewTest.test_get_list_page"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.ListRequestViewTest.test_get_list_page">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_list_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Tests that landing on suggestions page shows all avaiable</span>
+<span class="sd">        suggestions.&quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s">&#39;requests&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ListRequestViewTest.test_get_search_terms"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.ListRequestViewTest.test_get_search_terms">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_search_terms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;text&quot;</span><span class="p">:</span> <span class="s">&quot;suggestion&quot;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s">&#39;requests&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">1</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ListRequestViewTest.test_post"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.ListRequestViewTest.test_post">[docs]</a>    <span class="k">def</span> <span class="nf">test_post</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Tests that accessing the page with a post request returns a list of</span>
+<span class="sd">        all suggestions and the search form has no data binded&quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;text&quot;</span><span class="p">:</span> <span class="s">&quot;suggestion&quot;</span><span class="p">})</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="s">&#39;requests&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="AddRequestViewTest"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.AddRequestViewTest">[docs]</a><span class="k">class</span> <span class="nc">AddRequestViewTest</span><span class="p">(</span><span class="n">ViewTestMixin</span><span class="p">,</span> <span class="n">WebsiteTestBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Test for add_suggestion view. Only authenticated users should be able to</span>
+<span class="sd">    add suggestions.&quot;&quot;&quot;</span>
+
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&quot;requests/create_edit.html&quot;</span>
+
+<div class="viewcode-block" id="AddRequestViewTest.setUp"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.AddRequestViewTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s">&quot;request-create&quot;</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="AddRequestViewTest.tearDown"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.AddRequestViewTest.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+</div>
+<div class="viewcode-block" id="AddRequestViewTest.get_valid_data"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.AddRequestViewTest.get_valid_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_valid_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;description&#39;</span><span class="p">:</span> <span class="s">&quot;This is a valid suggestion.&quot;</span><span class="p">,</span>
+            <span class="s">&#39;title&#39;</span><span class="p">:</span> <span class="s">&quot;Crime stats&quot;</span><span class="p">,</span>
+            <span class="s">&#39;url&#39;</span><span class="p">:</span> <span class="s">&quot;http://www.example.com&quot;</span><span class="p">,</span>
+            <span class="s">&#39;agency_type&#39;</span><span class="p">:</span> <span class="s">&quot;city&quot;</span><span class="p">,</span>
+            <span class="s">&#39;agency_name&#39;</span><span class="p">:</span> <span class="s">&quot;Chapel Hill Police Department&quot;</span><span class="p">,</span>
+            <span class="s">&#39;update_frequency&#39;</span><span class="p">:</span> <span class="s">&quot;daily&quot;</span><span class="p">,</span>
+            <span class="s">&#39;relevance&#39;</span><span class="p">:</span> <span class="s">&quot;This is very relevant to me because&quot;</span><span class="p">,</span>
+            <span class="s">&#39;agency_division&#39;</span><span class="p">:</span> <span class="s">&quot;I don&#39;t know&quot;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">data</span>
+</div>
+<div class="viewcode-block" id="AddRequestViewTest.test_get_unauthenticated"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.AddRequestViewTest.test_get_unauthenticated">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_unauthenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Only registered users can view the add suggestion page.&quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirectsToLogin</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="AddRequestViewTest.test_get_authenticated"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.AddRequestViewTest.test_get_authenticated">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_authenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Authenticated users can view add suggestion page.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login_user</span><span class="p">(</span><span class="n">UserFactory</span><span class="o">.</span><span class="n">create</span><span class="p">())</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failUnless</span><span class="p">(</span><span class="s">&#39;form&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="AddRequestViewTest.test_post_authenticated"><a class="viewcode-back" href="../../../../opendata.requests.tests.html#opendata.requests.tests.test_views.AddRequestViewTest.test_post_authenticated">[docs]</a>    <span class="k">def</span> <span class="nf">test_post_authenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Authenticated users can add suggestions.&quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_valid_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login_user</span><span class="p">(</span><span class="n">UserFactory</span><span class="o">.</span><span class="n">create</span><span class="p">())</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span>
+        <span class="n">suggestions</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">suggestions</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+</pre></div></div></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

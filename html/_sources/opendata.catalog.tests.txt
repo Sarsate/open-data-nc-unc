@@ -1,0 +1,30 @@
+opendata.catalog.tests package
+==============================
+
+Submodules
+----------
+
+opendata.catalog.tests.factories module
+---------------------------------------
+
+.. automodule:: opendata.catalog.tests.factories
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.catalog.tests.test_views module
+----------------------------------------
+
+.. automodule:: opendata.catalog.tests.test_views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.catalog.tests
+    :members:
+    :undoc-members:
+    :show-inheritance:

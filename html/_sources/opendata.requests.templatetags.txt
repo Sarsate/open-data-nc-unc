@@ -1,0 +1,22 @@
+opendata.requests.templatetags package
+======================================
+
+Submodules
+----------
+
+opendata.requests.templatetags.bounty_total module
+--------------------------------------------------
+
+.. automodule:: opendata.requests.templatetags.bounty_total
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.requests.templatetags
+    :members:
+    :undoc-members:
+    :show-inheritance:

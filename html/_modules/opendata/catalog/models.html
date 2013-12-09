@@ -1,0 +1,472 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.catalog.models &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for opendata.catalog.models</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c"># from lxml import etree</span>
+<span class="c"># from shapely.wkt import loads</span>
+
+<span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">attrgetter</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">django.core.urlresolvers</span> <span class="kn">import</span> <span class="n">reverse</span>
+<span class="kn">from</span> <span class="nn">django.template.defaultfilters</span> <span class="kn">import</span> <span class="n">slugify</span>
+<span class="kn">from</span> <span class="nn">djangoratings.fields</span> <span class="kn">import</span> <span class="n">RatingField</span>
+
+<span class="kn">from</span> <span class="nn">opendata.fields_info</span> <span class="kn">import</span> <span class="n">FIELDS</span><span class="p">,</span> <span class="n">HELP</span>
+<span class="kn">from</span> <span class="nn">.managers</span> <span class="kn">import</span> <span class="n">ImageManager</span>
+
+
+<div class="viewcode-block" id="City"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.City">[docs]</a><span class="k">class</span> <span class="nc">City</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">&#39;Cities&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+</div>
+<div class="viewcode-block" id="County"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.County">[docs]</a><span class="k">class</span> <span class="nc">County</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">cities</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">City</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;counties&#39;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">&#39;Counties&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+</div>
+<div class="viewcode-block" id="Category"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Category">[docs]</a><span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="n">verbose_name_plural</span> <span class="o">=</span> <span class="s">&#39;Categories&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+</div>
+<div class="viewcode-block" id="Division"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Division">[docs]</a><span class="k">class</span> <span class="nc">Division</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+</div>
+<div class="viewcode-block" id="Department"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Department">[docs]</a><span class="k">class</span> <span class="nc">Department</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">TYPES</span> <span class="o">=</span> <span class="p">((</span><span class="s">&#39;state&#39;</span><span class="p">,</span> <span class="s">&#39;State&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;county&#39;</span><span class="p">,</span> <span class="s">&#39;County&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;city&#39;</span><span class="p">,</span> <span class="s">&#39;City&#39;</span><span class="p">))</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">TYPES</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&#39;state&#39;</span><span class="p">)</span>
+    <span class="n">divisions</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Division</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;name&#39;</span><span class="p">,</span> <span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="DataType"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.DataType">[docs]</a><span class="k">class</span> <span class="nc">DataType</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+</div>
+<div class="viewcode-block" id="UrlType"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.UrlType">[docs]</a><span class="k">class</span> <span class="nc">UrlType</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">url_type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_type</span>
+    
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span> 
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;url_type&#39;</span><span class="p">]</span>
+
+</div>
+<div class="viewcode-block" id="UpdateFrequency"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.UpdateFrequency">[docs]</a><span class="k">class</span> <span class="nc">UpdateFrequency</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">update_frequency</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_frequency</span>
+    
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span> 
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;update_frequency&#39;</span><span class="p">]</span>
+
+</div>
+<div class="viewcode-block" id="CoordSystem"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.CoordSystem">[docs]</a><span class="k">class</span> <span class="nc">CoordSystem</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">()</span>
+    <span class="n">EPSG_code</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">help_text</span><span class="o">=</span><span class="s">&quot;Official EPSG code, numbers only&quot;</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">EPSG_code</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span> 
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;EPSG_code&#39;</span><span class="p">]</span>
+        <span class="n">verbose_name</span> <span class="o">=</span> <span class="s">&#39;Coordinate system&#39;</span>
+
+</div>
+<div class="viewcode-block" id="Resource"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource">[docs]</a><span class="k">class</span> <span class="nc">Resource</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="n">AGENCY_TYPES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="s">&#39;state&#39;</span><span class="p">,</span> <span class="s">&#39;Statewide&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;county&#39;</span><span class="p">,</span> <span class="s">&#39;County Agency&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;city&#39;</span><span class="p">,</span> <span class="s">&#39;City/town Agency&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="c"># def save(self, *args, **kwargs):</span>
+    <span class="c">#     if not self.pk:</span>
+    <span class="c">#         super(Resource, self).save(*args, **kwargs)</span>
+
+    <span class="c">#     self.csw_xml = self.gen_csw_xml()</span>
+    <span class="c">#     self.csw_anytext = self.gen_csw_anytext()</span>
+    <span class="c">#     super(Resource, self).save(*args, **kwargs)</span>
+
+    <span class="c"># Basic Info</span>
+    <span class="n">data_url</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">URLField</span><span class="p">(</span><span class="s">u&#39;Link to data&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">verification_url</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">URLField</span><span class="p">(</span><span class="s">u&#39;Link to Muckrock or ScraperWiki verification code&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s">u&#39;Title&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">])</span>
+    <span class="n">slug</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">(</span><span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">short_description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s">u&#39;Brief description&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
+                                         <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;short_description&#39;</span><span class="p">])</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="s">u&#39;Long description&#39;</span><span class="p">,</span> <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">])</span>
+    <span class="n">department</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Department</span><span class="p">,</span> <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;agency_name&#39;</span><span class="p">])</span>
+    <span class="n">division</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Division</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;agency_division&#39;</span><span class="p">])</span>
+    <span class="n">agency_type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">AGENCY_TYPES</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+                                   <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;agency_type&#39;</span><span class="p">])</span>
+    <span class="n">cities</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">City</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">counties</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">County</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">usage</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="s">u&#39;Relevance&#39;</span><span class="p">,</span> <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;relevance&#39;</span><span class="p">],</span>
+                             <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">newest_record</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">oldest_record</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">updates</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">UpdateFrequency</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;update_frequency&#39;</span><span class="p">],</span>
+                                <span class="p">)</span>
+    <span class="n">categories</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Category</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&quot;resources&quot;</span><span class="p">,</span>
+                                        <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">keywords</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CommaSeparatedIntegerField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                                 <span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;keywords&#39;</span><span class="p">],</span>
+                                                 <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;keywords&#39;</span><span class="p">])</span>
+    <span class="n">data_types</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">DataType</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="c"># More Info</span>
+    <span class="n">contact_phone</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">contact_email</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">contact_url</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">area_of_interest</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">is_published</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Public&quot;</span><span class="p">)</span>
+    
+    <span class="n">created_by</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;created_by&#39;</span><span class="p">)</span>
+    <span class="n">last_updated_by</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;updated_by&#39;</span><span class="p">)</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
+    <span class="n">last_updated</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">metadata_contact</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">metadata_notes</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">coord_sys</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">CoordSystem</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                       <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Coordinate system&quot;</span><span class="p">)</span>
+        
+    <span class="n">rating</span> <span class="o">=</span> <span class="n">RatingField</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">can_change_vote</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="n">data_formats</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">proj_coord_sys</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s">&quot;Coordinate system&quot;</span><span class="p">)</span>
+
+    <span class="c"># CSW specific properties </span>
+    <span class="n">wkt_geometry</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">csw_typename</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&quot;csw:Record&quot;</span><span class="p">)</span>
+    <span class="n">csw_schema</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&quot;http://www.opengis.net/cat/csw/2.0.2&quot;</span><span class="p">)</span>
+    <span class="n">csw_mdsource</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&quot;local&quot;</span><span class="p">)</span>
+    <span class="n">csw_xml</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">csw_anytext</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="c"># No longer used fields</span>
+    <span class="n">release_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                    <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;last_updated&#39;</span><span class="p">],</span>
+                                    <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">time_period</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">update_frequency</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                        <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;update_frequency&#39;</span><span class="p">],</span>
+                                        <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">ordering</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;-last_updated&quot;</span><span class="p">,</span> <span class="p">)</span>
+    
+<div class="viewcode-block" id="Resource.get_distinct_url_types"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.get_distinct_url_types">[docs]</a>    <span class="k">def</span> <span class="nf">get_distinct_url_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">types</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_set</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">url</span><span class="o">.</span><span class="n">url_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+                <span class="n">types</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">url_type</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">types</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">attrgetter</span><span class="p">(</span><span class="s">&#39;url_type&#39;</span><span class="p">))</span>
+    </div>
+<div class="viewcode-block" id="Resource.get_grouped_urls"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.get_grouped_urls">[docs]</a>    <span class="k">def</span> <span class="nf">get_grouped_urls</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">urls</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">utype</span> <span class="ow">in</span> <span class="n">UrlType</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">urls</span><span class="p">[</span><span class="n">utype</span><span class="o">.</span><span class="n">url_type</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_set</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">url_type</span><span class="o">=</span><span class="n">utype</span><span class="p">)</span>            
+        <span class="k">return</span> <span class="n">urls</span>
+    </div>
+<div class="viewcode-block" id="Resource.get_first_image"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.get_first_image">[docs]</a>    <span class="k">def</span> <span class="nf">get_first_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">urlimage_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">images</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    </div>
+<div class="viewcode-block" id="Resource.get_images"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.get_images">[docs]</a>    <span class="k">def</span> <span class="nf">get_images</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">urlimage_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">images</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="k">return</span> <span class="n">images</span>
+    </div>
+<div class="viewcode-block" id="Resource.get_absolute_url"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.get_absolute_url">[docs]</a>    <span class="k">def</span> <span class="nf">get_absolute_url</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">reverse</span><span class="p">(</span><span class="s">&#39;catalog_resource_detail&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;pk&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s">&#39;slug&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">slug</span><span class="p">})</span>
+</div>
+<div class="viewcode-block" id="Resource.get_rating"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.get_rating">[docs]</a>    <span class="k">def</span> <span class="nf">get_rating</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return instance raiting as an intiger&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rating</span><span class="o">.</span><span class="n">get_rating</span><span class="p">())</span>
+</div>
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="c"># CSW specific properties</span>
+    <span class="nd">@property</span> 
+<div class="viewcode-block" id="Resource.csw_identifier"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.csw_identifier">[docs]</a>    <span class="k">def</span> <span class="nf">csw_identifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;urn:x-odc:resource:</span><span class="si">%s</span><span class="s">::</span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="s">&quot;fix-me&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Resource.csw_type"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.csw_type">[docs]</a>    <span class="k">def</span> <span class="nf">csw_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data_types</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_types</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_types</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">data_types</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;data_type&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">None</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Resource.csw_crs"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.csw_crs">[docs]</a>    <span class="k">def</span> <span class="nf">csw_crs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">crs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coord_sys</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">crs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">&#39;name&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">None</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Resource.csw_links"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.csw_links">[docs]</a>    <span class="k">def</span> <span class="nf">csw_links</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_set</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">,</span><span class="si">%s</span><span class="s">,</span><span class="si">%s</span><span class="s">,</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">url</span><span class="o">.</span><span class="n">url_label</span><span class="p">,</span> <span class="n">url</span><span class="o">.</span><span class="n">url_type</span><span class="o">.</span><span class="n">url_type</span><span class="p">,</span> <span class="s">&#39;WWW:DOWNLOAD-1.0-http--download&#39;</span><span class="p">,</span> <span class="n">url</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+            <span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+        <span class="n">abs_url</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">gen_website_url</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_absolute_url</span><span class="p">())</span>
+        <span class="n">link</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">,</span><span class="si">%s</span><span class="s">,</span><span class="si">%s</span><span class="s">,</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;WWW:LINK-1.0-http--link&#39;</span><span class="p">,</span> <span class="n">abs_url</span><span class="p">)</span>
+        <span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s">&#39;^&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">links</span><span class="p">)</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Resource.csw_keywords"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.csw_keywords">[docs]</a>    <span class="k">def</span> <span class="nf">csw_keywords</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">keywords</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">keywords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">keyword</span><span class="p">[</span><span class="s">&#39;tag_name&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="s">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">keywords</span><span class="p">)</span>
+</div>
+    <span class="nd">@property</span>
+<div class="viewcode-block" id="Resource.csw_creator"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.csw_creator">[docs]</a>    <span class="k">def</span> <span class="nf">csw_creator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">creator</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">created_by</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">creator</span><span class="o">.</span><span class="n">first_name</span><span class="p">,</span> <span class="n">creator</span><span class="o">.</span><span class="n">last_name</span><span class="p">)</span>
+ </div>
+<div class="viewcode-block" id="Resource.gen_csw_xml"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.gen_csw_xml">[docs]</a>    <span class="k">def</span> <span class="nf">gen_csw_xml</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">nspath</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">&#39;{</span><span class="si">%s</span><span class="s">}</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">element</span><span class="p">)</span>
+
+        <span class="n">nsmap</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;csw&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.opengis.net/cat/csw/2.0.2&#39;</span><span class="p">,</span>
+            <span class="s">&#39;dc&#39;</span> <span class="p">:</span> <span class="s">&#39;http://purl.org/dc/elements/1.1/&#39;</span><span class="p">,</span>
+            <span class="s">&#39;dct&#39;</span><span class="p">:</span> <span class="s">&#39;http://purl.org/dc/terms/&#39;</span><span class="p">,</span>
+            <span class="s">&#39;ows&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.opengis.net/ows&#39;</span><span class="p">,</span>
+            <span class="s">&#39;xsi&#39;</span><span class="p">:</span> <span class="s">&#39;http://www.w3.org/2001/XMLSchema-instance&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="n">record</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;csw&#39;</span><span class="p">],</span> <span class="s">&#39;Record&#39;</span><span class="p">),</span> <span class="n">nsmap</span><span class="o">=</span><span class="n">nsmap</span><span class="p">)</span>
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dc&#39;</span><span class="p">],</span> <span class="s">&#39;identifier&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csw_identifier</span>
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dc&#39;</span><span class="p">],</span> <span class="s">&#39;title&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">csw_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dc&#39;</span><span class="p">],</span> <span class="s">&#39;type&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csw_type</span>
+
+        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dc&#39;</span><span class="p">],</span> <span class="s">&#39;subject&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">tag_name</span>
+
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dc&#39;</span><span class="p">],</span> <span class="s">&#39;format&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_formats</span><span class="p">)</span>
+
+        <span class="n">abs_url</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">gen_website_url</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_absolute_url</span><span class="p">())</span>
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dct&#39;</span><span class="p">],</span> <span class="s">&#39;references&#39;</span><span class="p">),</span> <span class="n">scheme</span><span class="o">=</span><span class="s">&#39;WWW:LINK-1.0-http--link&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">abs_url</span>
+
+        <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_set</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dct&#39;</span><span class="p">],</span> <span class="s">&#39;references&#39;</span><span class="p">),</span>
+                             <span class="n">scheme</span><span class="o">=</span><span class="s">&#39;WWW:DOWNLOAD-1.0-http--download&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">url</span>
+
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dct&#39;</span><span class="p">],</span> <span class="s">&#39;modified&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">last_updated</span><span class="p">)</span>
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dct&#39;</span><span class="p">],</span> <span class="s">&#39;abstract&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
+
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dc&#39;</span><span class="p">],</span> <span class="s">&#39;date&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">created</span><span class="p">)</span>
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dc&#39;</span><span class="p">],</span> <span class="s">&#39;creator&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csw_creator</span><span class="p">)</span>
+
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;dc&#39;</span><span class="p">],</span> <span class="s">&#39;coverage&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">area_of_interest</span>
+
+        <span class="n">geom</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wkt_geometry</span><span class="p">)</span>
+        <span class="n">bounds</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">envelope</span><span class="o">.</span><span class="n">bounds</span>
+        <span class="n">dimensions</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">envelope</span><span class="o">.</span><span class="n">_ndim</span><span class="p">)</span>
+
+        <span class="n">bbox</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;ows&#39;</span><span class="p">],</span> <span class="s">&#39;BoundingBox&#39;</span><span class="p">),</span> <span class="n">dimensions</span><span class="o">=</span><span class="n">dimensions</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">csw_crs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">bbox</span><span class="o">.</span><span class="n">attrib</span><span class="p">[</span><span class="s">&#39;crs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">csw_crs</span>
+
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;ows&#39;</span><span class="p">],</span> <span class="s">&#39;LowerCorner&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">etree</span><span class="o">.</span><span class="n">SubElement</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">nspath</span><span class="p">(</span><span class="n">nsmap</span><span class="p">[</span><span class="s">&#39;ows&#39;</span><span class="p">],</span> <span class="s">&#39;UpperCorner&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="Resource.gen_csw_anytext"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.gen_csw_anytext">[docs]</a>    <span class="k">def</span> <span class="nf">gen_csw_anytext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">xml</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">csw_xml</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">xml</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s">&#39;//text()&#39;</span><span class="p">)])</span>
+</div>
+<div class="viewcode-block" id="Resource.save"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Resource.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sets slug for resource.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">slug</span> <span class="o">=</span> <span class="n">slugify</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Resource</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="Url"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.Url">[docs]</a><span class="k">class</span> <span class="nc">Url</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">url_label</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">url_type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">UrlType</span><span class="p">)</span>
+    <span class="n">resource</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Resource</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s"> - </span><span class="si">%s</span><span class="s"> - </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">url_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="UrlImage"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.UrlImage">[docs]</a><span class="k">class</span> <span class="nc">UrlImage</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="UrlImage.get_image_path"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.UrlImage.get_image_path">[docs]</a>    <span class="k">def</span> <span class="nf">get_image_path</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="n">fsplit</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;.&#39;</span><span class="p">)</span>
+        <span class="n">extra</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="nb">id</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">id</span>
+        <span class="n">test_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">MEDIA_ROOT</span><span class="p">,</span> <span class="s">&#39;url_images&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="n">fsplit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">extra</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">fsplit</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">while</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">test_path</span><span class="p">):</span>
+           <span class="n">extra</span> <span class="o">+=</span> <span class="mi">1</span>
+           <span class="n">test_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">MEDIA_ROOT</span><span class="p">,</span> <span class="s">&#39;url_images&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">instance</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> <span class="n">fsplit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">extra</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span>  <span class="n">fsplit</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">&#39;url_images&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">),</span> <span class="n">fsplit</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s">&#39;_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">extra</span><span class="p">)</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="n">fsplit</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">path</span>
+        </div>
+    <span class="n">resource</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Resource</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ImageField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="n">get_image_path</span><span class="p">,</span>
+        <span class="n">help_text</span><span class="o">=</span><span class="s">&quot;The site will resize this master image as necessary for page display&quot;</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">help_text</span><span class="o">=</span><span class="s">&quot;For image alt tags&quot;</span><span class="p">,</span>
+        <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+        <span class="n">help_text</span><span class="o">=</span><span class="s">&quot;Source location or person who created the image&quot;</span><span class="p">)</span>
+    <span class="n">source_url</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">objects</span> <span class="o">=</span> <span class="n">ImageManager</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="gen_website_url"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.models.gen_website_url">[docs]</a><span class="k">def</span> <span class="nf">gen_website_url</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">&quot;fix-me&quot;</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

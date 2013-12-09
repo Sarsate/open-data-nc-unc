@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.catalog.tests.test_views &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="../../../../index.html" />
+    <link rel="up" title="Module code" href="../../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for opendata.catalog.tests.test_views</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">django.core.urlresolvers</span> <span class="kn">import</span> <span class="n">reverse</span>
+
+<span class="kn">from</span> <span class="nn">.factories</span> <span class="kn">import</span> <span class="n">ResourceFactory</span><span class="p">,</span> <span class="n">DepartmentFactory</span>
+<span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">Resource</span>
+<span class="kn">from</span> <span class="nn">opendata.tests.base</span> <span class="kn">import</span> <span class="n">ViewTestMixin</span><span class="p">,</span> <span class="n">WebsiteTestBase</span><span class="p">,</span> <span class="n">BasicGetTest</span>
+<span class="kn">from</span> <span class="nn">opendata.tests.factories</span> <span class="kn">import</span> <span class="n">UserFactory</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;ResourceCreateTest&quot;</span><span class="p">,</span> <span class="s">&quot;ResourceDetailTest&quot;</span><span class="p">,</span> <span class="s">&quot;ResourceSearchView&quot;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="ResourceCreateTest"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.test_views.ResourceCreateTest">[docs]</a><span class="k">class</span> <span class="nc">ResourceCreateTest</span><span class="p">(</span><span class="n">ViewTestMixin</span><span class="p">,</span> <span class="n">WebsiteTestBase</span><span class="p">):</span>
+    <span class="n">url_name</span> <span class="o">=</span> <span class="s">&quot;resource_create&quot;</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&quot;catalog/resource_form.html&quot;</span>
+
+<div class="viewcode-block" id="ResourceCreateTest.setUp"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.test_views.ResourceCreateTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">UserFactory</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_valid_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url_name</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ResourceCreateTest.get_valid_data"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.test_views.ResourceCreateTest.get_valid_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_valid_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">ResourceFactory</span><span class="o">.</span><span class="n">attributes</span><span class="p">()</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">({</span>
+            <span class="s">&quot;created&quot;</span><span class="p">:</span> <span class="s">&quot;2013-02-01&quot;</span><span class="p">,</span>
+            <span class="s">&quot;last_updated_by&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s">&quot;created_by&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s">&quot;csw_typename&quot;</span><span class="p">:</span> <span class="s">&quot;csw:Record&quot;</span><span class="p">,</span>
+            <span class="s">&quot;short_description&quot;</span><span class="p">:</span> <span class="s">&quot;resource&quot;</span><span class="p">,</span>
+            <span class="s">&quot;department&quot;</span><span class="p">:</span> <span class="n">DepartmentFactory</span><span class="o">.</span><span class="n">create</span><span class="p">()</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s">&#39;agency_type&#39;</span><span class="p">:</span> <span class="s">&#39;state&#39;</span><span class="p">,</span>
+            <span class="s">&quot;slug&quot;</span><span class="p">:</span> <span class="s">&quot;this-field-required&quot;</span><span class="p">,</span>
+            <span class="s">&quot;csw_schema&quot;</span><span class="p">:</span> <span class="s">&quot;http://www.opengis.net/cat/csw/2.0.2&quot;</span><span class="p">,</span>
+            <span class="s">&quot;csw_mdsource&quot;</span><span class="p">:</span> <span class="s">&quot;local&quot;</span><span class="p">,</span>
+            <span class="s">&quot;usage&quot;</span><span class="p">:</span> <span class="s">&quot;will be used like this&quot;</span><span class="p">,</span>
+            <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;Resource&#39;s description&quot;</span><span class="p">,</span>
+
+        <span class="p">})</span>
+        <span class="k">return</span> <span class="n">data</span>
+</div>
+<div class="viewcode-block" id="ResourceCreateTest.test_get_unathenticated"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.test_views.ResourceCreateTest.test_get_unathenticated">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_unathenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Only registered users can view the add suggestion page.&quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRedirectsToLogin</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ResourceCreateTest.test_get_authenticated"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.test_views.ResourceCreateTest.test_get_authenticated">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_authenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Authenticated users can view add resource page.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login_user</span><span class="p">(</span><span class="n">UserFactory</span><span class="o">.</span><span class="n">create</span><span class="p">())</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">failUnless</span><span class="p">(</span><span class="s">&#39;form&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">context</span><span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ResourceCreateTest.test_post_authenticated"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.test_views.ResourceCreateTest.test_post_authenticated">[docs]</a>    <span class="k">def</span> <span class="nf">test_post_authenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">login_user</span><span class="p">(</span><span class="n">UserFactory</span><span class="o">.</span><span class="n">create</span><span class="p">())</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="c"># import pdb; pdb.set_trace()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span>
+        <span class="n">suggestions</span> <span class="o">=</span> <span class="n">Resource</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">suggestions</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+
+</div></div>
+<div class="viewcode-block" id="ResourceDetailTest"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.test_views.ResourceDetailTest">[docs]</a><span class="k">class</span> <span class="nc">ResourceDetailTest</span><span class="p">(</span><span class="n">ViewTestMixin</span><span class="p">,</span> <span class="n">WebsiteTestBase</span><span class="p">):</span>
+
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&quot;catalog/resource_detail.html&quot;</span>
+
+<div class="viewcode-block" id="ResourceDetailTest.setUp"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.test_views.ResourceDetailTest.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resource</span> <span class="o">=</span> <span class="n">ResourceFactory</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span>
+            <span class="s">&quot;catalog_resource_detail&quot;</span><span class="p">,</span>
+            <span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s">&quot;slug&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">resource</span><span class="p">,</span> <span class="s">&quot;pk&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">resource</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+        <span class="p">)</span>
+</div>
+<div class="viewcode-block" id="ResourceDetailTest.test_get_unauthenticated"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.test_views.ResourceDetailTest.test_get_unauthenticated">[docs]</a>    <span class="k">def</span> <span class="nf">test_get_unauthenticated</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Authenticated users can view resources.&quot;&quot;&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEquals</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTemplateUsed</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">template_name</span><span class="p">)</span>
+
+</div></div>
+<div class="viewcode-block" id="ResourceSearchView"><a class="viewcode-back" href="../../../../opendata.catalog.tests.html#opendata.catalog.tests.test_views.ResourceSearchView">[docs]</a><span class="k">class</span> <span class="nc">ResourceSearchView</span><span class="p">(</span><span class="n">BasicGetTest</span><span class="p">):</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s">&quot;search/search.html&quot;</span>
+    <span class="n">url_name</span> <span class="o">=</span> <span class="s">&quot;catalog_search&quot;</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

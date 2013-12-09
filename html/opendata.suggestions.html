@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.suggestions package &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="index.html" />
+    <link rel="up" title="opendata package" href="opendata.html" />
+    <link rel="next" title="opendata.suggestions.migrations package" href="opendata.suggestions.migrations.html" />
+    <link rel="prev" title="opendata.settings package" href="opendata.settings.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.suggestions.migrations.html" title="opendata.suggestions.migrations package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="opendata.settings.html" title="opendata.settings package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" accesskey="U">opendata package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="opendata-suggestions-package">
+<h1>opendata.suggestions package<a class="headerlink" href="#opendata-suggestions-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="opendata.suggestions.migrations.html">opendata.suggestions.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opendata.suggestions.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.suggestions.migrations.html#module-opendata.suggestions.migrations.0001_initial">opendata.suggestions.migrations.0001_initial module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.suggestions.migrations.html#module-opendata.suggestions.migrations.0002_auto__add_field_suggestion_other_category">opendata.suggestions.migrations.0002_auto__add_field_suggestion_other_category module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.suggestions.migrations.html#module-opendata.suggestions.migrations.0003_auto__del_field_suggestion_data_format">opendata.suggestions.migrations.0003_auto__del_field_suggestion_data_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.suggestions.migrations.html#module-opendata.suggestions.migrations.0004_auto__add_field_suggestion_data_format">opendata.suggestions.migrations.0004_auto__add_field_suggestion_data_format module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.suggestions.migrations.html#module-opendata.suggestions.migrations.0005_auto__del_field_suggestion_update_frequency">opendata.suggestions.migrations.0005_auto__del_field_suggestion_update_frequency module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.suggestions.migrations.html#module-opendata.suggestions.migrations.0006_auto__add_field_suggestion_updates">opendata.suggestions.migrations.0006_auto__add_field_suggestion_updates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.suggestions.migrations.html#module-opendata.suggestions.migrations">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opendata.suggestions.tests.html">opendata.suggestions.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opendata.suggestions.tests.html#module-opendata.suggestions.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-opendata.suggestions.admin">
+<span id="opendata-suggestions-admin-module"></span><h2>opendata.suggestions.admin module<a class="headerlink" href="#module-opendata.suggestions.admin" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.suggestions.admin.SuggestionAdmin">
+<em class="property">class </em><tt class="descclassname">opendata.suggestions.admin.</tt><tt class="descname">SuggestionAdmin</tt><big>(</big><em>model</em>, <em>admin_site</em><big>)</big><a class="reference internal" href="_modules/opendata/suggestions/admin.html#SuggestionAdmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.suggestions.admin.SuggestionAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.admin.options.ModelAdmin</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.suggestions.admin.SuggestionAdmin.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.suggestions.admin.SuggestionAdmin.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.suggestions.forms">
+<span id="opendata-suggestions-forms-module"></span><h2>opendata.suggestions.forms module<a class="headerlink" href="#module-opendata.suggestions.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.suggestions.forms.SuggestUrlForm">
+<em class="property">class </em><tt class="descclassname">opendata.suggestions.forms.</tt><tt class="descname">SuggestUrlForm</tt><big>(</big><em>data=None</em>, <em>files=None</em>, <em>auto_id=u'id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.util.ErrorList'&gt;</em>, <em>label_suffix=u':'</em>, <em>empty_permitted=False</em><big>)</big><a class="reference internal" href="_modules/opendata/suggestions/forms.html#SuggestUrlForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.suggestions.forms.SuggestUrlForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.forms.forms.Form</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.suggestions.forms.SuggestUrlForm.base_fields">
+<tt class="descname">base_fields</tt><em class="property"> = {'url': &lt;django.forms.fields.URLField object at 0x5317150&gt;}</em><a class="headerlink" href="#opendata.suggestions.forms.SuggestUrlForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.forms.SuggestUrlForm.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.suggestions.forms.SuggestUrlForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.suggestions.forms.SuggestionCreateForm">
+<em class="property">class </em><tt class="descclassname">opendata.suggestions.forms.</tt><tt class="descname">SuggestionCreateForm</tt><big>(</big><em>data=None</em>, <em>files=None</em>, <em>auto_id=u'id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.util.ErrorList'&gt;</em>, <em>label_suffix=u':'</em>, <em>empty_permitted=False</em>, <em>instance=None</em><big>)</big><a class="reference internal" href="_modules/opendata/suggestions/forms.html#SuggestionCreateForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.suggestions.forms.SuggestionCreateForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.forms.models.ModelForm</span></tt></p>
+<dl class="class">
+<dt id="opendata.suggestions.forms.SuggestionCreateForm.Media">
+<em class="property">class </em><tt class="descname">Media</tt><a class="reference internal" href="_modules/opendata/suggestions/forms.html#SuggestionCreateForm.Media"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.suggestions.forms.SuggestionCreateForm.Media" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="opendata.suggestions.forms.SuggestionCreateForm.Media.js">
+<tt class="descname">js</tt><em class="property"> = ('suggestions/js/form.js',)</em><a class="headerlink" href="#opendata.suggestions.forms.SuggestionCreateForm.Media.js" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.suggestions.forms.SuggestionCreateForm.Meta">
+<em class="property">class </em><tt class="descclassname">SuggestionCreateForm.</tt><tt class="descname">Meta</tt><a class="reference internal" href="_modules/opendata/suggestions/forms.html#SuggestionCreateForm.Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.suggestions.forms.SuggestionCreateForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="opendata.suggestions.forms.SuggestionCreateForm.Meta.model">
+<tt class="descname">model</tt><a class="headerlink" href="#opendata.suggestions.forms.SuggestionCreateForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Suggestion</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.forms.SuggestionCreateForm.base_fields">
+<tt class="descclassname">SuggestionCreateForm.</tt><tt class="descname">base_fields</tt><em class="property"> = {'title': &lt;django.forms.fields.CharField object at 0x5317490&gt;, 'short_description': &lt;django.forms.fields.CharField object at 0x5317550&gt;, 'description': &lt;django.forms.fields.CharField object at 0x5317610&gt;, 'url': &lt;django.forms.fields.CharField object at 0x5317690&gt;, 'data_format': &lt;django.forms.models.ModelChoiceField object at 0x5317910&gt;, 'other_format': &lt;django.forms.fields.CharField object at 0x53178d0&gt;, 'agency_name': &lt;django.forms.fields.CharField object at 0x53179d0&gt;, 'agency_division': &lt;django.forms.fields.CharField object at 0x5317a90&gt;, 'agency_type': &lt;django.forms.fields.TypedChoiceField object at 0x5317b50&gt;, 'city': &lt;selectable.forms.fields.AutoCompleteSelectField object at 0x53173d0&gt;, 'county': &lt;selectable.forms.fields.AutoCompleteSelectField object at 0x53172d0&gt;, 'last_updated': &lt;django.forms.fields.DateField object at 0x5317f10&gt;, 'updates': &lt;django.forms.models.ModelChoiceField object at 0x531b1d0&gt;, 'categories': &lt;django.forms.models.ModelMultipleChoiceField object at 0x531b390&gt;, 'other_category': &lt;django.forms.fields.CharField object at 0x531b3d0&gt;, 'keywords': &lt;django.forms.fields.CharField object at 0x531b4d0&gt;, 'contact_name': &lt;django.forms.fields.CharField object at 0x531b590&gt;, 'phone_number': &lt;django.forms.fields.CharField object at 0x531b650&gt;, 'street_address': &lt;django.forms.fields.CharField object at 0x531b750&gt;, 'contact_city': &lt;django.forms.fields.CharField object at 0x531b810&gt;, 'zipcode': &lt;django.forms.fields.CharField object at 0x531b8d0&gt;, 'email_address': &lt;django.forms.fields.CharField object at 0x531b990&gt;}</em><a class="headerlink" href="#opendata.suggestions.forms.SuggestionCreateForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.forms.SuggestionCreateForm.declared_fields">
+<tt class="descclassname">SuggestionCreateForm.</tt><tt class="descname">declared_fields</tt><em class="property"> = {'county': &lt;selectable.forms.fields.AutoCompleteSelectField object at 0x53172d0&gt;, 'city': &lt;selectable.forms.fields.AutoCompleteSelectField object at 0x53173d0&gt;}</em><a class="headerlink" href="#opendata.suggestions.forms.SuggestionCreateForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.forms.SuggestionCreateForm.media">
+<tt class="descclassname">SuggestionCreateForm.</tt><tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.suggestions.forms.SuggestionCreateForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.suggestions.models">
+<span id="opendata-suggestions-models-module"></span><h2>opendata.suggestions.models module<a class="headerlink" href="#module-opendata.suggestions.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.suggestions.models.Suggestion">
+<em class="property">class </em><tt class="descclassname">opendata.suggestions.models.</tt><tt class="descname">Suggestion</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/suggestions/models.html#Suggestion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.suggestions.models.Suggestion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></tt></p>
+<p>Suggestion(id, date, date_last_modified, title, short_description, description, url, data_format_id, other_format, agency_name, agency_division, agency_type, city_id, county_id, last_updated, updates_id, other_category, keywords, contact_name, phone_number, street_address, contact_city, zipcode, email_address)</p>
+<dl class="attribute">
+<dt id="opendata.suggestions.models.Suggestion.AGENCY_TYPES">
+<tt class="descname">AGENCY_TYPES</tt><em class="property"> = (('state', 'Statewide'), ('county', 'County Agency'), ('city', 'City/town Agency'))</em><a class="headerlink" href="#opendata.suggestions.models.Suggestion.AGENCY_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="opendata.suggestions.models.Suggestion.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.suggestions.models.Suggestion.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.models.Suggestion.FREQUENCY_TYPES">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">FREQUENCY_TYPES</tt><em class="property"> = (('daily', 'At least once a day'), ('weekly', 'At least once a week'), ('monthly', 'At least once a month'), ('yearly', 'At least once a year'), ('never', &quot;It is not updated after it's created.&quot;))</em><a class="headerlink" href="#opendata.suggestions.models.Suggestion.FREQUENCY_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="opendata.suggestions.models.Suggestion.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">Suggestion.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.suggestions.models.Suggestion.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.models.Suggestion.categories">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">categories</tt><em class="property"> None</em><a class="headerlink" href="#opendata.suggestions.models.Suggestion.categories" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.models.Suggestion.city">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">city</tt><em class="property"> None</em><a class="headerlink" href="#opendata.suggestions.models.Suggestion.city" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.models.Suggestion.county">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">county</tt><em class="property"> None</em><a class="headerlink" href="#opendata.suggestions.models.Suggestion.county" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.models.Suggestion.data_format">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">data_format</tt><em class="property"> None</em><a class="headerlink" href="#opendata.suggestions.models.Suggestion.data_format" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.suggestions.models.Suggestion.get_agency_type_display">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">get_agency_type_display</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.suggestions.models.Suggestion.get_agency_type_display" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.suggestions.models.Suggestion.get_next_by_date">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">get_next_by_date</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.suggestions.models.Suggestion.get_next_by_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.suggestions.models.Suggestion.get_next_by_date_last_modified">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">get_next_by_date_last_modified</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.suggestions.models.Suggestion.get_next_by_date_last_modified" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.suggestions.models.Suggestion.get_previous_by_date">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">get_previous_by_date</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.suggestions.models.Suggestion.get_previous_by_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.suggestions.models.Suggestion.get_previous_by_date_last_modified">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">get_previous_by_date_last_modified</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.suggestions.models.Suggestion.get_previous_by_date_last_modified" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.models.Suggestion.objects">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4da33d0&gt;</em><a class="headerlink" href="#opendata.suggestions.models.Suggestion.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.models.Suggestion.updates">
+<tt class="descclassname">Suggestion.</tt><tt class="descname">updates</tt><em class="property"> None</em><a class="headerlink" href="#opendata.suggestions.models.Suggestion.updates" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.suggestions.urls">
+<span id="opendata-suggestions-urls-module"></span><h2>opendata.suggestions.urls module<a class="headerlink" href="#module-opendata.suggestions.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-opendata.suggestions.views">
+<span id="opendata-suggestions-views-module"></span><h2>opendata.suggestions.views module<a class="headerlink" href="#module-opendata.suggestions.views" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.suggestions.views.SuggestCreateView">
+<em class="property">class </em><tt class="descclassname">opendata.suggestions.views.</tt><tt class="descname">SuggestCreateView</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/suggestions/views.html#SuggestCreateView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.suggestions.views.SuggestCreateView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.views.generic.edit.CreateView</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.suggestions.views.SuggestCreateView.form_class">
+<tt class="descname">form_class</tt><a class="headerlink" href="#opendata.suggestions.views.SuggestCreateView.form_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">SuggestionCreateForm</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.views.SuggestCreateView.model">
+<tt class="descname">model</tt><a class="headerlink" href="#opendata.suggestions.views.SuggestCreateView.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Suggestion</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.views.SuggestCreateView.success_url">
+<tt class="descname">success_url</tt><em class="property"> = &lt;django.utils.functional.__proxy__ object at 0x5310f90&gt;</em><a class="headerlink" href="#opendata.suggestions.views.SuggestCreateView.success_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.suggestions.views.SuggestPageView">
+<em class="property">class </em><tt class="descclassname">opendata.suggestions.views.</tt><tt class="descname">SuggestPageView</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/suggestions/views.html#SuggestPageView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.suggestions.views.SuggestPageView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.views.generic.base.TemplateView</span></tt></p>
+<dl class="method">
+<dt id="opendata.suggestions.views.SuggestPageView.get_context_data">
+<tt class="descname">get_context_data</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/suggestions/views.html#SuggestPageView.get_context_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.suggestions.views.SuggestPageView.get_context_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.suggestions.views.SuggestPageView.template_name">
+<tt class="descname">template_name</tt><em class="property"> = 'suggestions/suggest.html'</em><a class="headerlink" href="#opendata.suggestions.views.SuggestPageView.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.suggestions">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-opendata.suggestions" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">opendata.suggestions package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-opendata.suggestions.admin">opendata.suggestions.admin module</a></li>
+<li><a class="reference internal" href="#module-opendata.suggestions.forms">opendata.suggestions.forms module</a></li>
+<li><a class="reference internal" href="#module-opendata.suggestions.models">opendata.suggestions.models module</a></li>
+<li><a class="reference internal" href="#module-opendata.suggestions.urls">opendata.suggestions.urls module</a></li>
+<li><a class="reference internal" href="#module-opendata.suggestions.views">opendata.suggestions.views module</a></li>
+<li><a class="reference internal" href="#module-opendata.suggestions">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="opendata.settings.html"
+                        title="previous chapter">opendata.settings package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="opendata.suggestions.migrations.html"
+                        title="next chapter">opendata.suggestions.migrations package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/opendata.suggestions.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.suggestions.migrations.html" title="opendata.suggestions.migrations package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="opendata.settings.html" title="opendata.settings package"
+             >previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" >opendata package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

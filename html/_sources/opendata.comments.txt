@@ -1,0 +1,38 @@
+opendata.comments package
+=========================
+
+Submodules
+----------
+
+opendata.comments.forms module
+------------------------------
+
+.. automodule:: opendata.comments.forms
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.comments.models module
+-------------------------------
+
+.. automodule:: opendata.comments.models
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.comments.widgets module
+--------------------------------
+
+.. automodule:: opendata.comments.widgets
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.comments
+    :members:
+    :undoc-members:
+    :show-inheritance:

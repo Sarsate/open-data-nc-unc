@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.requests.tests package &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="index.html" />
+    <link rel="up" title="opendata.requests package" href="opendata.requests.html" />
+    <link rel="next" title="opendata.search package" href="opendata.search.html" />
+    <link rel="prev" title="opendata.requests.templatetags package" href="opendata.requests.templatetags.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.search.html" title="opendata.search package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="opendata.requests.templatetags.html" title="opendata.requests.templatetags package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" >opendata package</a> &raquo;</li>
+          <li><a href="opendata.requests.html" accesskey="U">opendata.requests package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="opendata-requests-tests-package">
+<h1>opendata.requests.tests package<a class="headerlink" href="#opendata-requests-tests-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-opendata.requests.tests.factories">
+<span id="opendata-requests-tests-factories-module"></span><h2>opendata.requests.tests.factories module<a class="headerlink" href="#module-opendata.requests.tests.factories" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.requests.tests.factories.RequestFactory">
+<em class="property">class </em><tt class="descclassname">opendata.requests.tests.factories.</tt><tt class="descname">RequestFactory</tt><a class="reference internal" href="_modules/opendata/requests/tests/factories.html#RequestFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.factories.RequestFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">factory.django.DjangoModelFactory</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.requests.tests.factories.RequestFactory.FACTORY_FOR">
+<tt class="descname">FACTORY_FOR</tt><a class="headerlink" href="#opendata.requests.tests.factories.RequestFactory.FACTORY_FOR" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">Request</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.requests.tests.factories.UserFactory">
+<em class="property">class </em><tt class="descclassname">opendata.requests.tests.factories.</tt><tt class="descname">UserFactory</tt><a class="reference internal" href="_modules/opendata/requests/tests/factories.html#UserFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.factories.UserFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">factory.django.DjangoModelFactory</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.requests.tests.factories.UserFactory.FACTORY_FOR">
+<tt class="descname">FACTORY_FOR</tt><a class="headerlink" href="#opendata.requests.tests.factories.UserFactory.FACTORY_FOR" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">User</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.requests.tests.test_views">
+<span id="opendata-requests-tests-test-views-module"></span><h2>opendata.requests.tests.test_views module<a class="headerlink" href="#module-opendata.requests.tests.test_views" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.requests.tests.test_views.ListRequestViewTest">
+<em class="property">class </em><tt class="descclassname">opendata.requests.tests.test_views.</tt><tt class="descname">ListRequestViewTest</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#ListRequestViewTest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.ListRequestViewTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.test.testcases.TestCase</span></tt></p>
+<p>Tests for the list_suggestions view</p>
+<dl class="method">
+<dt id="opendata.requests.tests.test_views.ListRequestViewTest.setUp">
+<tt class="descname">setUp</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#ListRequestViewTest.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.ListRequestViewTest.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_views.ListRequestViewTest.test_get_list_page">
+<tt class="descname">test_get_list_page</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#ListRequestViewTest.test_get_list_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.ListRequestViewTest.test_get_list_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests that landing on suggestions page shows all avaiable
+suggestions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_views.ListRequestViewTest.test_get_search_terms">
+<tt class="descname">test_get_search_terms</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#ListRequestViewTest.test_get_search_terms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.ListRequestViewTest.test_get_search_terms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_views.ListRequestViewTest.test_post">
+<tt class="descname">test_post</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#ListRequestViewTest.test_post"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.ListRequestViewTest.test_post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests that accessing the page with a post request returns a list of
+all suggestions and the search form has no data binded</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.requests.tests.test_views.AddRequestViewTest">
+<em class="property">class </em><tt class="descclassname">opendata.requests.tests.test_views.</tt><tt class="descname">AddRequestViewTest</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#AddRequestViewTest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.AddRequestViewTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="opendata.tests.html#opendata.tests.base.ViewTestMixin" title="opendata.tests.base.ViewTestMixin"><tt class="xref py py-class docutils literal"><span class="pre">opendata.tests.base.ViewTestMixin</span></tt></a>, <a class="reference internal" href="opendata.tests.html#opendata.tests.base.WebsiteTestBase" title="opendata.tests.base.WebsiteTestBase"><tt class="xref py py-class docutils literal"><span class="pre">opendata.tests.base.WebsiteTestBase</span></tt></a></p>
+<p>Test for add_suggestion view. Only authenticated users should be able to
+add suggestions.</p>
+<dl class="method">
+<dt id="opendata.requests.tests.test_views.AddRequestViewTest.get_valid_data">
+<tt class="descname">get_valid_data</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#AddRequestViewTest.get_valid_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.AddRequestViewTest.get_valid_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_views.AddRequestViewTest.setUp">
+<tt class="descname">setUp</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#AddRequestViewTest.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.AddRequestViewTest.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_views.AddRequestViewTest.tearDown">
+<tt class="descname">tearDown</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#AddRequestViewTest.tearDown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.AddRequestViewTest.tearDown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.requests.tests.test_views.AddRequestViewTest.template_name">
+<tt class="descname">template_name</tt><em class="property"> = 'requests/create_edit.html'</em><a class="headerlink" href="#opendata.requests.tests.test_views.AddRequestViewTest.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_views.AddRequestViewTest.test_get_authenticated">
+<tt class="descname">test_get_authenticated</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#AddRequestViewTest.test_get_authenticated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.AddRequestViewTest.test_get_authenticated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authenticated users can view add suggestion page.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_views.AddRequestViewTest.test_get_unauthenticated">
+<tt class="descname">test_get_unauthenticated</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#AddRequestViewTest.test_get_unauthenticated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.AddRequestViewTest.test_get_unauthenticated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only registered users can view the add suggestion page.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_views.AddRequestViewTest.test_post_authenticated">
+<tt class="descname">test_post_authenticated</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_views.html#AddRequestViewTest.test_post_authenticated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_views.AddRequestViewTest.test_post_authenticated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authenticated users can add suggestions.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.requests.tests.test_voting">
+<span id="opendata-requests-tests-test-voting-module"></span><h2>opendata.requests.tests.test_voting module<a class="headerlink" href="#module-opendata.requests.tests.test_voting" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.requests.tests.test_voting.MyTest">
+<em class="property">class </em><tt class="descclassname">opendata.requests.tests.test_voting.</tt><tt class="descname">MyTest</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_voting.html#MyTest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_voting.MyTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.test.testcases.TestCase</span></tt></p>
+<dl class="method">
+<dt id="opendata.requests.tests.test_voting.MyTest.test_list">
+<tt class="descname">test_list</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_voting.html#MyTest.test_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_voting.MyTest.test_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Listing view should render and include created suggestions</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_voting.MyTest.test_remove_invalid_vote">
+<tt class="descname">test_remove_invalid_vote</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_voting.html#MyTest.test_remove_invalid_vote"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_voting.MyTest.test_remove_invalid_vote" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removing non-existing vote shouldn&#8217;t raise an error</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_voting.MyTest.test_remove_vote_get">
+<tt class="descname">test_remove_vote_get</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_voting.html#MyTest.test_remove_vote_get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_voting.MyTest.test_remove_vote_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>HTTP GET is not allowed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_voting.MyTest.test_remove_vote_login">
+<tt class="descname">test_remove_vote_login</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_voting.html#MyTest.test_remove_vote_login"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_voting.MyTest.test_remove_vote_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Login is required to access the remove vote view</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_voting.MyTest.test_remove_vote_post">
+<tt class="descname">test_remove_vote_post</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_voting.html#MyTest.test_remove_vote_post"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_voting.MyTest.test_remove_vote_post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Successful POST should remove vote and redirect</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_voting.MyTest.test_remove_vote_post_bad_id">
+<tt class="descname">test_remove_vote_post_bad_id</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_voting.html#MyTest.test_remove_vote_post_bad_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_voting.MyTest.test_remove_vote_post_bad_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid suggestion ID should raise 404</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_voting.MyTest.test_vote_get">
+<tt class="descname">test_vote_get</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_voting.html#MyTest.test_vote_get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_voting.MyTest.test_vote_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>HTTP GET is not allowed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_voting.MyTest.test_vote_login">
+<tt class="descname">test_vote_login</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_voting.html#MyTest.test_vote_login"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_voting.MyTest.test_vote_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Login is required to access the vote view</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_voting.MyTest.test_vote_post">
+<tt class="descname">test_vote_post</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_voting.html#MyTest.test_vote_post"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_voting.MyTest.test_vote_post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Successful POST should vote and redirect</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.requests.tests.test_voting.MyTest.test_vote_post_bad_id">
+<tt class="descname">test_vote_post_bad_id</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/requests/tests/test_voting.html#MyTest.test_vote_post_bad_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.requests.tests.test_voting.MyTest.test_vote_post_bad_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid suggestion ID should raise 404</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.requests.tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-opendata.requests.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">opendata.requests.tests package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-opendata.requests.tests.factories">opendata.requests.tests.factories module</a></li>
+<li><a class="reference internal" href="#module-opendata.requests.tests.test_views">opendata.requests.tests.test_views module</a></li>
+<li><a class="reference internal" href="#module-opendata.requests.tests.test_voting">opendata.requests.tests.test_voting module</a></li>
+<li><a class="reference internal" href="#module-opendata.requests.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="opendata.requests.templatetags.html"
+                        title="previous chapter">opendata.requests.templatetags package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="opendata.search.html"
+                        title="next chapter">opendata.search package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/opendata.requests.tests.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.search.html" title="opendata.search package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="opendata.requests.templatetags.html" title="opendata.requests.templatetags package"
+             >previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" >opendata package</a> &raquo;</li>
+          <li><a href="opendata.requests.html" >opendata.requests package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+opendata.search package
+=======================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    opendata.search.templatetags
+
+Submodules
+----------
+
+opendata.search.forms module
+----------------------------
+
+.. automodule:: opendata.search.forms
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.search.index_processors module
+---------------------------------------
+
+.. automodule:: opendata.search.index_processors
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.search.views module
+----------------------------
+
+.. automodule:: opendata.search.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.search
+    :members:
+    :undoc-members:
+    :show-inheritance:

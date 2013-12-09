@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.catalog.forms &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for opendata.catalog.forms</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">django.contrib.admin</span> <span class="kn">import</span> <span class="n">widgets</span>
+<span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<span class="kn">from</span> <span class="nn">django.contrib.admin</span> <span class="kn">import</span> <span class="n">site</span>
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Category</span><span class="p">,</span> <span class="n">DataType</span><span class="p">,</span> <span class="n">Department</span><span class="p">,</span> <span class="n">Division</span><span class="p">,</span> <span class="n">Resource</span><span class="p">,</span>
+                     <span class="n">UpdateFrequency</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">opendata.fields_info</span> <span class="kn">import</span> <span class="n">FIELDS</span><span class="p">,</span> <span class="n">HELP</span>
+
+
+<div class="viewcode-block" id="ResourceAdminForm"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.forms.ResourceAdminForm">[docs]</a><span class="k">class</span> <span class="nc">ResourceAdminForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="n">division</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelChoiceField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;agency_division&#39;</span><span class="p">],</span>
+                                      <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">ForeignKeyRawIdWidget</span><span class="p">(</span>
+                                          <span class="n">Resource</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_field</span><span class="p">(</span><span class="s">&#39;division&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rel</span><span class="p">,</span>
+                                          <span class="n">site</span>
+                                      <span class="p">),</span>
+                                      <span class="n">queryset</span><span class="o">=</span><span class="n">Division</span><span class="o">.</span><span class="n">objects</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">categories</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelMultipleChoiceField</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span><span class="n">Category</span><span class="o">.</span><span class="n">objects</span><span class="p">,</span>
+                                        <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FilteredSelectMultiple</span><span class="p">(</span>
+                                            <span class="s">&quot;categories&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+                                        <span class="p">)</span>
+    <span class="n">data_types</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelMultipleChoiceField</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span><span class="n">DataType</span><span class="o">.</span><span class="n">objects</span><span class="p">,</span>
+                                        <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FilteredSelectMultiple</span><span class="p">(</span>
+                                            <span class="s">&quot;Data types&quot;</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span>
+                                        <span class="p">)</span>
+    <span class="n">department</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelChoiceField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;agency_name&#39;</span><span class="p">],</span>
+                                        <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">ForeignKeyRawIdWidget</span><span class="p">(</span>
+                                            <span class="n">Resource</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get_field</span><span class="p">(</span><span class="s">&#39;department&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rel</span><span class="p">,</span>
+                                            <span class="n">site</span>
+                                        <span class="p">),</span>
+                                        <span class="n">queryset</span><span class="o">=</span><span class="n">Department</span><span class="o">.</span><span class="n">objects</span><span class="p">)</span>
+    <span class="n">agency_type</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ChoiceField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">Resource</span><span class="o">.</span><span class="n">AGENCY_TYPES</span><span class="p">,</span>
+                                    <span class="n">label</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;agency_type&#39;</span><span class="p">])</span>
+    <span class="n">newest_record</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;newest_updated&#39;</span><span class="p">],</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                                    <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">AdminDateWidget</span><span class="p">)</span>
+    <span class="n">oldest_record</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;oldest_record&#39;</span><span class="p">],</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                                    <span class="n">widget</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">AdminDateWidget</span><span class="p">)</span>
+    <span class="n">updates</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelChoiceField</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;update_frequency&#39;</span><span class="p">],</span>
+                                    <span class="n">queryset</span><span class="o">=</span><span class="n">UpdateFrequency</span><span class="o">.</span><span class="n">objects</span><span class="p">,</span>
+                                    <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ResourceAdminForm.Meta"><a class="viewcode-back" href="../../../opendata.catalog.html#opendata.catalog.forms.ResourceAdminForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Resource</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

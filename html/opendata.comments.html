@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.comments package &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="index.html" />
+    <link rel="up" title="opendata package" href="opendata.html" />
+    <link rel="next" title="opendata.requests package" href="opendata.requests.html" />
+    <link rel="prev" title="opendata.catalog.tests package" href="opendata.catalog.tests.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.requests.html" title="opendata.requests package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="opendata.catalog.tests.html" title="opendata.catalog.tests package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" accesskey="U">opendata package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="opendata-comments-package">
+<h1>opendata.comments package<a class="headerlink" href="#opendata-comments-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-opendata.comments.forms">
+<span id="opendata-comments-forms-module"></span><h2>opendata.comments.forms module<a class="headerlink" href="#module-opendata.comments.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.comments.forms.CommentFormWithRating">
+<em class="property">class </em><tt class="descclassname">opendata.comments.forms.</tt><tt class="descname">CommentFormWithRating</tt><big>(</big><em>target_object</em>, <em>data=None</em>, <em>initial=None</em><big>)</big><a class="reference internal" href="_modules/opendata/comments/forms.html#CommentFormWithRating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.forms.CommentFormWithRating" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.comments.forms.CommentForm</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.comments.forms.CommentFormWithRating.base_fields">
+<tt class="descname">base_fields</tt><em class="property"> = {'content_type': &lt;django.forms.fields.CharField object at 0x4c85890&gt;, 'object_pk': &lt;django.forms.fields.CharField object at 0x4c85950&gt;, 'timestamp': &lt;django.forms.fields.IntegerField object at 0x4c859d0&gt;, 'security_hash': &lt;django.forms.fields.CharField object at 0x4c85a50&gt;, 'name': &lt;django.forms.fields.CharField object at 0x4c85b90&gt;, 'email': &lt;django.forms.fields.EmailField object at 0x4c85d50&gt;, 'url': &lt;django.forms.fields.URLField object at 0x4c85e50&gt;, 'comment': &lt;django.forms.fields.CharField object at 0x4c85f90&gt;, 'honeypot': &lt;django.forms.fields.CharField object at 0x4c88110&gt;, 'rating': &lt;django.forms.fields.CharField object at 0x4d97750&gt;}</em><a class="headerlink" href="#opendata.comments.forms.CommentFormWithRating.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.comments.forms.CommentFormWithRating.get_comment_create_data">
+<tt class="descname">get_comment_create_data</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/comments/forms.html#CommentFormWithRating.get_comment_create_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.forms.CommentFormWithRating.get_comment_create_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.comments.forms.CommentFormWithRating.get_comment_model">
+<tt class="descname">get_comment_model</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/comments/forms.html#CommentFormWithRating.get_comment_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.forms.CommentFormWithRating.get_comment_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.comments.forms.CommentFormWithRating.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.comments.forms.CommentFormWithRating.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.comments.models">
+<span id="opendata-comments-models-module"></span><h2>opendata.comments.models module<a class="headerlink" href="#module-opendata.comments.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.comments.models.CommentWithRating">
+<em class="property">class </em><tt class="descclassname">opendata.comments.models.</tt><tt class="descname">CommentWithRating</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/comments/models.html#CommentWithRating"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.models.CommentWithRating" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.comments.models.Comment</span></tt></p>
+<p>CommentWithRating(id, content_type_id, object_pk, site_id, user_id, user_name, user_email, user_url, comment, submit_date, ip_address, is_public, is_removed, comment_ptr_id, rating)</p>
+<dl class="exception">
+<dt id="opendata.comments.models.CommentWithRating.DoesNotExist">
+<em class="property">exception </em><tt class="descname">DoesNotExist</tt><a class="headerlink" href="#opendata.comments.models.CommentWithRating.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.comments.models.DoesNotExist</span></tt></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="opendata.comments.models.CommentWithRating.MultipleObjectsReturned">
+<em class="property">exception </em><tt class="descclassname">CommentWithRating.</tt><tt class="descname">MultipleObjectsReturned</tt><a class="headerlink" href="#opendata.comments.models.CommentWithRating.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.contrib.comments.models.MultipleObjectsReturned</span></tt></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.comments.models.CommentWithRating.comment_ptr">
+<tt class="descclassname">CommentWithRating.</tt><tt class="descname">comment_ptr</tt><em class="property"> None</em><a class="headerlink" href="#opendata.comments.models.CommentWithRating.comment_ptr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.comments.models.CommentWithRating.content_object">
+<tt class="descclassname">CommentWithRating.</tt><tt class="descname">content_object</tt><em class="property"> None</em><a class="headerlink" href="#opendata.comments.models.CommentWithRating.content_object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a generic relation to any object through content-type/object-id
+fields.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.comments.models.CommentWithRating.get_absolute_url">
+<tt class="descclassname">CommentWithRating.</tt><tt class="descname">get_absolute_url</tt><big>(</big><em>*moreargs</em>, <em>**morekwargs</em><big>)</big><a class="headerlink" href="#opendata.comments.models.CommentWithRating.get_absolute_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.comments.models.CommentWithRating.objects">
+<tt class="descclassname">CommentWithRating.</tt><tt class="descname">objects</tt><em class="property"> = &lt;django.db.models.manager.Manager object at 0x4d971d0&gt;</em><a class="headerlink" href="#opendata.comments.models.CommentWithRating.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.comments.models.CommentWithRating.save">
+<tt class="descclassname">CommentWithRating.</tt><tt class="descname">save</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/comments/models.html#CommentWithRating.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.models.CommentWithRating.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.comments.widgets">
+<span id="opendata-comments-widgets-module"></span><h2>opendata.comments.widgets module<a class="headerlink" href="#module-opendata.comments.widgets" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.comments.widgets.StarsRadioFieldRenderer">
+<em class="property">class </em><tt class="descclassname">opendata.comments.widgets.</tt><tt class="descname">StarsRadioFieldRenderer</tt><big>(</big><em>name</em>, <em>value</em>, <em>attrs</em>, <em>choices</em><big>)</big><a class="reference internal" href="_modules/opendata/comments/widgets.html#StarsRadioFieldRenderer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.widgets.StarsRadioFieldRenderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.utils.encoding.StrAndUnicode</span></tt></p>
+<dl class="method">
+<dt id="opendata.comments.widgets.StarsRadioFieldRenderer.render">
+<tt class="descname">render</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/comments/widgets.html#StarsRadioFieldRenderer.render"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.widgets.StarsRadioFieldRenderer.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Outputs a &lt;ul&gt; for this set of radio fields.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.comments.widgets.StarsRadioInput">
+<em class="property">class </em><tt class="descclassname">opendata.comments.widgets.</tt><tt class="descname">StarsRadioInput</tt><big>(</big><em>name</em>, <em>value</em>, <em>attrs</em>, <em>choice</em>, <em>index</em><big>)</big><a class="reference internal" href="_modules/opendata/comments/widgets.html#StarsRadioInput"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.widgets.StarsRadioInput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.utils.encoding.StrAndUnicode</span></tt></p>
+<p>An object used by RadioFieldRenderer that represents a single
+&lt;input type=&#8217;radio&#8217;&gt;.</p>
+<dl class="method">
+<dt id="opendata.comments.widgets.StarsRadioInput.is_checked">
+<tt class="descname">is_checked</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/comments/widgets.html#StarsRadioInput.is_checked"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.widgets.StarsRadioInput.is_checked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.comments.widgets.StarsRadioInput.tag">
+<tt class="descname">tag</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/comments/widgets.html#StarsRadioInput.tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.widgets.StarsRadioInput.tag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.comments">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-opendata.comments" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="opendata.comments.get_form">
+<tt class="descclassname">opendata.comments.</tt><tt class="descname">get_form</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/comments.html#get_form"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.get_form" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="opendata.comments.get_model">
+<tt class="descclassname">opendata.comments.</tt><tt class="descname">get_model</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/comments.html#get_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.comments.get_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">opendata.comments package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-opendata.comments.forms">opendata.comments.forms module</a></li>
+<li><a class="reference internal" href="#module-opendata.comments.models">opendata.comments.models module</a></li>
+<li><a class="reference internal" href="#module-opendata.comments.widgets">opendata.comments.widgets module</a></li>
+<li><a class="reference internal" href="#module-opendata.comments">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="opendata.catalog.tests.html"
+                        title="previous chapter">opendata.catalog.tests package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="opendata.requests.html"
+                        title="next chapter">opendata.requests package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/opendata.comments.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.requests.html" title="opendata.requests package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="opendata.catalog.tests.html" title="opendata.catalog.tests package"
+             >previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" >opendata package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

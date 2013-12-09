@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.tests package &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="index.html" />
+    <link rel="up" title="opendata package" href="opendata.html" />
+    <link rel="prev" title="opendata.suggestions.tests package" href="opendata.suggestions.tests.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.suggestions.tests.html" title="opendata.suggestions.tests package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" accesskey="U">opendata package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="opendata-tests-package">
+<h1>opendata.tests package<a class="headerlink" href="#opendata-tests-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-opendata.tests.base">
+<span id="opendata-tests-base-module"></span><h2>opendata.tests.base module<a class="headerlink" href="#module-opendata.tests.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.tests.base.BasicGetTest">
+<em class="property">class </em><tt class="descclassname">opendata.tests.base.</tt><tt class="descname">BasicGetTest</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="reference internal" href="_modules/opendata/tests/base.html#BasicGetTest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.base.BasicGetTest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#opendata.tests.base.ViewTestMixin" title="opendata.tests.base.ViewTestMixin"><tt class="xref py py-class docutils literal"><span class="pre">opendata.tests.base.ViewTestMixin</span></tt></a>, <a class="reference internal" href="#opendata.tests.base.WebsiteTestBase" title="opendata.tests.base.WebsiteTestBase"><tt class="xref py py-class docutils literal"><span class="pre">opendata.tests.base.WebsiteTestBase</span></tt></a></p>
+<p>Simple view that tests that a given view returns a 200 for authenticated
+users and unauthenticated users</p>
+<dl class="method">
+<dt id="opendata.tests.base.BasicGetTest.tearDown">
+<tt class="descname">tearDown</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/tests/base.html#BasicGetTest.tearDown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.base.BasicGetTest.tearDown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.tests.base.BasicGetTest.template_name">
+<tt class="descname">template_name</tt><em class="property"> = ''</em><a class="headerlink" href="#opendata.tests.base.BasicGetTest.template_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.tests.base.BasicGetTest.test_get_authenticated">
+<tt class="descname">test_get_authenticated</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/tests/base.html#BasicGetTest.test_get_authenticated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.base.BasicGetTest.test_get_authenticated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logged in users can view the home page</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.tests.base.BasicGetTest.test_get_unauthenticated">
+<tt class="descname">test_get_unauthenticated</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/tests/base.html#BasicGetTest.test_get_unauthenticated"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.base.BasicGetTest.test_get_unauthenticated" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unregistered users can view the home page</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.tests.base.BasicGetTest.url_name">
+<tt class="descname">url_name</tt><em class="property"> = ''</em><a class="headerlink" href="#opendata.tests.base.BasicGetTest.url_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.tests.base.FormTestMixin">
+<em class="property">class </em><tt class="descclassname">opendata.tests.base.</tt><tt class="descname">FormTestMixin</tt><a class="reference internal" href="_modules/opendata/tests/base.html#FormTestMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.base.FormTestMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.tests.base.FormTestMixin.form_class">
+<tt class="descname">form_class</tt><em class="property"> = None</em><a class="headerlink" href="#opendata.tests.base.FormTestMixin.form_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.tests.base.ModelFormTestMixin">
+<em class="property">class </em><tt class="descclassname">opendata.tests.base.</tt><tt class="descname">ModelFormTestMixin</tt><a class="reference internal" href="_modules/opendata/tests/base.html#ModelFormTestMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.base.ModelFormTestMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#opendata.tests.base.FormTestMixin" title="opendata.tests.base.FormTestMixin"><tt class="xref py py-class docutils literal"><span class="pre">opendata.tests.base.FormTestMixin</span></tt></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.tests.base.ViewTestMixin">
+<em class="property">class </em><tt class="descclassname">opendata.tests.base.</tt><tt class="descname">ViewTestMixin</tt><a class="reference internal" href="_modules/opendata/tests/base.html#ViewTestMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.base.ViewTestMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Utilities for more easily testing views.</p>
+<dl class="method">
+<dt id="opendata.tests.base.ViewTestMixin.assertRedirectsNoFollow">
+<tt class="descname">assertRedirectsNoFollow</tt><big>(</big><em>response</em>, <em>url</em>, <em>use_params=True</em>, <em>status_code=302</em><big>)</big><a class="reference internal" href="_modules/opendata/tests/base.html#ViewTestMixin.assertRedirectsNoFollow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.base.ViewTestMixin.assertRedirectsNoFollow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks response redirect without loading the destination page.</p>
+<p>Django&#8217;s assertRedirects method loads the destination page, which
+requires that the page be renderable in the current test context
+(possibly requiring additional, unrelated setup).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.tests.base.ViewTestMixin.assertRedirectsToLogin">
+<tt class="descname">assertRedirectsToLogin</tt><big>(</big><em>response</em><big>)</big><a class="reference internal" href="_modules/opendata/tests/base.html#ViewTestMixin.assertRedirectsToLogin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.base.ViewTestMixin.assertRedirectsToLogin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.tests.base.ViewTestMixin.get_kwargs">
+<tt class="descname">get_kwargs</tt><em class="property"> = {}</em><a class="headerlink" href="#opendata.tests.base.ViewTestMixin.get_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.tests.base.ViewTestMixin.login_url">
+<tt class="descname">login_url</tt><em class="property"> = &lt;django.utils.functional.__proxy__ object at 0x58d8a10&gt;</em><a class="headerlink" href="#opendata.tests.base.ViewTestMixin.login_url" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.tests.base.ViewTestMixin.post_data">
+<tt class="descname">post_data</tt><em class="property"> = {}</em><a class="headerlink" href="#opendata.tests.base.ViewTestMixin.post_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.tests.base.ViewTestMixin.url_args">
+<tt class="descname">url_args</tt><em class="property"> = {}</em><a class="headerlink" href="#opendata.tests.base.ViewTestMixin.url_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.tests.base.ViewTestMixin.url_kwargs">
+<tt class="descname">url_kwargs</tt><em class="property"> = {}</em><a class="headerlink" href="#opendata.tests.base.ViewTestMixin.url_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.tests.base.ViewTestMixin.url_name">
+<tt class="descname">url_name</tt><em class="property"> = ''</em><a class="headerlink" href="#opendata.tests.base.ViewTestMixin.url_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.tests.base.WebsiteTestBase">
+<em class="property">class </em><tt class="descclassname">opendata.tests.base.</tt><tt class="descname">WebsiteTestBase</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="reference internal" href="_modules/opendata/tests/base.html#WebsiteTestBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.base.WebsiteTestBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">django.test.testcases.TestCase</span></tt></p>
+<p>Common utility methods that may be useful for all Website tests.</p>
+<dl class="method">
+<dt id="opendata.tests.base.WebsiteTestBase.login_user">
+<tt class="descname">login_user</tt><big>(</big><em>user</em><big>)</big><a class="reference internal" href="_modules/opendata/tests/base.html#WebsiteTestBase.login_user"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.base.WebsiteTestBase.login_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Log in a user without need for a password.</p>
+<p>Adapted from
+<a class="reference external" href="http://jameswestby.net/weblog/tech/17-directly-logging-in-a-user-in-django-tests.html">http://jameswestby.net/weblog/tech/17-directly-logging-in-a-user-in-django-tests.html</a></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.tests.factories">
+<span id="opendata-tests-factories-module"></span><h2>opendata.tests.factories module<a class="headerlink" href="#module-opendata.tests.factories" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.tests.factories.UserFactory">
+<em class="property">class </em><tt class="descclassname">opendata.tests.factories.</tt><tt class="descname">UserFactory</tt><a class="reference internal" href="_modules/opendata/tests/factories.html#UserFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.tests.factories.UserFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">factory.django.DjangoModelFactory</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.tests.factories.UserFactory.FACTORY_FOR">
+<tt class="descname">FACTORY_FOR</tt><a class="headerlink" href="#opendata.tests.factories.UserFactory.FACTORY_FOR" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <tt class="xref py py-class docutils literal"><span class="pre">User</span></tt></p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.tests">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-opendata.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">opendata.tests package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-opendata.tests.base">opendata.tests.base module</a></li>
+<li><a class="reference internal" href="#module-opendata.tests.factories">opendata.tests.factories module</a></li>
+<li><a class="reference internal" href="#module-opendata.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="opendata.suggestions.tests.html"
+                        title="previous chapter">opendata.suggestions.tests package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/opendata.tests.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.suggestions.tests.html" title="opendata.suggestions.tests package"
+             >previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" >opendata package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+opendata.catalog package
+========================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    opendata.catalog.management
+    opendata.catalog.migrations
+    opendata.catalog.templatetags
+    opendata.catalog.tests
+
+Submodules
+----------
+
+opendata.catalog.admin module
+-----------------------------
+
+.. automodule:: opendata.catalog.admin
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.catalog.forms module
+-----------------------------
+
+.. automodule:: opendata.catalog.forms
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.catalog.lookups module
+-------------------------------
+
+.. automodule:: opendata.catalog.lookups
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.catalog.managers module
+--------------------------------
+
+.. automodule:: opendata.catalog.managers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.catalog.models module
+------------------------------
+
+.. automodule:: opendata.catalog.models
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.catalog.search_indexes module
+--------------------------------------
+
+.. automodule:: opendata.catalog.search_indexes
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.catalog.urls module
+----------------------------
+
+.. automodule:: opendata.catalog.urls
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.catalog.views module
+-----------------------------
+
+.. automodule:: opendata.catalog.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.catalog
+    :members:
+    :undoc-members:
+    :show-inheritance:

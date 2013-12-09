@@ -1,0 +1,71 @@
+opendata.requests package
+=========================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    opendata.requests.migrations
+    opendata.requests.templatetags
+    opendata.requests.tests
+
+Submodules
+----------
+
+opendata.requests.admin module
+------------------------------
+
+.. automodule:: opendata.requests.admin
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.requests.forms module
+------------------------------
+
+.. automodule:: opendata.requests.forms
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.requests.models module
+-------------------------------
+
+.. automodule:: opendata.requests.models
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.requests.search_indexes module
+---------------------------------------
+
+.. automodule:: opendata.requests.search_indexes
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.requests.urls module
+-----------------------------
+
+.. automodule:: opendata.requests.urls
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.requests.views module
+------------------------------
+
+.. automodule:: opendata.requests.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.requests
+    :members:
+    :undoc-members:
+    :show-inheritance:

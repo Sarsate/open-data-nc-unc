@@ -1,0 +1,10 @@
+opendata.suggestions.tests package
+==================================
+
+Module contents
+---------------
+
+.. automodule:: opendata.suggestions.tests
+    :members:
+    :undoc-members:
+    :show-inheritance:

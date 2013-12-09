@@ -1,0 +1,62 @@
+opendata.suggestions package
+============================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    opendata.suggestions.migrations
+    opendata.suggestions.tests
+
+Submodules
+----------
+
+opendata.suggestions.admin module
+---------------------------------
+
+.. automodule:: opendata.suggestions.admin
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.suggestions.forms module
+---------------------------------
+
+.. automodule:: opendata.suggestions.forms
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.suggestions.models module
+----------------------------------
+
+.. automodule:: opendata.suggestions.models
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.suggestions.urls module
+--------------------------------
+
+.. automodule:: opendata.suggestions.urls
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+opendata.suggestions.views module
+---------------------------------
+
+.. automodule:: opendata.suggestions.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.suggestions
+    :members:
+    :undoc-members:
+    :show-inheritance:

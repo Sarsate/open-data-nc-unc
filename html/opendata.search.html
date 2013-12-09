@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.search package &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="index.html" />
+    <link rel="up" title="opendata package" href="opendata.html" />
+    <link rel="next" title="opendata.search.templatetags package" href="opendata.search.templatetags.html" />
+    <link rel="prev" title="opendata.requests.tests package" href="opendata.requests.tests.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.search.templatetags.html" title="opendata.search.templatetags package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="opendata.requests.tests.html" title="opendata.requests.tests package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" accesskey="U">opendata package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="opendata-search-package">
+<h1>opendata.search package<a class="headerlink" href="#opendata-search-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="opendata.search.templatetags.html">opendata.search.templatetags package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opendata.search.templatetags.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.search.templatetags.html#module-opendata.search.templatetags.facet_tags">opendata.search.templatetags.facet_tags module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opendata.search.templatetags.html#module-opendata.search.templatetags">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-opendata.search.forms">
+<span id="opendata-search-forms-module"></span><h2>opendata.search.forms module<a class="headerlink" href="#module-opendata.search.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.search.forms.FacetedSearchListingForm">
+<em class="property">class </em><tt class="descclassname">opendata.search.forms.</tt><tt class="descname">FacetedSearchListingForm</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/search/forms.html#FacetedSearchListingForm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.forms.FacetedSearchListingForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">haystack.forms.FacetedSearchForm</span></tt></p>
+<dl class="attribute">
+<dt id="opendata.search.forms.FacetedSearchListingForm.base_fields">
+<tt class="descname">base_fields</tt><em class="property"> = {'q': &lt;django.forms.fields.CharField object at 0x50ae590&gt;}</em><a class="headerlink" href="#opendata.search.forms.FacetedSearchListingForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="opendata.search.forms.FacetedSearchListingForm.media">
+<tt class="descname">media</tt><em class="property"> None</em><a class="headerlink" href="#opendata.search.forms.FacetedSearchListingForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.search.forms.FacetedSearchListingForm.no_query_found">
+<tt class="descname">no_query_found</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/search/forms.html#FacetedSearchListingForm.no_query_found"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.forms.FacetedSearchListingForm.no_query_found" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all results for search queries with no parameter</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.search.index_processors">
+<span id="opendata-search-index-processors-module"></span><h2>opendata.search.index_processors module<a class="headerlink" href="#module-opendata.search.index_processors" title="Permalink to this headline">¶</a></h2>
+<p>Utility class that helps haystack index m2m relations after instance it is
+first save.</p>
+<dl class="class">
+<dt id="opendata.search.index_processors.BaseSignal">
+<em class="property">class </em><tt class="descclassname">opendata.search.index_processors.</tt><tt class="descname">BaseSignal</tt><big>(</big><em>connections</em>, <em>connection_router</em><big>)</big><a class="reference internal" href="_modules/opendata/search/index_processors.html#BaseSignal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.index_processors.BaseSignal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">haystack.signals.BaseSignalProcessor</span></tt></p>
+<p>BaseSignalProcessor had to be rewritten to account for m2m relationships</p>
+<dl class="method">
+<dt id="opendata.search.index_processors.BaseSignal.handle_delete">
+<tt class="descname">handle_delete</tt><big>(</big><em>sender</em>, <em>instance</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/search/index_processors.html#BaseSignal.handle_delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.index_processors.BaseSignal.handle_delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an individual model instance, determine which backends the
+delete should be sent to &amp; delete the object on those backends.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.search.index_processors.BaseSignal.handle_save">
+<tt class="descname">handle_save</tt><big>(</big><em>sender</em>, <em>instance</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/search/index_processors.html#BaseSignal.handle_save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.index_processors.BaseSignal.handle_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given an individual model instance, determine which backends the
+update should be sent to &amp; update the object on those backends.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="opendata.search.index_processors.M2MRealtimeSignalProcessor">
+<em class="property">class </em><tt class="descclassname">opendata.search.index_processors.</tt><tt class="descname">M2MRealtimeSignalProcessor</tt><big>(</big><em>connections</em>, <em>connection_router</em><big>)</big><a class="reference internal" href="_modules/opendata/search/index_processors.html#M2MRealtimeSignalProcessor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.index_processors.M2MRealtimeSignalProcessor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#opendata.search.index_processors.BaseSignal" title="opendata.search.index_processors.BaseSignal"><tt class="xref py py-class docutils literal"><span class="pre">opendata.search.index_processors.BaseSignal</span></tt></a></p>
+<p>Allows for observing when saves, deletes and m2m_changed fire &amp;
+automatically updates the search engine appropriately.</p>
+<dl class="method">
+<dt id="opendata.search.index_processors.M2MRealtimeSignalProcessor.setup">
+<tt class="descname">setup</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/search/index_processors.html#M2MRealtimeSignalProcessor.setup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.index_processors.M2MRealtimeSignalProcessor.setup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.search.index_processors.M2MRealtimeSignalProcessor.teardown">
+<tt class="descname">teardown</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/search/index_processors.html#M2MRealtimeSignalProcessor.teardown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.index_processors.M2MRealtimeSignalProcessor.teardown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-opendata.search.views">
+<span id="opendata-search-views-module"></span><h2>opendata.search.views module<a class="headerlink" href="#module-opendata.search.views" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="opendata.search.views.FacetedSearchCustomView">
+<em class="property">class </em><tt class="descclassname">opendata.search.views.</tt><tt class="descname">FacetedSearchCustomView</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="_modules/opendata/search/views.html#FacetedSearchCustomView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.views.FacetedSearchCustomView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">haystack.views.FacetedSearchView</span></tt></p>
+<p>Overrides various default methods to allow for additional context, smoother
+UX for faceting</p>
+<dl class="method">
+<dt id="opendata.search.views.FacetedSearchCustomView.build_page">
+<tt class="descname">build_page</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/search/views.html#FacetedSearchCustomView.build_page"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.views.FacetedSearchCustomView.build_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>Paginates the results appropriately.</p>
+<p>Overriden to redirect to page 1 if a page_no is not found</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.search.views.FacetedSearchCustomView.create_response">
+<tt class="descname">create_response</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/search/views.html#FacetedSearchCustomView.create_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.views.FacetedSearchCustomView.create_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the actual HttpResponse to send back to the user.</p>
+<p>Overriding to allow the redirect to pass through from overriden build_page</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="opendata.search.views.FacetedSearchCustomView.extra_context">
+<tt class="descname">extra_context</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/search/views.html#FacetedSearchCustomView.extra_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.views.FacetedSearchCustomView.extra_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="opendata.search.views.FacetedSearchCustomView.get_selected_facets">
+<tt class="descname">get_selected_facets</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/opendata/search/views.html#FacetedSearchCustomView.get_selected_facets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.views.FacetedSearchCustomView.get_selected_facets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a tuple of two lists ([fields,], [values])</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="opendata.search.views.FacetedSearchCustomView.remove_empty_facets">
+<em class="property">static </em><tt class="descname">remove_empty_facets</tt><big>(</big><em>facets</em><big>)</big><a class="reference internal" href="_modules/opendata/search/views.html#FacetedSearchCustomView.remove_empty_facets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.views.FacetedSearchCustomView.remove_empty_facets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dict of fields that have filters available.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="opendata.search.views.search_listing">
+<tt class="descclassname">opendata.search.views.</tt><tt class="descname">search_listing</tt><big>(</big><em>request</em>, <em>model</em>, <em>template_name='search/search.html'</em><big>)</big><a class="reference internal" href="_modules/opendata/search/views.html#search_listing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#opendata.search.views.search_listing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-opendata.search">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-opendata.search" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">opendata.search package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-opendata.search.forms">opendata.search.forms module</a></li>
+<li><a class="reference internal" href="#module-opendata.search.index_processors">opendata.search.index_processors module</a></li>
+<li><a class="reference internal" href="#module-opendata.search.views">opendata.search.views module</a></li>
+<li><a class="reference internal" href="#module-opendata.search">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="opendata.requests.tests.html"
+                        title="previous chapter">opendata.requests.tests package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="opendata.search.templatetags.html"
+                        title="next chapter">opendata.search.templatetags package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/opendata.search.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opendata.search.templatetags.html" title="opendata.search.templatetags package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="opendata.requests.tests.html" title="opendata.requests.tests package"
+             >previous</a> |</li>
+        <li><a href="index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="opendata.html" >opendata package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

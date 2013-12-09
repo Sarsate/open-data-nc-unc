@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.suggestions.models &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for opendata.suggestions.models</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="kn">from</span> <span class="nn">opendata.catalog.models</span> <span class="kn">import</span> <span class="n">UrlType</span><span class="p">,</span> <span class="n">UpdateFrequency</span>
+<span class="kn">from</span> <span class="nn">opendata.requests.models</span> <span class="kn">import</span> <span class="n">Category</span><span class="p">,</span> <span class="n">City</span><span class="p">,</span> <span class="n">County</span>
+<span class="kn">from</span> <span class="nn">opendata.fields_info</span> <span class="kn">import</span> <span class="n">FIELDS</span><span class="p">,</span> <span class="n">HELP</span>
+
+
+<div class="viewcode-block" id="Suggestion"><a class="viewcode-back" href="../../../opendata.suggestions.html#opendata.suggestions.models.Suggestion">[docs]</a><span class="k">class</span> <span class="nc">Suggestion</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">AGENCY_TYPES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="s">&#39;state&#39;</span><span class="p">,</span> <span class="s">&#39;Statewide&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;county&#39;</span><span class="p">,</span> <span class="s">&#39;County Agency&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;city&#39;</span><span class="p">,</span> <span class="s">&#39;City/town Agency&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">FREQUENCY_TYPES</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">(</span><span class="s">&#39;daily&#39;</span><span class="p">,</span> <span class="s">&#39;At least once a day&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;weekly&#39;</span><span class="p">,</span> <span class="s">&#39;At least once a week&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;monthly&#39;</span><span class="p">,</span> <span class="s">&#39;At least once a month&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;yearly&#39;</span><span class="p">,</span> <span class="s">&#39;At least once a year&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s">&#39;never&#39;</span><span class="p">,</span> <span class="s">&quot;It is not updated after it&#39;s created.&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">date_last_modified</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;title&#39;</span><span class="p">])</span>
+    <span class="n">short_description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s">u&#39;Brief description&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
+                                         <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;short_description&#39;</span><span class="p">])</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="s">u&#39;Long description&#39;</span><span class="p">,</span> <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">])</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;url&#39;</span><span class="p">],</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
+                           <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;url&#39;</span><span class="p">])</span>
+    <span class="n">data_format</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">UrlType</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;data_format&#39;</span><span class="p">],</span>
+                                    <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">other_format</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">agency_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;agency_name&#39;</span><span class="p">],</span>
+                                   <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;agency_name&#39;</span><span class="p">],</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">agency_division</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
+                                       <span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;agency_division&#39;</span><span class="p">],</span>
+                                       <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;agency_name&#39;</span><span class="p">])</span>
+    <span class="n">agency_type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">AGENCY_TYPES</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+                                   <span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;agency_type&#39;</span><span class="p">],</span>
+                                   <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;agency_type&#39;</span><span class="p">])</span>
+    <span class="n">city</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">City</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;city&#39;</span><span class="p">],</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                             <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;suggestions&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,)</span>
+    <span class="n">county</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">County</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;suggestions&#39;</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                               <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;county&#39;</span><span class="p">])</span>
+    <span class="n">last_updated</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;last_updated&#39;</span><span class="p">],</span>
+                                    <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">updates</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">UpdateFrequency</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                <span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;update_frequency&#39;</span><span class="p">],</span>
+                                <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;update_frequency&#39;</span><span class="p">],</span>
+                                <span class="p">)</span>
+    <span class="n">categories</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ManyToManyField</span><span class="p">(</span><span class="n">Category</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&quot;suggestions&quot;</span><span class="p">,</span>
+                                        <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                        <span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;categories&#39;</span><span class="p">])</span>
+    <span class="n">other_category</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s">u&#39;Other category&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                      <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;other&#39;</span><span class="p">])</span>
+    <span class="n">keywords</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CommaSeparatedIntegerField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                                 <span class="n">verbose_name</span><span class="o">=</span><span class="n">FIELDS</span><span class="p">[</span><span class="s">&#39;keywords&#39;</span><span class="p">],</span>
+                                                 <span class="n">help_text</span><span class="o">=</span><span class="n">HELP</span><span class="p">[</span><span class="s">&#39;keywords&#39;</span><span class="p">])</span>
+    <span class="n">contact_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">phone_number</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">street_address</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">contact_city</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s">u&#39;City&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">zipcode</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="s">u&#39;Zip Code&#39;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">email_address</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__unicode__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

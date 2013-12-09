@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>opendata.search.index_processors &mdash; opendata  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="opendata  documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" accesskey="U">Module code</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <h1>Source code for opendata.search.index_processors</h1><div class="highlight"><pre>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Utility class that helps haystack index m2m relations after instance it is</span>
+<span class="sd">first save.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">haystack.signals</span> <span class="kn">import</span> <span class="n">BaseSignalProcessor</span>
+<span class="kn">from</span> <span class="nn">haystack.exceptions</span> <span class="kn">import</span> <span class="n">NotHandled</span>
+
+<span class="kn">from</span> <span class="nn">opendata.tasks</span> <span class="kn">import</span> <span class="n">update_object</span><span class="p">,</span> <span class="n">remove_object</span>
+
+
+<div class="viewcode-block" id="BaseSignal"><a class="viewcode-back" href="../../../opendata.search.html#opendata.search.index_processors.BaseSignal">[docs]</a><span class="k">class</span> <span class="nc">BaseSignal</span><span class="p">(</span><span class="n">BaseSignalProcessor</span><span class="p">):</span>
+    <span class="s">&quot;BaseSignalProcessor had to be rewritten to account for m2m relationships&quot;</span>
+
+<div class="viewcode-block" id="BaseSignal.handle_save"><a class="viewcode-back" href="../../../opendata.search.html#opendata.search.index_processors.BaseSignal.handle_save">[docs]</a>    <span class="k">def</span> <span class="nf">handle_save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Given an individual model instance, determine which backends the</span>
+<span class="sd">        update should be sent to &amp; update the object on those backends.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c"># import pdb; pdb.set_trace()</span>
+        <span class="c"># changed_fields = kwargs[&#39;update_fields&#39;]</span>
+        <span class="c"># if not changed_fields:</span>
+        <span class="c">#     return False</span>
+        <span class="n">using_backends</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection_router</span><span class="o">.</span><span class="n">for_write</span><span class="p">(</span><span class="n">instance</span><span class="o">=</span><span class="n">instance</span><span class="p">)</span>
+        <span class="n">sender</span> <span class="o">=</span> <span class="n">sender</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">sender</span><span class="p">)</span> <span class="k">else</span> <span class="n">instance</span><span class="o">.</span><span class="n">__class__</span>
+        <span class="k">for</span> <span class="n">using</span> <span class="ow">in</span> <span class="n">using_backends</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connections</span><span class="p">[</span><span class="n">using</span><span class="p">]</span><span class="o">.</span><span class="n">get_unified_index</span><span class="p">()</span><span class="o">.</span><span class="n">get_index</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
+                <span class="n">update_object</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">using</span><span class="o">=</span><span class="n">using</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">NotHandled</span><span class="p">:</span>
+                <span class="c"># TODO: Maybe log it or let the exception bubble?</span>
+                <span class="k">pass</span>
+</div>
+<div class="viewcode-block" id="BaseSignal.handle_delete"><a class="viewcode-back" href="../../../opendata.search.html#opendata.search.index_processors.BaseSignal.handle_delete">[docs]</a>    <span class="k">def</span> <span class="nf">handle_delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Given an individual model instance, determine which backends the</span>
+<span class="sd">        delete should be sent to &amp; delete the object on those backends.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">using_backends</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection_router</span><span class="o">.</span><span class="n">for_write</span><span class="p">(</span><span class="n">instance</span> <span class="o">=</span><span class="n">instance</span><span class="p">)</span>
+        <span class="n">sender</span> <span class="o">=</span> <span class="n">sender</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">sender</span><span class="p">)</span> <span class="k">else</span> <span class="n">instance</span><span class="o">.</span><span class="n">__class__</span>
+        <span class="k">for</span> <span class="n">using</span> <span class="ow">in</span> <span class="n">using_backends</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connections</span><span class="p">[</span><span class="n">using</span><span class="p">]</span><span class="o">.</span><span class="n">get_unified_index</span><span class="p">()</span><span class="o">.</span><span class="n">get_index</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
+                <span class="n">remove_object</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">using</span><span class="o">=</span><span class="n">using</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">NotHandled</span><span class="p">:</span>
+                <span class="c"># TODO: Maybe log it or let the exception bubble?</span>
+                <span class="k">pass</span>
+
+</div></div>
+<div class="viewcode-block" id="M2MRealtimeSignalProcessor"><a class="viewcode-back" href="../../../opendata.search.html#opendata.search.index_processors.M2MRealtimeSignalProcessor">[docs]</a><span class="k">class</span> <span class="nc">M2MRealtimeSignalProcessor</span><span class="p">(</span><span class="n">BaseSignal</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Allows for observing when saves, deletes and m2m_changed fire &amp;</span>
+<span class="sd">    automatically updates the search engine appropriately.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="M2MRealtimeSignalProcessor.setup"><a class="viewcode-back" href="../../../opendata.search.html#opendata.search.index_processors.M2MRealtimeSignalProcessor.setup">[docs]</a>    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Naive (listen to all model saves).</span>
+        <span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">post_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_save</span><span class="p">)</span>
+        <span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">m2m_changed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_save</span><span class="p">)</span>
+        <span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">post_delete</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_delete</span><span class="p">)</span>
+        <span class="c"># Efficient would be going through all backends &amp; collecting all models</span>
+        <span class="c"># being used, then hooking up signals only for those.</span>
+</div>
+<div class="viewcode-block" id="M2MRealtimeSignalProcessor.teardown"><a class="viewcode-back" href="../../../opendata.search.html#opendata.search.index_processors.M2MRealtimeSignalProcessor.teardown">[docs]</a>    <span class="k">def</span> <span class="nf">teardown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Naive (listen to all model saves).</span>
+        <span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">post_save</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_save</span><span class="p">)</span>
+        <span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">m2m_changed</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_save</span><span class="p">)</span>
+        <span class="n">models</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">post_delete</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_delete</span><span class="p">)</span>
+        <span class="c"># Efficient would be going through all backends &amp; collecting all models</span>
+        <span class="c"># being used, then disconnecting signals only for those.</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../../../index.html">opendata  documentation</a> &raquo;</li>
+          <li><a href="../../index.html" >Module code</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Author.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

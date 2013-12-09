@@ -1,0 +1,22 @@
+opendata.search.templatetags package
+====================================
+
+Submodules
+----------
+
+opendata.search.templatetags.facet_tags module
+----------------------------------------------
+
+.. automodule:: opendata.search.templatetags.facet_tags
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: opendata.search.templatetags
+    :members:
+    :undoc-members:
+    :show-inheritance:
