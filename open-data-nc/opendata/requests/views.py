@@ -21,7 +21,7 @@ def list_requests(request):
 
     requests = Request.objects.filter(status=Request.APPROVED).order_by("-rating_score")
     bounties = Bounty.objects.filter()
- 
+
     if request.method == 'GET':
         form = SearchForm(request.GET)
         if form.is_valid():
@@ -215,7 +215,7 @@ def edit_bounty(request, bounty_id):
             
     else:
             form = BountyForm()
-    context = { 
+    context = {
         'bounty': bounty_object,
         'form' : form,
     }
