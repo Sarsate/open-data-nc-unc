@@ -66,6 +66,7 @@
 
 </div>
 <div class="viewcode-block" id="RequestForm"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.RequestForm">[docs]</a><span class="k">class</span> <span class="nc">RequestForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Form for submitting requests &quot;&quot;&quot;</span>
     <span class="n">county</span> <span class="o">=</span> <span class="n">AutoCompleteSelectField</span><span class="p">(</span>
         <span class="n">lookup_class</span><span class="o">=</span><span class="n">CountyLookup</span><span class="p">,</span>
         <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
@@ -94,8 +95,7 @@
 
 </div></div>
 <div class="viewcode-block" id="BountyForm"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.BountyForm">[docs]</a><span class="k">class</span> <span class="nc">BountyForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Object model for forms for Bounties.</span>
-<span class="sd">    Includes validation for inputs&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; Form for creating bounty. Includes validation&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="BountyForm.Meta"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.BountyForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">Bounty</span>
         <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;request&#39;</span><span class="p">,</span> <span class="s">&#39;author&#39;</span><span class="p">,</span> <span class="s">&#39;supplier&#39;</span><span class="p">)</span>
@@ -108,8 +108,11 @@
 <div class="viewcode-block" id="BountyForm.clean"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.BountyForm.clean">[docs]</a>    <span class="k">def</span> <span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">cleaned_data</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">BountyForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">clean</span><span class="p">()</span>
         <span class="n">due_date</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;deadline&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">due_date</span> <span class="ow">and</span> <span class="n">due_date</span> <span class="o">&lt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">():</span>
-            <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">&#39;Deadline must be in the future in the format yyyy-mm-dd&#39;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">due_date</span> <span class="o">&lt;</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">&#39;Deadline must be in the future in the format yyyy-mm-dd&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">&#39;Deadline must be in the future in the format yyyy-mm-dd&#39;</span><span class="p">)</span>
         <span class="n">bounty</span> <span class="o">=</span> <span class="n">cleaned_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;price&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">bounty</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">forms</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="s">&#39;Bounty must be a positive value between 0 and 1000 (ex. 10.50)&#39;</span><span class="p">)</span>
@@ -117,6 +120,7 @@
 
 </div></div>
 <div class="viewcode-block" id="SupplyForm"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.SupplyForm">[docs]</a><span class="k">class</span> <span class="nc">SupplyForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Form for supplying a requests, adds entry to the catalog &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="SupplyForm.Meta"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.forms.SupplyForm.Meta">[docs]</a>    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">Resource</span>
         <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;rating&#39;</span><span class="p">,</span> <span class="s">&#39;proj_coord_sys&#39;</span><span class="p">,</span> <span class="s">&#39;time_period&#39;</span><span class="p">,</span> <span class="s">&#39;wkt_geometry&#39;</span><span class="p">,</span> <span class="s">&#39;csw_typename&#39;</span><span class="p">,</span> <span class="s">&#39;csw_schema&#39;</span><span class="p">,</span> <span class="s">&#39;csw_mdsource&#39;</span><span class="p">,</span> <span class="s">&#39;csw_xml&#39;</span><span class="p">,</span> <span class="s">&#39;csw_anytext&#39;</span><span class="p">,</span> <span class="s">&#39;created_by&#39;</span><span class="p">,</span> <span class="s">&#39;last_updated_by&#39;</span><span class="p">,</span> <span class="s">&#39;created&#39;</span><span class="p">,</span> <span class="s">&#39;last_updated&#39;</span><span class="p">,</span> <span class="s">&#39;metadata_contact&#39;</span><span class="p">,</span> <span class="s">&#39;metadata_notes&#39;</span><span class="p">,</span> <span class="s">&#39;coord_sys&#39;</span><span class="p">)</span>

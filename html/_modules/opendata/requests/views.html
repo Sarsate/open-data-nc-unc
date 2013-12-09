@@ -59,12 +59,18 @@
 <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">SearchForm</span><span class="p">,</span> <span class="n">RequestForm</span><span class="p">,</span> <span class="n">BountyForm</span><span class="p">,</span> <span class="n">SupplyForm</span>
 
-
 <div class="viewcode-block" id="list_requests"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.views.list_requests">[docs]</a><span class="k">def</span> <span class="nf">list_requests</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;List current requests&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    List all of the requests</span>
+<span class="sd">    @author Caktus</span>
+
+<span class="sd">    Changed to allow viewing bounty buttons.</span>
+<span class="sd">    @author UNC</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">requests</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="n">Request</span><span class="o">.</span><span class="n">APPROVED</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&quot;-rating_score&quot;</span><span class="p">)</span>
     <span class="n">bounties</span> <span class="o">=</span> <span class="n">Bounty</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">()</span>
- 
+
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;GET&#39;</span><span class="p">:</span>
         <span class="n">form</span> <span class="o">=</span> <span class="n">SearchForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
@@ -122,6 +128,7 @@
 <span class="nd">@login_required</span>
 <span class="nd">@require_POST</span>
 <div class="viewcode-block" id="drop_request"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.views.drop_request">[docs]</a><span class="k">def</span> <span class="nf">drop_request</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">request_id</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Remove the request with id request_id&quot;&quot;&quot;</span>
     <span class="n">request_object</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Request</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">request_id</span><span class="p">)</span>
     <span class="n">request_object</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">Request</span><span class="o">.</span><span class="n">REMOVED</span>
     <span class="n">request_object</span><span class="o">.</span><span class="n">save</span><span class="p">()</span> 
@@ -250,18 +257,21 @@
             <span class="n">bounty_object</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s">&#39;request-list&#39;</span><span class="p">))</span>
         <span class="k">else</span> <span class="p">:</span>
-            <span class="n">bounty_object</span> <span class="o">=</span> <span class="n">Bounty</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">bounty_id</span><span class="p">)</span>
-            <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;price&#39;</span><span class="p">:</span> <span class="n">bounty_object</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">price</span><span class="p">,</span> <span class="s">&#39;deadline&#39;</span><span class="p">:</span> <span class="n">bounty_object</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">deadline</span><span class="p">}</span>
-            <span class="n">form</span> <span class="o">=</span> <span class="n">BountyForm</span><span class="p">(</span><span class="n">data_dict</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="s">&#39;deadline&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span> <span class="ow">or</span> <span class="s">&#39;price&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">):</span>
+                <span class="n">bounty_object</span> <span class="o">=</span> <span class="n">Bounty</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">bounty_id</span><span class="p">)</span>
+                <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;price&#39;</span><span class="p">:</span> <span class="n">bounty_object</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">price</span><span class="p">,</span> <span class="s">&#39;deadline&#39;</span><span class="p">:</span> <span class="n">bounty_object</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">deadline</span><span class="p">}</span>
+                <span class="n">form</span> <span class="o">=</span> <span class="n">BountyForm</span><span class="p">(</span><span class="n">data_dict</span><span class="p">)</span>
+
     <span class="k">else</span><span class="p">:</span>
             <span class="n">form</span> <span class="o">=</span> <span class="n">BountyForm</span><span class="p">()</span>
-    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s">&#39;bounty&#39;</span><span class="p">:</span> <span class="n">bounty_object</span><span class="p">,</span>
         <span class="s">&#39;form&#39;</span> <span class="p">:</span> <span class="n">form</span><span class="p">,</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;requests/edit_bounty.html&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="RequestDetail"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.views.RequestDetail">[docs]</a><span class="k">class</span> <span class="nc">RequestDetail</span><span class="p">(</span><span class="n">DetailView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Display a specific request showing all of its bounties and allowing the ability to change them&quot;&quot;&quot;</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Request</span>
 <div class="viewcode-block" id="RequestDetail.get_context_data"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.views.RequestDetail.get_context_data">[docs]</a>    <span class="k">def</span> <span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">context</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">RequestDetail</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>

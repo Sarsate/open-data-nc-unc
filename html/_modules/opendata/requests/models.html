@@ -57,6 +57,7 @@
 
 
 <div class="viewcode-block" id="Request"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.models.Request">[docs]</a><span class="k">class</span> <span class="nc">Request</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Model for requests &quot;&quot;&quot;</span>
     <span class="n">PENDING</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">APPROVED</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">SUPPLIED</span> <span class="o">=</span> <span class="mi">2</span>
@@ -115,6 +116,7 @@
 
 </div>
 <div class="viewcode-block" id="Bounty"><a class="viewcode-back" href="../../../opendata.requests.html#opendata.requests.models.Bounty">[docs]</a><span class="k">class</span> <span class="nc">Bounty</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Model for bounty &quot;&quot;&quot;</span>
     <span class="n">request</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Request</span><span class="p">)</span>
     <span class="n">author</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
